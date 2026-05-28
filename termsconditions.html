@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet"/>
   <link rel="shortcut icon" type="image/x-icon" href="src/img/skeep-isotip-v1.2@512.png" />
-  <style>
+    <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -38,7 +38,7 @@
     }
 
     /* ── Nav ── */
-    nav {
+    nav.topnav {
       position: sticky;
       top: 0;
       z-index: 100;
@@ -74,12 +74,47 @@
       text-transform: uppercase;
     }
 
-    .nav-badge {
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      color: var(--text-muted);
+      font-family: 'Manrope', sans-serif;
       font-size: 11px;
       font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .lang-btn svg {
+      width: 20px;
+      height: 10px;
+      border-radius: 2px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--border-hi);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      border-color: rgba(123,97,255,0.5);
+      background: var(--accent-glow);
+      color: var(--accent);
     }
 
     /* ── Header ── */
@@ -128,9 +163,7 @@
       margin-bottom: 1.5rem;
     }
 
-    header h1 span {
-      color: var(--accent);
-    }
+    header h1 span { color: var(--accent); }
 
     .header-meta {
       display: flex;
@@ -157,8 +190,8 @@
 
     /* ── Intro callout ── */
     .intro-callout {
-      border: 1px solid rgba(255,107,107,0.25);
-      background: rgba(255,107,107,0.05);
+      border: 1px solid rgba(123,97,255,0.25);
+      background: rgba(123,97,255,0.05);
       border-radius: 12px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 3rem;
@@ -175,7 +208,7 @@
 
     .intro-callout p {
       font-size: 14.5px;
-      color: #e8a0a0;
+      color: #b8aaff;
       margin: 0;
       line-height: 1.6;
     }
@@ -282,7 +315,7 @@
     }
     p:last-child { margin-bottom: 0; }
 
-    ul, ol {
+    ul, ol.body-list {
       margin: 0.75rem 0 1rem 1.25rem;
       color: var(--text-mid);
     }
@@ -321,6 +354,12 @@
       color: var(--text-mid);
     }
 
+    .callout-success {
+      border-color: #3ecf8e;
+      background: rgba(62,207,142,0.06);
+      color: #7ae0b8;
+    }
+
     .callout p { color: inherit; margin-bottom: 0.5rem; }
     .callout p:last-child { margin-bottom: 0; }
 
@@ -333,7 +372,7 @@
       opacity: 0.7;
     }
 
-    /* ── Table ── */
+    /* ── Data table ── */
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -365,15 +404,8 @@
     }
 
     .data-table tr:last-child td { border-bottom: none; }
-    .data-table td:first-child { font-weight: 500; color: var(--text); width: 36%; }
+    .data-table td:first-child { font-weight: 500; color: var(--text); width: 30%; }
     .data-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* ── Divider ── */
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 0 3.5rem;
-    }
 
     /* ── Footer ── */
     footer {
@@ -395,17 +427,14 @@
       margin-bottom: 0.5rem;
     }
 
-    footer .footer-copy {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    footer .footer-copy { font-size: 12px; color: var(--text-muted); }
 
     section[id] { scroll-margin-top: 72px; }
 
     @media (max-width: 600px) {
       header { padding: 4rem 1.5rem 3rem; }
       .wrapper { padding: 2rem 1.25rem 5rem; }
-      nav { padding: 0 1.25rem; }
+      nav.topnav { padding: 0 1.25rem; }
       .header-meta-item { padding: 0 0.6rem; font-size: 12px; }
     }
   </style>
@@ -413,12 +442,25 @@
 <body>
 
 <!-- Nav -->
-<nav>
+<nav class="topnav">
   <a class="nav-logo" href="index.html">
     <img src="https://www.skeep.me/src/img/skeep-isotip-v1.2@512.png" alt="Skeep logo" onerror="this.style.display='none'"/>
     <span class="nav-logo-text">Skeep</span>
   </a>
-  <span class="nav-badge">Legal</span>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')" title="English">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      <span>EN</span>
+    </button>
+    <button class="lang-btn" onclick="setLang('ca')" title="Català">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+      <span>CA</span>
+    </button>
+    <button class="lang-btn" onclick="setLang('es')" title="Español">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+      <span>ES</span>
+    </button>
+  </div>
 </nav>
 
 <!-- Header -->

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Skeep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --surface:   #111118;
+      --surface-2: #18181f;
+      --border:    rgba(255,255,255,0.08);
+      --border-hi: rgba(255,255,255,0.15);
+      --text:      #f0f0f5;
+      --text-mid:  #a0a0b0;
+      --text-muted:#606070;
+      --accent:    #7b61ff;
+      --accent-2:  #ff6b6b;
+      --accent-glow: rgba(123,97,255,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav.topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      color: var(--text-muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .lang-btn svg {
+      width: 20px;
+      height: 10px;
+      border-radius: 2px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--border-hi);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      border-color: rgba(123,97,255,0.5);
+      background: var(--accent-glow);
+      color: var(--accent);
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(123,97,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding: 6px 14px;
+      border: 1px solid rgba(123,97,255,0.3);
+      border-radius: 100px;
+      background: rgba(123,97,255,0.08);
+    }
+
+    header h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    header h1 span { color: var(--accent); }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-meta-item {
+      padding: 0 1rem;
+      border-right: 1px solid var(--border-hi);
+    }
+    .header-meta-item:last-child { border-right: none; }
+
+    /* ── Layout ── */
+    .wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 2rem 7rem;
+    }
+
+    /* ── Intro callout ── */
+    .intro-callout {
+      border: 1px solid rgba(123,97,255,0.25);
+      background: rgba(123,97,255,0.05);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .intro-callout-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .intro-callout p {
+      font-size: 14.5px;
+      color: #b8aaff;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 3.5rem;
+      overflow: hidden;
+    }
+
+    .toc-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.15rem 2rem;
+    }
+
+    @media (max-width: 540px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li { margin-bottom: 0.3rem; }
+
+    .toc a {
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 400;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    .toc a .num {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+      min-width: 20px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 3.5rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: 6px;
+      padding: 3px 7px;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol.body-list {
+      margin: 0.75rem 0 1rem 1.25rem;
+      color: var(--text-mid);
+    }
+
+    li { margin-bottom: 0.45rem; font-weight: 300; }
+
+    strong { font-weight: 600; color: var(--text); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Callout boxes ── */
+    .callout {
+      border-left: 2px solid;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+      font-size: 14.5px;
+    }
+
+    .callout-warn {
+      border-color: var(--accent-2);
+      background: rgba(255,107,107,0.06);
+      color: #e8a0a0;
+    }
+
+    .callout-info {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      color: #b8aaff;
+    }
+
+    .callout-neutral {
+      border-color: var(--border-hi);
+      background: var(--surface);
+      color: var(--text-mid);
+    }
+
+    .callout-success {
+      border-color: #3ecf8e;
+      background: rgba(62,207,142,0.06);
+      color: #7ae0b8;
+    }
+
+    .callout p { color: inherit; margin-bottom: 0.5rem; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .callout-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    /* ── Data table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 1rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .data-table th {
+      background: var(--surface-2);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-mid);
+      vertical-align: top;
+      font-weight: 300;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { font-weight: 500; color: var(--text); width: 30%; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 13px;
+    }
+
+    footer .footer-logo {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 0.5rem;
+    }
+
+    footer .footer-copy { font-size: 12px; color: var(--text-muted); }
+
+    section[id] { scroll-margin-top: 72px; }
+
+    @media (max-width: 600px) {
+      header { padding: 4rem 1.5rem 3rem; }
+      .wrapper { padding: 2rem 1.25rem 5rem; }
+      nav.topnav { padding: 0 1.25rem; }
+      .header-meta-item { padding: 0 0.6rem; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topnav">
+  <a class="nav-logo" href="index.html">
+    <img src="https://www.skeep.me/src/img/skeep-isotip-v1.2@512.png" alt="Skeep logo" onerror="this.style.display='none'"/>
+    <span class="nav-logo-text">Skeep</span>
+  </a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')" title="English">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      <span>EN</span>
+    </button>
+    <button class="lang-btn" onclick="setLang('ca')" title="Català">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+      <span>CA</span>
+    </button>
+    <button class="lang-btn" onclick="setLang('es')" title="Español">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+      <span>ES</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Header -->
+<header>
+  <div class="header-eyebrow">Legal Document</div>
+  <h1>Privacy <span>Policy</span></h1>
+  <div class="header-meta">
+    <span class="header-meta-item">SocialJam S.L.</span>
+    <span class="header-meta-item">Effective May 28, 2026</span>
+    <span class="header-meta-item">Version 1.0</span>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <!-- Intro -->
+  <div class="intro-callout">
+    <span class="intro-callout-icon">🔒</span>
+    <p>SocialJam S.L. ("we," "our," or "us") operates the Skeep mobile application and related services. This Privacy Policy explains what personal data we collect, why we collect it, how we use and protect it, and what rights you have. By using Skeep, you agree to the practices described in this policy.</p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc" role="navigation" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#p1"><span class="num">01</span> Who We Are</a></li>
+      <li><a href="#p2"><span class="num">02</span> Data We Collect</a></li>
+      <li><a href="#p3"><span class="num">03</span> How We Use Your Data</a></li>
+      <li><a href="#p4"><span class="num">04</span> Legal Bases for Processing</a></li>
+      <li><a href="#p5"><span class="num">05</span> Sharing Your Data</a></li>
+      <li><a href="#p6"><span class="num">06</span> Advertising &amp; Tracking</a></li>
+      <li><a href="#p7"><span class="num">07</span> Data Retention</a></li>
+      <li><a href="#p8"><span class="num">08</span> Data Security</a></li>
+      <li><a href="#p9"><span class="num">09</span> Children's Privacy</a></li>
+      <li><a href="#p10"><span class="num">10</span> Your Rights</a></li>
+      <li><a href="#p11"><span class="num">11</span> International Transfers</a></li>
+      <li><a href="#p12"><span class="num">12</span> Third-Party Links &amp; Services</a></li>
+      <li><a href="#p13"><span class="num">13</span> Changes to This Policy</a></li>
+      <li><a href="#p14"><span class="num">14</span> Contact &amp; DPO</a></li>
+    </ol>
+  </div>
+
+  <!-- Section 1 -->
+  <section id="p1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Who We Are</h2>
+    </div>
+    <p><strong>Data Controller:</strong> SocialJam S.L., a company incorporated in Spain, is the data controller responsible for your personal data when you use the Skeep app.</p>
+    <p>Skeep is a mobile-first social gaming application that lets users discover and play turn-based games, challenge friends, and communicate via messaging and group chats. Given the social and interactive nature of our Service, we collect and process certain personal data to provide and improve these features.</p>
+    <p>Our registered address is: SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Spain. You can reach our privacy team at <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="p2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Data We Collect</h2>
+    </div>
+    <p>We collect data in three ways: data you provide directly, data generated by your use of the Service, and data received from third parties.</p>
+
+    <h3>Data You Provide</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Data</th><th>When collected</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Username</td><td>Account registration</td><td>Publicly visible on your profile</td></tr>
+        <tr><td>Display name</td><td>Account registration</td><td>Publicly visible on your profile</td></tr>
+        <tr><td>Email address</td><td>Account registration</td><td>Not shared publicly</td></tr>
+        <tr><td>Profile picture</td><td>Optional, post-registration</td><td>Publicly visible; must comply with Content Policy</td></tr>
+        <tr><td>Messages &amp; chat content</td><td>When you use messaging features</td><td>Stored on our servers; see Section 3</td></tr>
+        <tr><td>Payment information</td><td>Premium subscription purchase</td><td>Processed by Apple / Google; we do not store card details</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Data Generated by Your Use</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Data</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Games played &amp; stats</td><td>Win/loss records, match history, challenges issued and received</td></tr>
+        <tr><td>Friends list</td><td>Connections you make with other Skeep users</td></tr>
+        <tr><td>Device information</td><td>Device model, OS version, unique device identifiers (IDFA/GAID where permitted)</td></tr>
+        <tr><td>Log data</td><td>IP address, app version, crash reports, timestamps, in-app actions</td></tr>
+        <tr><td>Usage data</td><td>Features used, session duration, games viewed in feed, interactions</td></tr>
+        <tr><td>General location</td><td>Derived from IP address; we do not collect precise GPS location</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Data from Third Parties</h3>
+    <p>If you sign in using a third-party service (e.g. Apple Sign In or Google Sign In), we receive basic profile data — such as a name and email address — from that provider, subject to their own privacy policies. We may also receive aggregated analytics or fraud-detection signals from our service partners.</p>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="p3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>How We Use Your Data</h2>
+    </div>
+    <p>We use the data we collect for the following purposes:</p>
+    <ul>
+      <li><strong>Providing the Service</strong> — creating and managing your account, enabling gameplay, matchmaking, messaging, and group chats</li>
+      <li><strong>Personalisation</strong> — tailoring your game feed, recommending challenges, and displaying relevant content based on your activity</li>
+      <li><strong>Safety &amp; moderation</strong> — reviewing reported content, investigating abuse, enforcing our Terms &amp; Conditions, and protecting users from harm</li>
+      <li><strong>Security &amp; fraud prevention</strong> — detecting and preventing cheating, account takeovers, and other malicious activity</li>
+      <li><strong>Communications</strong> — sending service-related notifications (security alerts, policy updates) and, where you have opted in, promotional messages</li>
+      <li><strong>Analytics &amp; improvement</strong> — understanding how users interact with the app to fix bugs, improve features, and develop new ones</li>
+      <li><strong>Advertising</strong> — serving ads to free-tier users, and measuring ad performance (see Section 6)</li>
+      <li><strong>Legal compliance</strong> — meeting our obligations under applicable law, including responding to lawful requests from authorities</li>
+    </ul>
+
+    <h3>Messages &amp; Chat Data</h3>
+    <p>Messages are stored to deliver them reliably and to enable our safety team to review content when a report is filed. We do not routinely read private messages. Automated systems may scan messages to detect spam, illegal content, or policy violations. Except as required by law or described in this policy, message content is not shared with third parties.</p>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="p4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Legal Bases for Processing</h2>
+    </div>
+    <p>As a company based in Spain, we process personal data of users in the European Economic Area (EEA) under the General Data Protection Regulation (GDPR). We rely on the following legal bases:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Legal Basis</th><th>When we rely on it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Contract performance</td><td>Processing necessary to provide you with the Service you signed up for (account creation, gameplay, messaging)</td></tr>
+        <tr><td>Legitimate interests</td><td>Analytics, fraud prevention, security, service improvement, and direct marketing to existing users — where our interests are not overridden by your rights</td></tr>
+        <tr><td>Consent</td><td>Personalised advertising (where required by law); optional push notifications; processing of data for users under 16 (parental consent)</td></tr>
+        <tr><td>Legal obligation</td><td>Compliance with applicable laws, regulatory requests, and court orders</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-info">
+      <div class="callout-label">Your right to withdraw consent</div>
+      <p>Where we rely on consent, you may withdraw it at any time through your in-app settings or by contacting us. Withdrawal does not affect the lawfulness of processing carried out before withdrawal.</p>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="p5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Sharing Your Data</h2>
+    </div>
+    <p>We do not sell your personal data. We may share it only in the following circumstances:</p>
+
+    <h3>With Other Users</h3>
+    <p>Your username, display name, profile picture, and game stats are visible to other Skeep users. Messages you send are visible to the recipient(s) of those messages. Your friends list may be visible depending on your privacy settings.</p>
+
+    <h3>With Service Providers</h3>
+    <p>We work with trusted third-party companies to help operate the Service, including cloud hosting providers, analytics platforms, customer support tools, payment processors, and moderation services. These providers process data only on our behalf and under strict data processing agreements.</p>
+
+    <h3>With Advertising Partners</h3>
+    <p>For free-tier users, we share limited data (such as device identifiers and usage signals) with advertising networks to serve and measure ads. See Section 6 for more detail and opt-out options.</p>
+
+    <h3>For Legal Reasons</h3>
+    <p>We may disclose your data if required to do so by law, regulation, or valid legal process; to protect the rights, safety, or property of SocialJam S.L., our users, or the public; or in connection with a corporate transaction such as a merger, acquisition, or sale of assets, in which case the successor entity will be bound by this Privacy Policy.</p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Important</div>
+      <p>We will never sell, rent, or trade your personal data to third parties for their own marketing purposes.</p>
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="p6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Advertising &amp; Tracking</h2>
+    </div>
+    <p>Free-tier users see ads within the Skeep app. We use third-party advertising networks that may use cookies, device identifiers, and similar technologies to serve ads that are relevant to you based on your interests and activity.</p>
+
+    <h3>What Data Is Used for Ads</h3>
+    <ul>
+      <li>Device advertising identifier (IDFA on iOS, GAID on Android), where you have granted permission</li>
+      <li>General location derived from IP address</li>
+      <li>In-app activity and usage patterns</li>
+      <li>Device type and operating system</li>
+    </ul>
+
+    <h3>Your Choices</h3>
+    <ul>
+      <li><strong>iOS:</strong> Go to Settings → Privacy &amp; Security → Tracking and disable "Allow Apps to Request to Track"</li>
+      <li><strong>Android:</strong> Go to Settings → Google → Ads and enable "Opt out of Ads Personalisation"</li>
+      <li><strong>In-app:</strong> Access ad preferences via your account settings to manage consent</li>
+      <li><strong>Premium subscription:</strong> Upgrading to Premium removes all advertising from your experience entirely</li>
+    </ul>
+
+    <h3>Analytics</h3>
+    <p>We use analytics tools to understand how users engage with the app. Analytics data is aggregated and used only to improve the Service. You can opt out of analytics data collection in your account settings.</p>
+
+    <div class="callout callout-neutral">
+      <p>We comply with Apple's App Tracking Transparency (ATT) framework and Google's advertising policies. We will always request your permission before tracking your activity across other apps and websites.</p>
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="p7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Data Retention</h2>
+    </div>
+    <p>We retain your personal data for as long as your account is active or as necessary to provide the Service. Specific retention periods are as follows:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Data Type</th><th>Retention Period</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Account data (username, email, display name)</td><td>Until account deletion, plus 30 days for recovery purposes</td></tr>
+        <tr><td>Profile picture</td><td>Until removed by the user or account deletion</td></tr>
+        <tr><td>Messages &amp; group chat content</td><td>Up to 12 months, or until the user deletes them</td></tr>
+        <tr><td>Games played &amp; stats</td><td>Duration of account; anonymised aggregates retained indefinitely</td></tr>
+        <tr><td>Log &amp; device data</td><td>Up to 90 days</td></tr>
+        <tr><td>Financial transaction records</td><td>7 years (as required by Spanish tax law)</td></tr>
+        <tr><td>Safety &amp; moderation records</td><td>Up to 3 years after the related incident is resolved</td></tr>
+      </tbody>
+    </table>
+    <p>After the retention period expires, data is securely deleted or anonymised. Deletion of your account initiates the deletion process; some data may be retained longer if required by law or to resolve ongoing disputes.</p>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="p8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Data Security</h2>
+    </div>
+    <p>We take the security of your personal data seriously and implement industry-standard technical and organisational measures to protect it, including:</p>
+    <ul>
+      <li>Encryption of data in transit using TLS (Transport Layer Security)</li>
+      <li>Encryption of sensitive data at rest</li>
+      <li>Access controls ensuring only authorised personnel can access personal data</li>
+      <li>Regular security assessments and penetration testing</li>
+      <li>Incident response procedures for detecting and responding to data breaches</li>
+    </ul>
+    <div class="callout callout-warn">
+      <div class="callout-label">No system is 100% secure</div>
+      <p>While we strive to protect your data, no method of transmission or storage is completely secure. In the event of a data breach that is likely to result in risk to your rights, we will notify you and the relevant supervisory authority as required by applicable law.</p>
+    </div>
+    <p>You are also responsible for keeping your account credentials secure. Do not share your password with anyone, and use a strong, unique password for your Skeep account.</p>
+  </section>
+
+  <!-- Section 9 -->
+  <section id="p9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>Skeep is intended for users aged <strong>13 and above</strong>. We do not knowingly collect personal data from children under 13. If we become aware that we have inadvertently collected personal data from a child under 13, we will delete it promptly.</p>
+    <p>For users aged 13 to 15 in the EEA (or under the applicable age of digital consent in their country), we require verifiable parental or guardian consent before processing their personal data beyond what is strictly necessary to provide the Service. Certain features — including personalised advertising and some social features — are restricted for users under 16.</p>
+    <p>If you are a parent or guardian and believe your child has provided us with personal data without your consent, please contact us at <a href="mailto:hi@skeep.me">hi@skeep.me</a> and we will take prompt action to delete the data.</p>
+  </section>
+
+  <!-- Section 10 -->
+  <section id="p10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2>Your Rights</h2>
+    </div>
+    <p>Depending on where you live, you may have the following rights regarding your personal data. We honour these rights for all users regardless of jurisdiction, where technically feasible.</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Right</th><th>What it means</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Access</td><td>Request a copy of the personal data we hold about you</td></tr>
+        <tr><td>Rectification</td><td>Request correction of inaccurate or incomplete data</td></tr>
+        <tr><td>Erasure</td><td>Request deletion of your data ("right to be forgotten"), subject to legal retention obligations</td></tr>
+        <tr><td>Restriction</td><td>Request that we limit the processing of your data in certain circumstances</td></tr>
+        <tr><td>Portability</td><td>Receive your data in a structured, machine-readable format to transfer to another service</td></tr>
+        <tr><td>Objection</td><td>Object to processing based on legitimate interests or for direct marketing purposes</td></tr>
+        <tr><td>Withdraw consent</td><td>Where processing is based on consent, withdraw it at any time without affecting prior processing</td></tr>
+        <tr><td>Complaint</td><td>Lodge a complaint with a supervisory authority (in Spain: the AEPD — aepd.es)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>How to Exercise Your Rights</h3>
+    <p>You can exercise most rights directly through your in-app account settings (Settings → Privacy). For requests that cannot be completed in-app, contact us at <a href="mailto:hi@skeep.me">hi@skeep.me</a>. We will respond within <strong>30 days</strong>. We may ask you to verify your identity before fulfilling the request.</p>
+
+    <h3>California Residents (CCPA / CPRA)</h3>
+    <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect, the right to delete, the right to opt out of sale or sharing (we do not sell personal data), and the right to non-discrimination for exercising your rights. To submit a request, contact <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>
+
+    <div class="callout callout-success">
+      <div class="callout-label">Account deletion</div>
+      <p>You can delete your Skeep account at any time from Settings → Account → Delete Account. This initiates permanent deletion of your personal data in accordance with the retention periods in Section 7.</p>
+    </div>
+  </section>
+
+  <!-- Section 11 -->
+  <section id="p11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2>International Transfers</h2>
+    </div>
+    <p>SocialJam S.L. is based in Spain and primarily processes data within the European Economic Area. However, some of our service providers and advertising partners are located outside the EEA, including in the United States.</p>
+    <p>When we transfer personal data outside the EEA, we ensure appropriate safeguards are in place, including:</p>
+    <ul>
+      <li>Standard Contractual Clauses (SCCs) approved by the European Commission</li>
+      <li>Transfers to countries with an EU adequacy decision</li>
+      <li>Other lawful transfer mechanisms as required under GDPR Chapter V</li>
+    </ul>
+    <p>You may request more information about the specific safeguards in place for any given transfer by contacting us at <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>
+  </section>
+
+  <!-- Section 12 -->
+  <section id="p12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2>Third-Party Links &amp; Services</h2>
+    </div>
+    <p>The Skeep app may contain links to third-party websites, services, or social platforms. This Privacy Policy applies only to the Skeep Service. We are not responsible for the privacy practices of any third party, and we encourage you to review the privacy policies of any external services you access through the app.</p>
+    <p>If you connect a third-party account (e.g. sign in with Apple or Google), your use of that service is governed by its own privacy policy. We receive only the data you authorise that service to share with us.</p>
+  </section>
+
+  <!-- Section 13 -->
+  <section id="p13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2>Changes to This Policy</h2>
+    </div>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our data practices, the Service, or applicable law. When we make material changes, we will notify you by:</p>
+    <ul>
+      <li>Displaying a prominent in-app notice</li>
+      <li>Sending an email to your registered address, and/or</li>
+      <li>Updating the "Effective Date" at the top of this document</li>
+    </ul>
+    <p>We encourage you to review this policy periodically. Your continued use of Skeep after the effective date of any update constitutes acceptance of the revised policy. If you do not agree with the changes, you may delete your account before they take effect.</p>
+  </section>
+
+  <!-- Section 14 -->
+  <section id="p14">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <h2>Contact &amp; DPO</h2>
+    </div>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal data, please reach out to us:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Purpose</th><th>Contact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Privacy requests &amp; rights</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
+        <tr><td>General support</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
+        <tr><td>Legal &amp; DPO enquiries</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
+        <tr><td>Postal address</td><td>SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Spain</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Supervisory Authority</h3>
+    <p>If you are located in the EEA and believe we have not handled your data lawfully, you have the right to lodge a complaint with your local supervisory authority. Our lead supervisory authority is the <strong>Agencia Española de Protección de Datos (AEPD)</strong>, reachable at <a href="https://www.aepd.es" target="_blank">aepd.es</a>.</p>
+
+    <div class="callout callout-neutral" style="margin-top: 2rem;">
+      <p>By using Skeep, you acknowledge that you have read and understood this Privacy Policy and consent to the collection and use of your information as described herein.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Skeep · SocialJam S.L.</div>
+  <div class="footer-copy">Privacy Policy · Effective May 28, 2026 · Copyright 2026 © Social Jam S.L.</div>
+  <div style="margin-top: 0.75rem; font-size: 12px; color: var(--text-muted);">This document is intended for informational purposes. For legal advice, consult a qualified attorney.</div>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    pageTitle: "Privacy Policy — Skeep",
+    navBadge: "",
+    eyebrow: "Legal Document",
+    h1: "Privacy <span>Policy</span>",
+    metaCompany: "SocialJam S.L.",
+    metaDate: "Effective May 28, 2026",
+    metaVersion: "Version 1.0",
+    introText: "SocialJam S.L. (\"we,\" \"our,\" or \"us\") operates the Skeep mobile application and related services. This Privacy Policy explains what personal data we collect, why we collect it, how we use and protect it, and what rights you have. By using Skeep, you agree to the practices described in this policy.",
+    tocTitle: "Contents",
+    toc: ["Who We Are","Data We Collect","How We Use Your Data","Legal Bases for Processing","Sharing Your Data","Advertising &amp; Tracking","Data Retention","Data Security","Children's Privacy","Your Rights","International Transfers","Third-Party Links &amp; Services","Changes to This Policy","Contact &amp; DPO"],
+    sections: [
+      { title: "Who We Are", body: `<p><strong>Data Controller:</strong> SocialJam S.L., a company incorporated in Spain, is the data controller responsible for your personal data when you use the Skeep app.</p><p>Skeep is a mobile-first social gaming application that lets users discover and play turn-based games, challenge friends, and communicate via messaging and group chats. Given the social and interactive nature of our Service, we collect and process certain personal data to provide and improve these features.</p><p>Our registered address is: SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Spain. You can reach our privacy team at <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Data We Collect", body: `<p>We collect data in three ways: data you provide directly, data generated by your use of the Service, and data received from third parties.</p><h3>Data You Provide</h3><table class="data-table"><thead><tr><th>Data</th><th>When collected</th><th>Notes</th></tr></thead><tbody><tr><td>Username</td><td>Account registration</td><td>Publicly visible on your profile</td></tr><tr><td>Display name</td><td>Account registration</td><td>Publicly visible on your profile</td></tr><tr><td>Email address</td><td>Account registration</td><td>Not shared publicly</td></tr><tr><td>Profile picture</td><td>Optional, post-registration</td><td>Publicly visible; must comply with Content Policy</td></tr><tr><td>Messages &amp; chat content</td><td>When you use messaging features</td><td>Stored on our servers; see Section 3</td></tr><tr><td>Payment information</td><td>Premium subscription purchase</td><td>Processed by Apple / Google; we do not store card details</td></tr></tbody></table><h3>Data Generated by Your Use</h3><table class="data-table"><thead><tr><th>Data</th><th>Description</th></tr></thead><tbody><tr><td>Games played &amp; stats</td><td>Win/loss records, match history, challenges issued and received</td></tr><tr><td>Friends list</td><td>Connections you make with other Skeep users</td></tr><tr><td>Device information</td><td>Device model, OS version, unique device identifiers (IDFA/GAID where permitted)</td></tr><tr><td>Log data</td><td>IP address, app version, crash reports, timestamps, in-app actions</td></tr><tr><td>Usage data</td><td>Features used, session duration, games viewed in feed, interactions</td></tr><tr><td>General location</td><td>Derived from IP address; we do not collect precise GPS location</td></tr></tbody></table><h3>Data from Third Parties</h3><p>If you sign in using a third-party service (e.g. Apple Sign In or Google Sign In), we receive basic profile data from that provider, subject to their own privacy policies. We may also receive aggregated analytics or fraud-detection signals from our service partners.</p>` },
+      { title: "How We Use Your Data", body: `<p>We use the data we collect for the following purposes:</p><ul><li><strong>Providing the Service</strong> — creating and managing your account, enabling gameplay, matchmaking, messaging, and group chats</li><li><strong>Personalisation</strong> — tailoring your game feed, recommending challenges, and displaying relevant content based on your activity</li><li><strong>Safety &amp; moderation</strong> — reviewing reported content, investigating abuse, enforcing our Terms &amp; Conditions, and protecting users from harm</li><li><strong>Security &amp; fraud prevention</strong> — detecting and preventing cheating, account takeovers, and other malicious activity</li><li><strong>Communications</strong> — sending service-related notifications and, where you have opted in, promotional messages</li><li><strong>Analytics &amp; improvement</strong> — understanding how users interact with the app to fix bugs, improve features, and develop new ones</li><li><strong>Advertising</strong> — serving ads to free-tier users, and measuring ad performance (see Section 6)</li><li><strong>Legal compliance</strong> — meeting our obligations under applicable law</li></ul><h3>Messages &amp; Chat Data</h3><p>Messages are stored to deliver them reliably and to enable our safety team to review content when a report is filed. We do not routinely read private messages. Automated systems may scan messages to detect spam, illegal content, or policy violations.</p>` },
+      { title: "Legal Bases for Processing", body: `<p>As a company based in Spain, we process personal data of users in the European Economic Area (EEA) under the GDPR. We rely on the following legal bases:</p><table class="data-table"><thead><tr><th>Legal Basis</th><th>When we rely on it</th></tr></thead><tbody><tr><td>Contract performance</td><td>Processing necessary to provide the Service (account creation, gameplay, messaging)</td></tr><tr><td>Legitimate interests</td><td>Analytics, fraud prevention, security, service improvement, and direct marketing to existing users</td></tr><tr><td>Consent</td><td>Personalised advertising (where required by law); optional push notifications; processing of data for users under 16</td></tr><tr><td>Legal obligation</td><td>Compliance with applicable laws, regulatory requests, and court orders</td></tr></tbody></table><div class="callout callout-info"><div class="callout-label">Your right to withdraw consent</div><p>Where we rely on consent, you may withdraw it at any time through your in-app settings or by contacting us. Withdrawal does not affect the lawfulness of prior processing.</p></div>` },
+      { title: "Sharing Your Data", body: `<p>We do not sell your personal data. We may share it only in the following circumstances:</p><h3>With Other Users</h3><p>Your username, display name, profile picture, and game stats are visible to other Skeep users. Messages you send are visible to the recipient(s). Your friends list may be visible depending on your privacy settings.</p><h3>With Service Providers</h3><p>We work with trusted third-party companies to help operate the Service, including cloud hosting, analytics, customer support, payment processors, and moderation services. These providers process data only on our behalf under strict data processing agreements.</p><h3>With Advertising Partners</h3><p>For free-tier users, we share limited data with advertising networks to serve and measure ads. See Section 6 for more detail and opt-out options.</p><h3>For Legal Reasons</h3><p>We may disclose your data if required by law, regulation, or valid legal process; to protect the rights, safety, or property of SocialJam S.L., our users, or the public; or in connection with a corporate transaction such as a merger or acquisition.</p><div class="callout callout-warn"><div class="callout-label">Important</div><p>We will never sell, rent, or trade your personal data to third parties for their own marketing purposes.</p></div>` },
+      { title: "Advertising &amp; Tracking", body: `<p>Free-tier users see ads within the Skeep app. We use third-party advertising networks that may use cookies, device identifiers, and similar technologies to serve relevant ads.</p><h3>What Data Is Used for Ads</h3><ul><li>Device advertising identifier (IDFA on iOS, GAID on Android), where permitted</li><li>General location derived from IP address</li><li>In-app activity and usage patterns</li><li>Device type and operating system</li></ul><h3>Your Choices</h3><ul><li><strong>iOS:</strong> Settings → Privacy &amp; Security → Tracking</li><li><strong>Android:</strong> Settings → Google → Ads → Opt out of Ads Personalisation</li><li><strong>In-app:</strong> Account settings → Ad preferences</li><li><strong>Premium subscription:</strong> Removes all advertising entirely</li></ul><h3>Analytics</h3><p>We use analytics tools to understand engagement. Analytics data is aggregated and used only to improve the Service. You can opt out in your account settings.</p><div class="callout callout-neutral"><p>We comply with Apple's App Tracking Transparency (ATT) framework and Google's advertising policies. We will always request your permission before tracking your activity across other apps and websites.</p></div>` },
+      { title: "Data Retention", body: `<p>We retain your personal data for as long as your account is active or as necessary to provide the Service.</p><table class="data-table"><thead><tr><th>Data Type</th><th>Retention Period</th></tr></thead><tbody><tr><td>Account data</td><td>Until account deletion, plus 30 days for recovery</td></tr><tr><td>Profile picture</td><td>Until removed or account deletion</td></tr><tr><td>Messages &amp; group chat content</td><td>Up to 12 months, or until deleted by user</td></tr><tr><td>Games played &amp; stats</td><td>Duration of account; anonymised aggregates retained indefinitely</td></tr><tr><td>Log &amp; device data</td><td>Up to 90 days</td></tr><tr><td>Financial transaction records</td><td>7 years (Spanish tax law)</td></tr><tr><td>Safety &amp; moderation records</td><td>Up to 3 years after the incident is resolved</td></tr></tbody></table><p>After the retention period, data is securely deleted or anonymised. Some data may be retained longer if required by law or to resolve disputes.</p>` },
+      { title: "Data Security", body: `<p>We implement industry-standard technical and organisational measures to protect your data, including:</p><ul><li>Encryption of data in transit using TLS</li><li>Encryption of sensitive data at rest</li><li>Access controls limiting data to authorised personnel</li><li>Regular security assessments and penetration testing</li><li>Incident response procedures for data breaches</li></ul><div class="callout callout-warn"><div class="callout-label">No system is 100% secure</div><p>While we strive to protect your data, no method of transmission or storage is completely secure. In the event of a breach, we will notify you and the relevant supervisory authority as required by applicable law.</p></div><p>You are also responsible for keeping your account credentials secure. Do not share your password with anyone.</p>` },
+      { title: "Children's Privacy", body: `<p>Skeep is intended for users aged <strong>13 and above</strong>. We do not knowingly collect personal data from children under 13. If we become aware of such data, we will delete it promptly.</p><p>For users aged 13 to 15 in the EEA, we require verifiable parental or guardian consent before processing their personal data beyond what is strictly necessary. Certain features — including personalised advertising — are restricted for users under 16.</p><p>If you are a parent or guardian and believe your child has provided us with personal data without your consent, please contact us at <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Your Rights", body: `<p>Depending on where you live, you may have the following rights regarding your personal data. We honour these rights for all users where technically feasible.</p><table class="data-table"><thead><tr><th>Right</th><th>What it means</th></tr></thead><tbody><tr><td>Access</td><td>Request a copy of the personal data we hold about you</td></tr><tr><td>Rectification</td><td>Request correction of inaccurate or incomplete data</td></tr><tr><td>Erasure</td><td>Request deletion of your data, subject to legal retention obligations</td></tr><tr><td>Restriction</td><td>Request that we limit processing in certain circumstances</td></tr><tr><td>Portability</td><td>Receive your data in a machine-readable format</td></tr><tr><td>Objection</td><td>Object to processing based on legitimate interests or for direct marketing</td></tr><tr><td>Withdraw consent</td><td>Withdraw consent at any time without affecting prior processing</td></tr><tr><td>Complaint</td><td>Lodge a complaint with a supervisory authority (Spain: AEPD — aepd.es)</td></tr></tbody></table><h3>How to Exercise Your Rights</h3><p>Use your in-app account settings (Settings → Privacy) or contact us at <a href="mailto:hi@skeep.me">hi@skeep.me</a>. We respond within <strong>30 days</strong> and may verify your identity before acting.</p><h3>California Residents (CCPA / CPRA)</h3><p>California residents have additional rights including the right to know, right to delete, right to opt out of sale (we do not sell data), and right to non-discrimination. Contact <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p><div class="callout callout-success"><div class="callout-label">Account deletion</div><p>Delete your account at any time from Settings → Account → Delete Account. This initiates permanent deletion in accordance with Section 7 retention periods.</p></div>` },
+      { title: "International Transfers", body: `<p>SocialJam S.L. is based in Spain and primarily processes data within the EEA. However, some service providers and advertising partners are located outside the EEA, including in the United States.</p><p>When we transfer personal data outside the EEA, we ensure appropriate safeguards are in place, including:</p><ul><li>Standard Contractual Clauses (SCCs) approved by the European Commission</li><li>Transfers to countries with an EU adequacy decision</li><li>Other lawful mechanisms under GDPR Chapter V</li></ul><p>Contact us at <a href="mailto:hi@skeep.me">hi@skeep.me</a> for more information about specific safeguards.</p>` },
+      { title: "Third-Party Links &amp; Services", body: `<p>The Skeep app may contain links to third-party websites or services. This Privacy Policy applies only to the Skeep Service. We are not responsible for the privacy practices of any third party, and we encourage you to review their policies.</p><p>If you connect a third-party account (e.g. Sign in with Apple or Google), your use of that service is governed by its own privacy policy. We receive only the data you authorise that service to share with us.</p>` },
+      { title: "Changes to This Policy", body: `<p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:</p><ul><li>Displaying a prominent in-app notice</li><li>Sending an email to your registered address, and/or</li><li>Updating the "Effective Date" at the top of this document</li></ul><p>Your continued use of Skeep after the effective date constitutes acceptance of the revised policy. If you do not agree, you may delete your account before changes take effect.</p>` },
+      { title: "Contact &amp; DPO", body: `<p>For questions, concerns, or requests regarding this Privacy Policy, contact us:</p><table class="data-table"><thead><tr><th>Purpose</th><th>Contact</th></tr></thead><tbody><tr><td>Privacy requests &amp; rights</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr><tr><td>General support</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Legal &amp; DPO enquiries</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Postal address</td><td>SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Spain</td></tr></tbody></table><h3>Supervisory Authority</h3><p>Our lead supervisory authority is the <strong>Agencia Española de Protección de Datos (AEPD)</strong>, reachable at <a href="https://www.aepd.es" target="_blank">aepd.es</a>.</p><div class="callout callout-neutral" style="margin-top:2rem;"><p>By using Skeep, you acknowledge that you have read and understood this Privacy Policy and consent to the collection and use of your information as described herein.</p></div>` }
+    ],
+    footerLogo: "Skeep · SocialJam S.L.",
+    footerCopy: "Privacy Policy · Effective May 28, 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "This document is intended for informational purposes. For legal advice, consult a qualified attorney."
+  },
+  ca: {
+    pageTitle: "Política de Privacitat — Skeep",
+    eyebrow: "Document Legal",
+    h1: "Política de <span>Privacitat</span>",
+    metaCompany: "SocialJam S.L.",
+    metaDate: "Vigent des del 28 de maig de 2026",
+    metaVersion: "Versió 1.0",
+    introText: "SocialJam S.L. (\"nosaltres\") opera l'aplicació mòbil Skeep i els serveis relacionats. Aquesta Política de Privacitat explica quines dades personals recollim, per què les recollim, com les utilitzem i protegim, i quins drets tens. En fer servir Skeep, acceptes les pràctiques descrites en aquesta política.",
+    tocTitle: "Continguts",
+    toc: ["Qui som","Dades que recollim","Com fem servir les teves dades","Bases jurídiques del tractament","Compartir les teves dades","Publicitat i seguiment","Conservació de dades","Seguretat de les dades","Privacitat dels menors","Els teus drets","Transferències internacionals","Enllaços i serveis de tercers","Canvis en aquesta política","Contacte i DPD"],
+    sections: [
+      { title: "Qui som", body: `<p><strong>Responsable del tractament:</strong> SocialJam S.L., empresa constituïda a Espanya, és el responsable del tractament de les teves dades personals quan fas servir l'aplicació Skeep.</p><p>Skeep és una aplicació de joc social mòbil que permet als usuaris descobrir i jugar partides per torns, reptar amics i comunicar-se mitjançant missatgeria i xats de grup.</p><p>La nostra adreça registrada és: SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Espanya. Pots contactar amb el nostre equip de privacitat a <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Dades que recollim", body: `<p>Recollim dades de tres maneres: dades que tu proporciones directament, dades generades per l'ús del Servei i dades rebudes de tercers.</p><h3>Dades que tu proporciones</h3><table class="data-table"><thead><tr><th>Dada</th><th>Quan es recull</th><th>Notes</th></tr></thead><tbody><tr><td>Nom d'usuari</td><td>Registre del compte</td><td>Visible públicament al teu perfil</td></tr><tr><td>Nom de visualització</td><td>Registre del compte</td><td>Visible públicament al teu perfil</td></tr><tr><td>Adreça electrònica</td><td>Registre del compte</td><td>No es comparteix públicament</td></tr><tr><td>Foto de perfil</td><td>Opcional, post-registre</td><td>Visible públicament; ha de complir la Política de contingut</td></tr><tr><td>Missatges i xats</td><td>Quan fas servir la missatgeria</td><td>Emmagatzemats als nostres servidors</td></tr><tr><td>Informació de pagament</td><td>Compra de subscripció Premium</td><td>Processada per Apple / Google; no emmagatzemem dades de targetes</td></tr></tbody></table><h3>Dades generades per l'ús</h3><table class="data-table"><thead><tr><th>Dada</th><th>Descripció</th></tr></thead><tbody><tr><td>Partides i estadístiques</td><td>Historial de partides, reptes emesos i rebuts</td></tr><tr><td>Llista d'amics</td><td>Connexions amb altres usuaris de Skeep</td></tr><tr><td>Informació del dispositiu</td><td>Model, versió del SO, identificadors únics del dispositiu</td></tr><tr><td>Dades de registre</td><td>Adreça IP, versió de l'app, informes d'errors, accions</td></tr><tr><td>Dades d'ús</td><td>Funcions usades, durada de sessió, jocs visualitzats</td></tr><tr><td>Ubicació general</td><td>Derivada de l'adreça IP; no recollim GPS precís</td></tr></tbody></table>` },
+      { title: "Com fem servir les teves dades", body: `<p>Fem servir les dades recollides per a les finalitats següents:</p><ul><li><strong>Prestació del Servei</strong> — creació i gestió del compte, partides, matchmaking, missatgeria i xats de grup</li><li><strong>Personalització</strong> — adaptar el teu feed de jocs i recomanar reptes</li><li><strong>Seguretat i moderació</strong> — revisar contingut denunciat i fer complir els Termes i Condicions</li><li><strong>Prevenció del frau</strong> — detectar i prevenir trampes i apropiació de comptes</li><li><strong>Comunicacions</strong> — notificacions del servei i, si ho has acceptat, missatges promocionals</li><li><strong>Analítica i millora</strong> — entendre com els usuaris interactuen amb l'app</li><li><strong>Publicitat</strong> — mostrar anuncis als usuaris gratuïts (veure Secció 6)</li><li><strong>Compliment legal</strong> — complir les nostres obligacions legals</li></ul>` },
+      { title: "Bases jurídiques del tractament", body: `<p>Com a empresa establerta a Espanya, tractem les dades personals d'usuaris de l'Espai Econòmic Europeu (EEE) d'acord amb el RGPD. Ens basem en les bases jurídiques següents:</p><table class="data-table"><thead><tr><th>Base jurídica</th><th>Quan l'apliquem</th></tr></thead><tbody><tr><td>Execució del contracte</td><td>Tractament necessari per prestar el Servei</td></tr><tr><td>Interès legítim</td><td>Analítica, prevenció del frau, seguretat i millora del servei</td></tr><tr><td>Consentiment</td><td>Publicitat personalitzada; notificacions push opcionals</td></tr><tr><td>Obligació legal</td><td>Compliment de lleis, sol·licituds regulatòries i ordres judicials</td></tr></tbody></table><div class="callout callout-info"><div class="callout-label">Dret a retirar el consentiment</div><p>Pots retirar el consentiment en qualsevol moment a través de la configuració de l'app o contactant amb nosaltres. La retirada no afecta la licitud del tractament anterior.</p></div>` },
+      { title: "Compartir les teves dades", body: `<p>No venem les teves dades personals. Només les compartim en els supòsits següents:</p><h3>Amb altres usuaris</h3><p>El teu nom d'usuari, nom de visualització, foto de perfil i estadístiques de joc són visibles per a altres usuaris de Skeep.</p><h3>Amb proveïdors de serveis</h3><p>Treballem amb tercers de confiança per operar el Servei: allotjament al núvol, analítica, suport al client, processadors de pagament i serveis de moderació. Tracten les dades només en nom nostre sota acords estrictes.</p><h3>Amb socis publicitaris</h3><p>Per als usuaris gratuïts, compartim dades limitades amb xarxes publicitàries. Veure Secció 6.</p><div class="callout callout-warn"><div class="callout-label">Important</div><p>Mai no vendrem, llogarem ni cedim les teves dades personals a tercers per a les seves pròpies finalitats de màrqueting.</p></div>` },
+      { title: "Publicitat i seguiment", body: `<p>Els usuaris gratuïts veuen anuncis dins l'app Skeep. Fem servir xarxes publicitàries de tercers que poden usar identificadors de dispositiu i tecnologies similars.</p><h3>Les teves opcions</h3><ul><li><strong>iOS:</strong> Configuració → Privacitat i seguretat → Seguiment</li><li><strong>Android:</strong> Configuració → Google → Anuncis → Inhabilita la personalització d'anuncis</li><li><strong>A l'app:</strong> Configuració del compte → Preferències d'anuncis</li><li><strong>Subscripció Premium:</strong> Elimina completament la publicitat</li></ul><div class="callout callout-neutral"><p>Complim el marc App Tracking Transparency (ATT) d'Apple i les polítiques publicitàries de Google. Sempre sol·licitarem el teu permís abans de fer un seguiment de la teva activitat.</p></div>` },
+      { title: "Conservació de dades", body: `<p>Conservem les teves dades personals mentre el teu compte estigui actiu o sigui necessari per prestar el Servei.</p><table class="data-table"><thead><tr><th>Tipus de dada</th><th>Període de conservació</th></tr></thead><tbody><tr><td>Dades del compte</td><td>Fins a l'eliminació del compte, més 30 dies</td></tr><tr><td>Foto de perfil</td><td>Fins que l'eliminis o s'elimini el compte</td></tr><tr><td>Missatges i xats</td><td>Fins a 12 mesos, o fins que l'usuari els elimini</td></tr><tr><td>Partides i estadístiques</td><td>Durada del compte; agregats anonimitzats indefinidament</td></tr><tr><td>Dades de registre i dispositiu</td><td>Fins a 90 dies</td></tr><tr><td>Registres de transaccions financeres</td><td>7 anys (llei tributària espanyola)</td></tr><tr><td>Registres de moderació</td><td>Fins a 3 anys després de resoldre l'incident</td></tr></tbody></table>` },
+      { title: "Seguretat de les dades", body: `<p>Apliquem mesures tècniques i organitzatives estàndard del sector per protegir les teves dades, incloent:</p><ul><li>Xifratge de les dades en trànsit amb TLS</li><li>Xifratge de les dades sensibles en repòs</li><li>Controls d'accés que limiten les dades al personal autoritzat</li><li>Avaluacions de seguretat periòdiques i proves de penetració</li><li>Procediments de resposta a incidents de seguretat</li></ul><div class="callout callout-warn"><div class="callout-label">Cap sistema és 100% segur</div><p>En cas d'una bretxa de seguretat que pugui afectar els teus drets, t'ho notificarem a tu i a l'autoritat supervisora competent.</p></div>` },
+      { title: "Privacitat dels menors", body: `<p>Skeep està destinat a usuaris de <strong>13 anys o més</strong>. No recollim conscientment dades personals de menors de 13 anys. Si en tenim coneixement, les eliminarem de manera immediata.</p><p>Per als usuaris d'entre 13 i 15 anys a l'EEE, requerim el consentiment verificable dels pares o tutors. Certes funcions estan restringides per a menors de 16 anys.</p><p>Si ets pare, mare o tutor/a i creus que el teu fill/a ens ha proporcionat dades sense el teu consentiment, contacta'ns a <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Els teus drets", body: `<p>Depenent d'on visquis, pots tenir els drets següents sobre les teves dades personals:</p><table class="data-table"><thead><tr><th>Dret</th><th>Què significa</th></tr></thead><tbody><tr><td>Accés</td><td>Sol·licitar una còpia de les dades personals que tenim sobre tu</td></tr><tr><td>Rectificació</td><td>Sol·licitar la correcció de dades inexactes o incompletes</td></tr><tr><td>Supressió</td><td>Sol·licitar l'eliminació de les teves dades</td></tr><tr><td>Limitació</td><td>Sol·licitar que limitem el tractament en certes circumstàncies</td></tr><tr><td>Portabilitat</td><td>Rebre les teves dades en un format llegible per màquina</td></tr><tr><td>Oposició</td><td>Oposar-se al tractament basat en interès legítim o màrqueting directe</td></tr><tr><td>Retirar el consentiment</td><td>Retirar el consentiment en qualsevol moment</td></tr><tr><td>Reclamació</td><td>Presentar una reclamació davant l'AEPD (aepd.es)</td></tr></tbody></table><div class="callout callout-success"><div class="callout-label">Eliminació del compte</div><p>Elimina el teu compte en qualsevol moment des de Configuració → Compte → Eliminar compte.</p></div>` },
+      { title: "Transferències internacionals", body: `<p>SocialJam S.L. és a Espanya i tracta principalment les dades dins l'EEE. Alguns proveïdors i socis publicitaris es troben fora de l'EEE, inclosos els EUA.</p><p>Quan transferim dades fora de l'EEE, ens assegurem de disposar de les garanties adequades, incloent:</p><ul><li>Clàusules Contractuals Tipus (CCT) aprovades per la Comissió Europea</li><li>Transferències a països amb decisió d'adequació de la UE</li><li>Altres mecanismes legals sota el Capítol V del RGPD</li></ul>` },
+      { title: "Enllaços i serveis de tercers", body: `<p>L'app Skeep pot contenir enllaços a llocs web o serveis de tercers. Aquesta Política de Privacitat s'aplica només al Servei Skeep. No som responsables de les pràctiques de privacitat de tercers.</p>` },
+      { title: "Canvis en aquesta política", body: `<p>Podem actualitzar aquesta Política de Privacitat periòdicament. Quan fem canvis materials, t'ho notificarem mitjançant:</p><ul><li>Un avís destacat a l'app</li><li>Un correu electrònic a la teva adreça registrada, i/o</li><li>Actualitzant la "Data de vigència" al capdamunt d'aquest document</li></ul><p>L'ús continuat de Skeep després de la data de vigència implica l'acceptació de la política revisada.</p>` },
+      { title: "Contacte i DPD", body: `<p>Per a qualsevol consulta, preocupació o sol·licitud relacionada amb aquesta Política de Privacitat:</p><table class="data-table"><thead><tr><th>Finalitat</th><th>Contacte</th></tr></thead><tbody><tr><td>Sol·licituds de privacitat i drets</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr><tr><td>Suport general</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Consultes legals i DPD</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Adreça postal</td><td>SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, Espanya</td></tr></tbody></table><h3>Autoritat supervisora</h3><p>La nostra autoritat supervisora principal és l'<strong>Agencia Española de Protección de Datos (AEPD)</strong>, accessible a <a href="https://www.aepd.es" target="_blank">aepd.es</a>.</p><div class="callout callout-neutral" style="margin-top:2rem;"><p>En fer servir Skeep, confirmes que has llegit i entès aquesta Política de Privacitat i acceptes la recollida i l'ús de les teves dades tal com s'hi descriu.</p></div>` }
+    ],
+    footerLogo: "Skeep · SocialJam S.L.",
+    footerCopy: "Política de Privacitat · Vigent des del 28 de maig de 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "Aquest document té finalitats informatives. Per a assessorament legal, consulteu un advocat."
+  },
+  es: {
+    pageTitle: "Política de Privacidad — Skeep",
+    eyebrow: "Documento Legal",
+    h1: "Política de <span>Privacidad</span>",
+    metaCompany: "SocialJam S.L.",
+    metaDate: "Vigente desde el 28 de mayo de 2026",
+    metaVersion: "Versión 1.0",
+    introText: "SocialJam S.L. (\"nosotros\") opera la aplicación móvil Skeep y los servicios relacionados. Esta Política de Privacidad explica qué datos personales recopilamos, por qué los recopilamos, cómo los usamos y protegemos, y qué derechos tienes. Al usar Skeep, aceptas las prácticas descritas en esta política.",
+    tocTitle: "Contenidos",
+    toc: ["Quiénes somos","Datos que recopilamos","Cómo usamos tus datos","Bases jurídicas del tratamiento","Compartir tus datos","Publicidad y seguimiento","Conservación de datos","Seguridad de los datos","Privacidad de los menores","Tus derechos","Transferencias internacionales","Enlaces y servicios de terceros","Cambios en esta política","Contacto y DPD"],
+    sections: [
+      { title: "Quiénes somos", body: `<p><strong>Responsable del tratamiento:</strong> SocialJam S.L., empresa constituida en España, es el responsable del tratamiento de tus datos personales cuando usas la aplicación Skeep.</p><p>Skeep es una aplicación de juego social móvil que permite a los usuarios descubrir y jugar partidas por turnos, retar a amigos y comunicarse mediante mensajería y chats de grupo.</p><p>Nuestra dirección registrada es: SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, España. Puedes contactar con nuestro equipo de privacidad en <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Datos que recopilamos", body: `<p>Recopilamos datos de tres formas: datos que tú proporcionas directamente, datos generados por tu uso del Servicio y datos recibidos de terceros.</p><h3>Datos que tú proporcionas</h3><table class="data-table"><thead><tr><th>Dato</th><th>Cuándo se recoge</th><th>Notas</th></tr></thead><tbody><tr><td>Nombre de usuario</td><td>Registro de cuenta</td><td>Visible públicamente en tu perfil</td></tr><tr><td>Nombre de visualización</td><td>Registro de cuenta</td><td>Visible públicamente en tu perfil</td></tr><tr><td>Correo electrónico</td><td>Registro de cuenta</td><td>No se comparte públicamente</td></tr><tr><td>Foto de perfil</td><td>Opcional, post-registro</td><td>Visible públicamente; debe cumplir la Política de contenido</td></tr><tr><td>Mensajes y chats</td><td>Al usar la mensajería</td><td>Almacenados en nuestros servidores</td></tr><tr><td>Información de pago</td><td>Compra de suscripción Premium</td><td>Procesada por Apple / Google; no almacenamos datos de tarjetas</td></tr></tbody></table><h3>Datos generados por tu uso</h3><table class="data-table"><thead><tr><th>Dato</th><th>Descripción</th></tr></thead><tbody><tr><td>Partidas y estadísticas</td><td>Historial de partidas, retos emitidos y recibidos</td></tr><tr><td>Lista de amigos</td><td>Conexiones con otros usuarios de Skeep</td></tr><tr><td>Información del dispositivo</td><td>Modelo, versión del SO, identificadores únicos del dispositivo</td></tr><tr><td>Datos de registro</td><td>Dirección IP, versión de la app, informes de errores, acciones</td></tr><tr><td>Datos de uso</td><td>Funciones usadas, duración de sesión, juegos visualizados</td></tr><tr><td>Ubicación general</td><td>Derivada de la dirección IP; no recopilamos GPS preciso</td></tr></tbody></table>` },
+      { title: "Cómo usamos tus datos", body: `<p>Usamos los datos recopilados para las siguientes finalidades:</p><ul><li><strong>Prestación del Servicio</strong> — creación y gestión de la cuenta, partidas, matchmaking, mensajería y chats de grupo</li><li><strong>Personalización</strong> — adaptar tu feed de juegos y recomendar retos</li><li><strong>Seguridad y moderación</strong> — revisar contenido denunciado y hacer cumplir los Términos y Condiciones</li><li><strong>Prevención del fraude</strong> — detectar y prevenir trampas y apropiación de cuentas</li><li><strong>Comunicaciones</strong> — notificaciones del servicio y, si lo has aceptado, mensajes promocionales</li><li><strong>Analítica y mejora</strong> — entender cómo los usuarios interactúan con la app</li><li><strong>Publicidad</strong> — mostrar anuncios a los usuarios gratuitos (ver Sección 6)</li><li><strong>Cumplimiento legal</strong> — cumplir nuestras obligaciones legales</li></ul>` },
+      { title: "Bases jurídicas del tratamiento", body: `<p>Como empresa establecida en España, tratamos los datos personales de los usuarios del Espacio Económico Europeo (EEE) conforme al RGPD. Nos basamos en las siguientes bases jurídicas:</p><table class="data-table"><thead><tr><th>Base jurídica</th><th>Cuándo la aplicamos</th></tr></thead><tbody><tr><td>Ejecución del contrato</td><td>Tratamiento necesario para prestar el Servicio</td></tr><tr><td>Interés legítimo</td><td>Analítica, prevención del fraude, seguridad y mejora del servicio</td></tr><tr><td>Consentimiento</td><td>Publicidad personalizada; notificaciones push opcionales</td></tr><tr><td>Obligación legal</td><td>Cumplimiento de leyes, solicitudes regulatorias y órdenes judiciales</td></tr></tbody></table><div class="callout callout-info"><div class="callout-label">Derecho a retirar el consentimiento</div><p>Puedes retirar el consentimiento en cualquier momento a través de la configuración de la app. La retirada no afecta la licitud del tratamiento anterior.</p></div>` },
+      { title: "Compartir tus datos", body: `<p>No vendemos tus datos personales. Solo los compartimos en los siguientes supuestos:</p><h3>Con otros usuarios</h3><p>Tu nombre de usuario, nombre de visualización, foto de perfil y estadísticas de juego son visibles para otros usuarios de Skeep.</p><h3>Con proveedores de servicios</h3><p>Trabajamos con terceros de confianza para operar el Servicio: alojamiento en la nube, analítica, soporte al cliente, procesadores de pago y servicios de moderación.</p><h3>Con socios publicitarios</h3><p>Para los usuarios gratuitos, compartimos datos limitados con redes publicitarias. Ver Sección 6.</p><div class="callout callout-warn"><div class="callout-label">Importante</div><p>Nunca venderemos, alquilaremos ni cederemos tus datos personales a terceros para sus propias finalidades de marketing.</p></div>` },
+      { title: "Publicidad y seguimiento", body: `<p>Los usuarios gratuitos ven anuncios dentro de la app Skeep. Usamos redes publicitarias de terceros que pueden usar identificadores de dispositivo y tecnologías similares.</p><h3>Tus opciones</h3><ul><li><strong>iOS:</strong> Ajustes → Privacidad y seguridad → Rastreo</li><li><strong>Android:</strong> Ajustes → Google → Anuncios → Inhabilitar personalización de anuncios</li><li><strong>En la app:</strong> Configuración de cuenta → Preferencias de anuncios</li><li><strong>Suscripción Premium:</strong> Elimina completamente la publicidad</li></ul><div class="callout callout-neutral"><p>Cumplimos con el marco App Tracking Transparency (ATT) de Apple y las políticas publicitarias de Google. Siempre solicitaremos tu permiso antes de rastrear tu actividad.</p></div>` },
+      { title: "Conservación de datos", body: `<p>Conservamos tus datos personales mientras tu cuenta esté activa o sea necesario para prestar el Servicio.</p><table class="data-table"><thead><tr><th>Tipo de dato</th><th>Período de conservación</th></tr></thead><tbody><tr><td>Datos de la cuenta</td><td>Hasta la eliminación de la cuenta, más 30 días</td></tr><tr><td>Foto de perfil</td><td>Hasta que la elimines o se elimine la cuenta</td></tr><tr><td>Mensajes y chats</td><td>Hasta 12 meses, o hasta que el usuario los elimine</td></tr><tr><td>Partidas y estadísticas</td><td>Duración de la cuenta; agregados anonimizados indefinidamente</td></tr><tr><td>Datos de registro y dispositivo</td><td>Hasta 90 días</td></tr><tr><td>Registros de transacciones financieras</td><td>7 años (ley tributaria española)</td></tr><tr><td>Registros de moderación</td><td>Hasta 3 años tras resolver el incidente</td></tr></tbody></table>` },
+      { title: "Seguridad de los datos", body: `<p>Aplicamos medidas técnicas y organizativas estándar del sector para proteger tus datos, incluyendo:</p><ul><li>Cifrado de datos en tránsito con TLS</li><li>Cifrado de datos sensibles en reposo</li><li>Controles de acceso que limitan los datos al personal autorizado</li><li>Evaluaciones de seguridad periódicas y pruebas de penetración</li><li>Procedimientos de respuesta a incidentes de seguridad</li></ul><div class="callout callout-warn"><div class="callout-label">Ningún sistema es 100% seguro</div><p>En caso de una brecha de seguridad que pueda afectar a tus derechos, te lo notificaremos a ti y a la autoridad supervisora competente.</p></div>` },
+      { title: "Privacidad de los menores", body: `<p>Skeep está destinado a usuarios de <strong>13 años o más</strong>. No recopilamos conscientemente datos personales de menores de 13 años. Si tenemos conocimiento de ello, los eliminaremos de inmediato.</p><p>Para los usuarios de entre 13 y 15 años en el EEE, requerimos el consentimiento verificable de los padres o tutores. Ciertas funciones están restringidas para menores de 16 años.</p><p>Si eres padre, madre o tutor/a y crees que tu hijo/a nos ha proporcionado datos sin tu consentimiento, contáctanos en <a href="mailto:hi@skeep.me">hi@skeep.me</a>.</p>` },
+      { title: "Tus derechos", body: `<p>Dependiendo de dónde vivas, puedes tener los siguientes derechos sobre tus datos personales:</p><table class="data-table"><thead><tr><th>Derecho</th><th>Qué significa</th></tr></thead><tbody><tr><td>Acceso</td><td>Solicitar una copia de los datos personales que tenemos sobre ti</td></tr><tr><td>Rectificación</td><td>Solicitar la corrección de datos inexactos o incompletos</td></tr><tr><td>Supresión</td><td>Solicitar la eliminación de tus datos</td></tr><tr><td>Limitación</td><td>Solicitar que limitemos el tratamiento en ciertas circunstancias</td></tr><tr><td>Portabilidad</td><td>Recibir tus datos en un formato legible por máquina</td></tr><tr><td>Oposición</td><td>Oponerse al tratamiento basado en interés legítimo o marketing directo</td></tr><tr><td>Retirar el consentimiento</td><td>Retirar el consentimiento en cualquier momento</td></tr><tr><td>Reclamación</td><td>Presentar una reclamación ante la AEPD (aepd.es)</td></tr></tbody></table><div class="callout callout-success"><div class="callout-label">Eliminación de cuenta</div><p>Elimina tu cuenta en cualquier momento desde Ajustes → Cuenta → Eliminar cuenta.</p></div>` },
+      { title: "Transferencias internacionales", body: `<p>SocialJam S.L. está en España y trata principalmente los datos dentro del EEE. Algunos proveedores y socios publicitarios se encuentran fuera del EEE, incluidos los EE. UU.</p><p>Cuando transferimos datos fuera del EEE, nos aseguramos de contar con las garantías adecuadas, incluyendo:</p><ul><li>Cláusulas Contractuales Tipo (CCT) aprobadas por la Comisión Europea</li><li>Transferencias a países con decisión de adecuación de la UE</li><li>Otros mecanismos legales bajo el Capítulo V del RGPD</li></ul>` },
+      { title: "Enlaces y servicios de terceros", body: `<p>La app Skeep puede contener enlaces a sitios web o servicios de terceros. Esta Política de Privacidad se aplica únicamente al Servicio Skeep. No somos responsables de las prácticas de privacidad de terceros.</p>` },
+      { title: "Cambios en esta política", body: `<p>Podemos actualizar esta Política de Privacidad periódicamente. Cuando hagamos cambios materiales, te lo notificaremos mediante:</p><ul><li>Un aviso destacado en la app</li><li>Un correo electrónico a tu dirección registrada, y/o</li><li>Actualizando la "Fecha de vigencia" en la parte superior de este documento</li></ul><p>El uso continuado de Skeep tras la fecha de vigencia implica la aceptación de la política revisada.</p>` },
+      { title: "Contacto y DPD", body: `<p>Para cualquier consulta, preocupación o solicitud relacionada con esta Política de Privacidad:</p><table class="data-table"><thead><tr><th>Finalidad</th><th>Contacto</th></tr></thead><tbody><tr><td>Solicitudes de privacidad y derechos</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr><tr><td>Soporte general</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Consultas legales y DPD</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Dirección postal</td><td>SocialJam S.L., Carrer de Ramón Llull 2, 1r 2a, 08923 Santa Coloma de Gramenet, España</td></tr></tbody></table><h3>Autoridad supervisora</h3><p>Nuestra autoridad supervisora principal es la <strong>Agencia Española de Protección de Datos (AEPD)</strong>, accesible en <a href="https://www.aepd.es" target="_blank">aepd.es</a>.</p><div class="callout callout-neutral" style="margin-top:2rem;"><p>Al usar Skeep, confirmas que has leído y entendido esta Política de Privacidad y consientes la recopilación y el uso de tu información tal como se describe en ella.</p></div>` }
+    ],
+    footerLogo: "Skeep · SocialJam S.L.",
+    footerCopy: "Política de Privacidad · Vigente desde el 28 de mayo de 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "Este documento tiene fines informativos. Para asesoramiento legal, consulte a un abogado."
+  }
+};
+
+function setLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  document.title = t.pageTitle;
+  document.querySelector('.header-eyebrow').textContent = t.eyebrow;
+  document.querySelector('header h1').innerHTML = t.h1;
+  document.querySelector('.header-meta-item:nth-child(1)').textContent = t.metaCompany;
+  document.querySelector('.header-meta-item:nth-child(2)').textContent = t.metaDate;
+  document.querySelector('.header-meta-item:nth-child(3)').textContent = t.metaVersion;
+  document.querySelector('.intro-callout p').textContent = t.introText;
+  document.querySelector('.toc-title').textContent = t.tocTitle;
+
+  // TOC links
+  const tocLinks = document.querySelectorAll('.toc a');
+  t.toc.forEach((label, i) => {
+    if (tocLinks[i]) tocLinks[i].querySelector('span:last-child') ? (tocLinks[i].lastChild.textContent = ' ' + label) : null;
+    if (tocLinks[i]) { const num = tocLinks[i].querySelector('.num').textContent; tocLinks[i].innerHTML = `<span class="num">${num}</span>${label}`; }
+  });
+
+  // Sections
+  const sections = document.querySelectorAll('section[id]');
+  t.sections.forEach((s, i) => {
+    if (!sections[i]) return;
+    sections[i].querySelector('h2').textContent = s.title;
+    const header = sections[i].querySelector('.section-header');
+    const num = sections[i].querySelector('.section-num').outerHTML;
+    sections[i].innerHTML = `<div class="section-header">${num}<h2>${s.title}</h2></div>${s.body}`;
+  });
+
+  // Footer
+  document.querySelector('.footer-logo').textContent = t.footerLogo;
+  document.querySelector('.footer-copy').textContent = t.footerCopy;
+  document.querySelector('footer div:last-child').textContent = t.footerNote;
+
+  // Active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  document.documentElement.lang = lang;
+}
+</script>
+</body>
+</html>
