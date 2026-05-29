@@ -7,8 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet"/>
-  <link rel="shortcut icon" type="image/x-icon" href="src/img/skeep-isotip-v1.2@512.png" />
-    <style>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -53,27 +52,6 @@
       justify-content: space-between;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 28px;
-      width: auto;
-    }
-
-    .nav-logo-text {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
     .lang-switcher {
       display: flex;
       align-items: center;
@@ -115,6 +93,35 @@
       border-color: rgba(123,97,255,0.5);
       background: var(--accent-glow);
       color: var(--accent);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* ── Header ── */
@@ -163,7 +170,9 @@
       margin-bottom: 1.5rem;
     }
 
-    header h1 span { color: var(--accent); }
+    header h1 span {
+      color: var(--accent);
+    }
 
     .header-meta {
       display: flex;
@@ -190,8 +199,8 @@
 
     /* ── Intro callout ── */
     .intro-callout {
-      border: 1px solid rgba(123,97,255,0.25);
-      background: rgba(123,97,255,0.05);
+      border: 1px solid rgba(255,107,107,0.25);
+      background: rgba(255,107,107,0.05);
       border-radius: 12px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 3rem;
@@ -208,7 +217,7 @@
 
     .intro-callout p {
       font-size: 14.5px;
-      color: #b8aaff;
+      color: #e8a0a0;
       margin: 0;
       line-height: 1.6;
     }
@@ -315,7 +324,7 @@
     }
     p:last-child { margin-bottom: 0; }
 
-    ul, ol.body-list {
+    ul, ol {
       margin: 0.75rem 0 1rem 1.25rem;
       color: var(--text-mid);
     }
@@ -354,12 +363,6 @@
       color: var(--text-mid);
     }
 
-    .callout-success {
-      border-color: #3ecf8e;
-      background: rgba(62,207,142,0.06);
-      color: #7ae0b8;
-    }
-
     .callout p { color: inherit; margin-bottom: 0.5rem; }
     .callout p:last-child { margin-bottom: 0; }
 
@@ -372,7 +375,7 @@
       opacity: 0.7;
     }
 
-    /* ── Data table ── */
+    /* ── Table ── */
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -404,8 +407,15 @@
     }
 
     .data-table tr:last-child td { border-bottom: none; }
-    .data-table td:first-child { font-weight: 500; color: var(--text); width: 30%; }
+    .data-table td:first-child { font-weight: 500; color: var(--text); width: 36%; }
     .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── Divider ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 3.5rem;
+    }
 
     /* ── Footer ── */
     footer {
@@ -427,7 +437,10 @@
       margin-bottom: 0.5rem;
     }
 
-    footer .footer-copy { font-size: 12px; color: var(--text-muted); }
+    footer .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
 
     section[id] { scroll-margin-top: 72px; }
 
@@ -523,7 +536,7 @@
       <h2>Eligibility</h2>
     </div>
     <p>You must be at least <strong>13 years of age</strong> to use Skeep. If you are between 13 and 17 years old (or under the applicable age of majority in your jurisdiction), you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
-    <p>We do not knowingly collect personal information from children under 13. If we learn that a user under 13 has registered, we will delete their account and associated data promptly. If you believe a child under 13 has created an account, please contact us at <strong>hi@skeep.me</strong>.</p>
+    <p>We do not knowingly collect personal information from children under 13. If we learn that a user under 13 has registered, we will delete their account and associated data promptly. If you believe a child under 13 has created an account, please contact us at <strong>privacy@skeep.app</strong>.</p>
     <div class="callout callout-info">
       <div class="callout-label">Parental consent</div>
       <p>Certain features — including in-app purchases and messaging — may require verified parental consent for users under 18. We reserve the right to restrict access to these features for minors at our discretion.</p>
@@ -544,7 +557,7 @@
       <li>A <strong>profile picture</strong> (optional, but must comply with our Content Policy)</li>
     </ul>
     <h3>Account Security</h3>
-    <p>You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You must notify us immediately at <strong>hi@skeep.me</strong> if you suspect any unauthorised access to your account. We are not liable for losses caused by unauthorised use of your account.</p>
+    <p>You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You must notify us immediately at <strong>support@skeep.app</strong> if you suspect any unauthorised access to your account. We are not liable for losses caused by unauthorised use of your account.</p>
     <h3>One Account Per Person</h3>
     <p>You may only maintain one active account. Creating multiple accounts to circumvent bans, exploit game systems, or otherwise abuse the Service is prohibited and may result in permanent termination of all associated accounts.</p>
     <h3>Username Policy</h3>
@@ -637,7 +650,7 @@
     <h3>Third-Party Services</h3>
     <p>We may share limited data with trusted third-party partners, including advertising networks, analytics providers, and payment processors, as described in our Privacy Policy. We do not sell your personal data to third parties.</p>
     <h3>Your Rights</h3>
-    <p>Depending on your jurisdiction, you may have rights to access, correct, delete, or export your personal data. You can exercise these rights through your account settings or by contacting us at <strong>hi@skeep.me</strong>. Users in the European Economic Area, United Kingdom, and California have additional rights as described in our Privacy Policy.</p>
+    <p>Depending on your jurisdiction, you may have rights to access, correct, delete, or export your personal data. You can exercise these rights through your account settings or by contacting us at <strong>privacy@skeep.app</strong>. Users in the European Economic Area, United Kingdom, and California have additional rights as described in our Privacy Policy.</p>
   </section>
 
   <!-- Section 8 -->
@@ -695,7 +708,7 @@
       <li>Remove or alter any proprietary notices or labels</li>
     </ul>
     <h3>Copyright Infringement</h3>
-    <p>If you believe content on Skeep infringes your copyright, please send a notice to <strong>hi@skeep.me</strong> including: identification of the copyrighted work; identification of the infringing content and its location; your contact information; and a statement that you have a good faith belief the use is unauthorised. We will respond to valid notices in accordance with the Digital Millennium Copyright Act (DMCA) and applicable law.</p>
+    <p>If you believe content on Skeep infringes your copyright, please send a notice to <strong>legal@skeep.app</strong> including: identification of the copyrighted work; identification of the infringing content and its location; your contact information; and a statement that you have a good faith belief the use is unauthorised. We will respond to valid notices in accordance with the Digital Millennium Copyright Act (DMCA) and applicable law.</p>
   </section>
 
   <!-- Section 11 -->
@@ -752,7 +765,7 @@
     </div>
     <p>These Terms are governed by and construed in accordance with the laws of the <strong>Kingdom of Spain</strong>, without regard to its conflict of law provisions.</p>
     <h3>Informal Resolution</h3>
-    <p>Before initiating any formal dispute proceedings, you agree to first contact us at <strong>hi@skeep.me</strong> and attempt to resolve the dispute informally. We will make good-faith efforts to resolve any dispute within 30 days of receiving your notice.</p>
+    <p>Before initiating any formal dispute proceedings, you agree to first contact us at <strong>legal@skeep.app</strong> and attempt to resolve the dispute informally. We will make good-faith efforts to resolve any dispute within 30 days of receiving your notice.</p>
     <h3>Arbitration</h3>
     <p>If informal resolution fails, any dispute, claim, or controversy arising from or relating to these Terms or the Service shall be settled by binding arbitration administered by the Spanish Arbitration Court (Corte Española de Arbitraje) under its rules. Arbitration shall be conducted in English. The arbitrator's decision shall be final and binding, and judgment may be entered in any court of competent jurisdiction.</p>
     <h3>Class Action Waiver</h3>
@@ -793,10 +806,10 @@
         <tr><th>Purpose</th><th>Contact</th></tr>
       </thead>
       <tbody>
-        <tr><td>General support</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
-        <tr><td>Privacy &amp; data requests</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
-        <tr><td>Legal &amp; copyright notices</td><td><a href="mailto:hi@skeep.me">hi@skeep.me</a></td></tr>
-        <tr><td>Mailing address</td><td>SocialJam S.L., Carrer de Ramón Llull, 2, 1r 2a, 08923 Santa Coloma de Gramenet, Spain</td></tr>
+        <tr><td>General support</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr>
+        <tr><td>Privacy &amp; data requests</td><td><a href="mailto:privacy@skeep.app">privacy@skeep.app</a></td></tr>
+        <tr><td>Legal &amp; copyright notices</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr>
+        <tr><td>Mailing address</td><td>SocialJam S.L., Carrer de la Diputació 123, 08011 Barcelona, Spain</td></tr>
       </tbody>
     </table>
     <div class="callout callout-neutral" style="margin-top: 2rem;">
@@ -812,5 +825,139 @@
   <div style="margin-top: 0.75rem; font-size: 12px; color: var(--text-muted);">This document is intended for informational purposes. For legal advice, consult a qualified attorney.</div>
 </footer>
 
+<script>
+const translations = {
+  en: {
+    pageTitle: "Terms & Conditions — Skeep",
+    eyebrow: "Legal Document",
+    h1: "Terms &amp; <span>Conditions</span>",
+    metaDate: "Effective May 28, 2026",
+    metaVersion: "Version 1.0",
+    introText: `These Terms & Conditions ("Terms") constitute a legally binding agreement between you and SocialJam S.L. By downloading, installing, or using the Skeep application, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, do not use the app.`,
+    tocTitle: "Contents",
+    toc: ["Acceptance of Terms","Eligibility","Account Registration","User Content &amp; Conduct","Gameplay &amp; 1v1 Challenges","Messaging &amp; Friends","Privacy &amp; Data Collection","Advertising","Premium Subscriptions","Intellectual Property","Disclaimers","Limitation of Liability","Termination","Governing Law &amp; Disputes","Changes to These Terms","Contact Us"],
+    sections: [
+      { title: "Acceptance of Terms", body: `<p>These Terms govern your access to and use of Skeep, including its mobile application, website, and all related services (collectively, the "Service"), operated by SocialJam S.L. ("we," "our," or "us").</p><p>By creating an account, tapping "I Agree," or otherwise accessing the Service, you agree to these Terms and our Privacy Policy, which is incorporated herein by reference. If you are using the Service on behalf of an organisation, you represent that you have authority to bind that organisation to these Terms.</p><p>Our Service is distributed through the Apple App Store and the Google Play Store. Additional terms imposed by Apple Inc. or Google LLC may also apply to your use of the app, and you agree to comply with those platform-specific terms as applicable.</p>` },
+      { title: "Eligibility", body: `<p>You must be at least <strong>13 years of age</strong> to use Skeep. If you are between 13 and 17 years old (or under the applicable age of majority in your jurisdiction), you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p><p>We do not knowingly collect personal information from children under 13. If we learn that a user under 13 has registered, we will delete their account and associated data promptly. If you believe a child under 13 has created an account, please contact us at <strong>privacy@skeep.app</strong>.</p><div class="callout callout-info"><div class="callout-label">Parental consent</div><p>Certain features — including in-app purchases and messaging — may require verified parental consent for users under 18. We reserve the right to restrict access to these features for minors at our discretion.</p></div>` },
+      { title: "Account Registration", body: `<p>To access Skeep's features, you must create an account. When registering, you agree to provide accurate, current, and complete information, including:</p><ul><li>A unique <strong>username</strong></li><li>A <strong>display name</strong> visible to other users</li><li>A valid <strong>email address</strong></li><li>A <strong>profile picture</strong> (optional, but must comply with our Content Policy)</li></ul><h3>Account Security</h3><p>You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You must notify us immediately at <strong>support@skeep.app</strong> if you suspect any unauthorised access. We are not liable for losses caused by unauthorised use of your account.</p><h3>One Account Per Person</h3><p>You may only maintain one active account. Creating multiple accounts to circumvent bans, exploit game systems, or otherwise abuse the Service is prohibited and may result in permanent termination of all associated accounts.</p><h3>Username Policy</h3><p>Usernames must not impersonate another person, entity, or brand; contain offensive, obscene, or discriminatory language; or otherwise violate these Terms. We reserve the right to reclaim or rename any username at our discretion.</p>` },
+      { title: "User Content &amp; Conduct", body: `<p>Skeep allows you to create, upload, and share content including profile pictures and messages. You retain ownership of content you create, but by uploading it to the Service you grant SocialJam S.L. a worldwide, royalty-free, sublicensable licence to use, store, display, and distribute that content solely in connection with operating and improving the Service.</p><h3>Prohibited Conduct</h3><p>You agree not to use the Service to:</p><ul><li>Post, transmit, or share content that is unlawful, defamatory, harassing, abusive, threatening, obscene, or otherwise objectionable</li><li>Upload content that infringes any third-party intellectual property, privacy, or other rights</li><li>Impersonate any person or entity, or falsely represent your affiliation</li><li>Cheat, exploit bugs, use bots, scripts, or any unauthorised third-party software</li><li>Attempt to gain unauthorised access to any part of the Service or other users' accounts</li><li>Engage in spamming, phishing, or any deceptive communication</li><li>Harass, bully, or discriminate against any user based on any protected characteristic</li><li>Buy, sell, or transfer your account outside of mechanisms we expressly provide</li></ul><div class="callout callout-warn"><div class="callout-label">Enforcement</div><p>Violations may result in content removal, temporary suspension, or permanent account termination without notice or refund. We may report illegal activity to relevant authorities.</p></div>` },
+      { title: "Gameplay &amp; 1v1 Challenges", body: `<p>Skeep enables you to discover games via a scrollable feed and participate in turn-based 1v1 challenges against friends and randomly matched opponents.</p><h3>Fair Play</h3><p>All players must compete fairly. Using any method to gain an unfair advantage — including exploiting software bugs, timing manipulation, or collusion — is strictly prohibited.</p><h3>Challenges &amp; Matching</h3><p>When you accept or issue a challenge, you agree to complete the game in good faith. Deliberately abandoning matches to manipulate win/loss records may result in penalties including temporary matchmaking restrictions.</p><h3>Game Records</h3><p>We maintain records of games played associated with your account, used for rankings, profile statistics, and improving matching algorithms. You consent to the collection and use of gameplay data as described in our Privacy Policy.</p><h3>No Monetary Prizes</h3><p>Unless explicitly stated otherwise, Skeep challenges do not involve wagering, gambling, or prizes of real-world monetary value. Virtual rewards have no cash value and cannot be exchanged for money or goods.</p>` },
+      { title: "Messaging &amp; Friends", body: `<p>Skeep provides direct messaging between friends and group chat functionality. By using these features, you acknowledge and agree:</p><ul><li>Messages you send are stored on our servers and may be reviewed to investigate abuse or violations</li><li>You must not use messaging to harass, threaten, spam, or solicit other users</li><li>You must not share or solicit unlawful content through chats</li><li>We are not responsible for the content of messages sent by other users</li><li>You can report abusive messages using the in-app reporting tools</li></ul><p>You can manage your friend list, block users, and leave group chats at any time through your account settings.</p>` },
+      { title: "Privacy &amp; Data Collection", body: `<p>Your privacy is important to us. Our full Privacy Policy is available at <strong>skeep.app/privacy</strong>. The following is a summary of the key data we collect:</p><table class="data-table"><thead><tr><th>Data Type</th><th>Purpose</th></tr></thead><tbody><tr><td>Username &amp; display name</td><td>Account identification; displayed to other users on your profile and in gameplay</td></tr><tr><td>Email address</td><td>Account authentication, security notifications, and service communications</td></tr><tr><td>Profile picture</td><td>Personalisation; displayed on your public profile and in chats</td></tr><tr><td>Friends list</td><td>Social features; enabling challenges and messaging between connected users</td></tr><tr><td>Games played &amp; stats</td><td>Displaying your profile history; matchmaking; improving game recommendations</td></tr><tr><td>Messages &amp; group chats</td><td>Providing the messaging service; safety moderation</td></tr><tr><td>Device &amp; usage data</td><td>Service performance, analytics, fraud detection, and ad personalisation (non-premium users)</td></tr></tbody></table><h3>Third-Party Services</h3><p>We may share limited data with trusted third-party partners, including advertising networks, analytics providers, and payment processors. We do not sell your personal data.</p><h3>Your Rights</h3><p>You may have rights to access, correct, delete, or export your personal data. Contact us at <strong>privacy@skeep.app</strong>. Users in the EEA, UK, and California have additional rights as described in our Privacy Policy.</p>` },
+      { title: "Advertising", body: `<p>Skeep is supported in part by advertising. By using the free tier, you agree to the display of advertisements, which may appear as video ads, banner ads, or interstitial ads between gameplay sessions.</p><h3>Personalised Advertising</h3><p>We may use data about your activity, device, and general location to serve relevant advertisements. You can opt out via your device settings (iOS: Settings → Privacy → Tracking; Android: Settings → Google → Ads) or through the in-app ad preferences menu.</p><h3>Third-Party Advertisers</h3><p>Advertisements are served by independent third-party networks. We are not responsible for the content of third-party ads. Please report inappropriate ads using the in-app flag tool.</p><h3>Children &amp; Advertising</h3><p>We do not serve behavioural advertising to users identified as under 13. For users between 13 and 17, advertising served will comply with applicable laws regarding advertising to minors.</p><div class="callout callout-neutral"><p><strong>Premium users</strong> enjoy an ad-free experience as part of their subscription. See Section 9 for details.</p></div>` },
+      { title: "Premium Subscriptions", body: `<p>Skeep offers an optional Premium subscription providing an enhanced, ad-free experience and exclusive features.</p><h3>Subscription Plans &amp; Billing</h3><p>Pricing is displayed within the app and at <strong>skeep.app/premium</strong>. Subscriptions are billed on a recurring basis and will auto-renew unless cancelled. Payment is charged to your App Store or Google Play account upon confirmation.</p><h3>Free Trials</h3><p>Unless you cancel before the trial ends, your account will be charged at the standard rate. Only one free trial is available per Apple ID or Google account.</p><h3>Cancellation</h3><p>Cancel any time through your device's subscription settings (Apple ID → Subscriptions or Google Play → Subscriptions). Cancellation takes effect at the end of the current billing period.</p><h3>Refunds</h3><p>All purchases are processed by Apple or Google. Refund requests must be submitted through <strong>support.apple.com/billing</strong> (iOS) or the Google Play Help Centre (Android). We cannot directly issue refunds for platform-processed transactions.</p><h3>Price Changes</h3><p>We will notify you in advance of any price increases and you will have the opportunity to cancel before the new price takes effect.</p><h3>Virtual Items</h3><p>Virtual currency, items, or cosmetics are licensed, not sold, to you. They have no monetary value, cannot be transferred or refunded except as required by law, and may be modified or removed at any time.</p>` },
+      { title: "Intellectual Property", body: `<p>All content and technology forming the Service — including software, game code, graphics, designs, logos, text, audio, video, and the Skeep name and brand — is owned by or licensed to SocialJam S.L. and protected by intellectual property laws.</p><h3>Licence to You</h3><p>We grant you a limited, non-exclusive, non-transferable, revocable licence to access and use the Service for personal, non-commercial entertainment purposes. This licence does not include the right to:</p><ul><li>Copy, modify, distribute, sell, or lease any part of the Service</li><li>Reverse engineer or attempt to extract the source code</li><li>Create derivative works based on the Service</li><li>Remove or alter any proprietary notices or labels</li></ul><h3>Copyright Infringement</h3><p>To report copyright infringement, send a notice to <strong>legal@skeep.app</strong> including: identification of the copyrighted work; identification of the infringing content; your contact information; and a good faith statement. We will respond in accordance with the DMCA and applicable law.</p>` },
+      { title: "Disclaimers", body: `<div class="callout callout-warn"><div class="callout-label">Important</div><p>The Service is provided on an <strong>"as is" and "as available"</strong> basis without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement.</p></div><p>We do not warrant that: (a) the Service will be uninterrupted or error-free; (b) defects will be corrected; (c) servers are free of viruses or harmful components; or (d) results obtained will be accurate or reliable.</p><p>Some jurisdictions do not allow the exclusion of certain warranties. In those jurisdictions, exclusions apply only to the fullest extent permitted by applicable law.</p>` },
+      { title: "Limitation of Liability", body: `<p>To the fullest extent permitted by applicable law, SocialJam S.L. and its officers, directors, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, including but not limited to loss of profits, goodwill, data, or other intangible losses, arising from:</p><ul><li>Your use of or inability to use the Service</li><li>Unauthorised access to or alteration of your transmissions or data</li><li>Conduct or content of any third party on the Service</li><li>Any bugs, viruses, or harmful code transmitted via the Service</li></ul><p>In no event shall our total cumulative liability to you exceed the greater of <strong>(a) the amount you paid to us in the twelve months preceding the claim</strong>, or <strong>(b) USD $100</strong>.</p>` },
+      { title: "Termination", body: `<p>Either party may terminate the agreement formed by these Terms at any time.</p><h3>Termination by You</h3><p>You may delete your account at any time through account settings. Your personal data will be handled in accordance with our Privacy Policy. Cancelling a subscription does not automatically delete your account.</p><h3>Termination by Us</h3><p>We may suspend or permanently terminate your access, with or without notice, if we reasonably believe you have violated these Terms, engaged in fraudulent or illegal activity, or posed a risk to the safety of other users.</p><h3>Effect of Termination</h3><p>Upon termination, your right to use the Service ceases immediately. Sections regarding intellectual property, disclaimers, limitation of liability, and governing law survive termination. We are not liable for any consequences of termination, including loss of virtual items or subscription value.</p>` },
+      { title: "Governing Law &amp; Disputes", body: `<p>These Terms are governed by and construed in accordance with the laws of the <strong>Kingdom of Spain</strong>, without regard to its conflict of law provisions.</p><h3>Informal Resolution</h3><p>Before initiating any formal proceedings, contact us at <strong>legal@skeep.app</strong>. We will make good-faith efforts to resolve any dispute within 30 days.</p><h3>Arbitration</h3><p>If informal resolution fails, disputes shall be settled by binding arbitration administered by the Spanish Arbitration Court (Corte Española de Arbitraje). The arbitrator's decision shall be final and binding.</p><h3>Class Action Waiver</h3><p>You agree to resolve disputes only on an individual basis, and waive your right to participate in any class action or representative proceeding, unless prohibited by applicable law.</p><div class="callout callout-info"><div class="callout-label">EU / UK users</div><p>If you are in the EU or UK, you may bring a claim in the courts of your country of residence and access the EU Online Dispute Resolution platform at <strong>ec.europa.eu/consumers/odr</strong>. Nothing in these Terms limits your statutory consumer rights.</p></div>` },
+      { title: "Changes to These Terms", body: `<p>We may update these Terms to reflect changes in our Service, legal requirements, or business practices. When we make material changes, we will notify you by:</p><ul><li>Displaying a prominent notice within the app</li><li>Sending a notification to your registered email address, and/or</li><li>Updating the "Effective Date" at the top of this document</li></ul><p>Continued use of the Service after the effective date constitutes acceptance of the updated Terms. If you do not agree, stop using the Service and delete your account.</p>` },
+      { title: "Contact Us", body: `<p>If you have questions, concerns, or requests relating to these Terms, please contact us:</p><table class="data-table"><thead><tr><th>Purpose</th><th>Contact</th></tr></thead><tbody><tr><td>General support</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Privacy &amp; data requests</td><td><a href="mailto:privacy@skeep.app">privacy@skeep.app</a></td></tr><tr><td>Legal &amp; copyright notices</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Mailing address</td><td>SocialJam S.L., Carrer de la Diputació 123, 08011 Barcelona, Spain</td></tr></tbody></table><div class="callout callout-neutral" style="margin-top:2rem;"><p>By using Skeep, you acknowledge that you have read these Terms in their entirety, understand their contents, and agree to be bound by all provisions contained herein.</p></div>` }
+    ],
+    footerCopy: "Terms &amp; Conditions · Effective May 28, 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "This document is intended for informational purposes. For legal advice, consult a qualified attorney."
+  },
+  ca: {
+    pageTitle: "Termes i Condicions — Skeep",
+    eyebrow: "Document Legal",
+    h1: "Termes i <span>Condicions</span>",
+    metaDate: "Vigent des del 28 de maig de 2026",
+    metaVersion: "Versió 1.0",
+    introText: `Aquests Termes i Condicions ("Termes") constitueixen un acord legalment vinculant entre tu i SocialJam S.L. En descarregar, instal·lar o fer servir l'aplicació Skeep, confirmes que has llegit, entès i acceptes quedar vinculat per aquests Termes. Si no estàs d'acord, no facis servir l'app.`,
+    tocTitle: "Continguts",
+    toc: ["Acceptació dels Termes","Elegibilitat","Registre del compte","Contingut i conducta de l'usuari","Joc i reptes 1v1","Missatgeria i amics","Privacitat i recollida de dades","Publicitat","Subscripcions Premium","Propietat intel·lectual","Exempció de garanties","Limitació de responsabilitat","Terminació","Llei aplicable i disputes","Canvis en aquests Termes","Contacte"],
+    sections: [
+      { title: "Acceptació dels Termes", body: `<p>Aquests Termes regulen l'accés i l'ús de Skeep, incloent l'aplicació mòbil, el lloc web i tots els serveis relacionats (col·lectivament, el "Servei"), operats per SocialJam S.L. ("nosaltres").</p><p>En crear un compte, prémer "Accepto" o accedir al Servei, acceptes aquests Termes i la nostra Política de Privacitat, incorporada aquí per referència.</p><p>El nostre Servei es distribueix a través de l'App Store d'Apple i Google Play. Els termes addicionals imposats per Apple Inc. o Google LLC també poden aplicar-se al teu ús de l'app.</p>` },
+      { title: "Elegibilitat", body: `<p>Has de tenir almenys <strong>13 anys</strong> per fer servir Skeep. Si tens entre 13 i 17 anys, declares que el teu pare, mare o tutor/a legal ha revisat i acceptat aquests Termes en nom teu.</p><p>No recollim conscientment dades personals de menors de 13 anys. Si en tenim coneixement, eliminarem el compte i les dades associades de manera immediata. Contacta'ns a <strong>privacy@skeep.app</strong> si creus que un menor de 13 anys ha creat un compte.</p><div class="callout callout-info"><div class="callout-label">Consentiment parental</div><p>Certes funcions — incloses les compres a l'app i la missatgeria — poden requerir el consentiment verificat dels pares per a usuaris menors de 18 anys.</p></div>` },
+      { title: "Registre del compte", body: `<p>Per accedir a les funcions de Skeep, has de crear un compte proporcionant:</p><ul><li>Un <strong>nom d'usuari</strong> únic</li><li>Un <strong>nom de visualització</strong> visible per a altres usuaris</li><li>Una <strong>adreça electrònica</strong> vàlida</li><li>Una <strong>foto de perfil</strong> (opcional, però ha de complir la nostra Política de contingut)</li></ul><h3>Seguretat del compte</h3><p>Ets responsable de mantenir la confidencialitat de les teves credencials i de tota l'activitat que es produeixi al teu compte. Notifica'ns immediatament a <strong>support@skeep.app</strong> si sospites d'accés no autoritzat.</p><h3>Un compte per persona</h3><p>Només pots tenir un compte actiu. Crear múltiples comptes per evadir prohibicions o abusar del Servei pot resultar en la terminació permanent de tots els comptes associats.</p><h3>Política de noms d'usuari</h3><p>Els noms d'usuari no han de suplantar cap persona, entitat o marca, ni contenir llenguatge ofensiu, obscè o discriminatori. Ens reservem el dret de reclamar o canviar qualsevol nom d'usuari.</p>` },
+      { title: "Contingut i conducta de l'usuari", body: `<p>Skeep et permet crear, pujar i compartir contingut. Conserves la propietat del contingut que crees, però en pujar-lo al Servei, concedixes a SocialJam S.L. una llicència mundial i lliure de drets per usar-lo exclusivament per operar i millorar el Servei.</p><h3>Conductes prohibides</h3><p>Acceptes no fer servir el Servei per a:</p><ul><li>Publicar contingut il·legal, difamatori, assetjador, amenaçador, obscè o objectionable</li><li>Pujar contingut que infringeixi drets de tercers</li><li>Suplantar qualsevol persona o entitat</li><li>Fer trampes, explotar errors, usar bots o programari no autoritzat</li><li>Intentar accedir sense autorització a cap part del Servei</li><li>Realitzar spam, phishing o comunicació enganyosa</li><li>Assetjar o discriminar cap usuari per cap característica protegida</li></ul><div class="callout callout-warn"><div class="callout-label">Aplicació</div><p>Les infraccions poden resultar en eliminació de contingut, suspensió temporal o terminació permanent del compte sense avís ni reemborsament.</p></div>` },
+      { title: "Joc i reptes 1v1", body: `<p>Skeep et permet descobrir jocs a través d'un feed desplaçable i participar en reptes 1v1 per torns contra amics i oponents aleatoris.</p><h3>Joc net</h3><p>Tots els jugadors han de competir de manera justa. Qualsevol mètode per obtenir un avantatge injust — incloent l'explotació d'errors, la manipulació del temps o la col·lusió — és estrictament prohibit.</p><h3>Reptes i emparellament</h3><p>Quan acceptes o emets un repte, acceptes completar el joc de bona fe. Abandonar deliberadament partides per manipular resultats pot resultar en restriccions de matchmaking.</p><h3>Registres de joc</h3><p>Mantenim registres de les partides jugades associades al teu compte, usats per a classificacions, estadístiques de perfil i millora dels algorismes d'emparellament.</p><h3>Sense premis monetaris</h3><p>Els reptes de Skeep no impliquen apostes, jocs d'atzar ni premis en diners. Les recompenses virtuals no tenen valor en efectiu i no es poden bescanviar per diners o béns.</p>` },
+      { title: "Missatgeria i amics", body: `<p>Skeep ofereix missatgeria directa entre amics i xats de grup. En fer servir aquestes funcions, acceptes:</p><ul><li>Els missatges que envies s'emmagatzemen als nostres servidors i es poden revisar per investigar abusos</li><li>No has de fer servir la missatgeria per assetjar, amenaçar, fer spam o sol·licitar a altres usuaris</li><li>No has de compartir ni sol·licitar contingut il·legal als xats</li><li>No som responsables del contingut dels missatges d'altres usuaris</li><li>Pots denunciar missatges abusius amb les eines de denúncia de l'app</li></ul><p>Pots gestionar la teva llista d'amics, bloquejar usuaris i sortir de xats de grup en qualsevol moment des de la configuració del compte.</p>` },
+      { title: "Privacitat i recollida de dades", body: `<p>La teva privacitat és important per a nosaltres. La nostra Política de Privacitat completa está disponible a <strong>skeep.app/privacy</strong>. A continuació, un resum de les dades clau que recollim:</p><table class="data-table"><thead><tr><th>Tipus de dada</th><th>Finalitat</th></tr></thead><tbody><tr><td>Nom d'usuari i nom de visualització</td><td>Identificació del compte; visible per a altres usuaris al perfil i durant el joc</td></tr><tr><td>Adreça electrònica</td><td>Autenticació, notificacions de seguretat i comunicacions del servei</td></tr><tr><td>Foto de perfil</td><td>Personalització; visible al teu perfil públic i als xats</td></tr><tr><td>Llista d'amics</td><td>Funcions socials; reptes i missatgeria entre usuaris connectats</td></tr><tr><td>Partides i estadístiques</td><td>Historial de perfil; matchmaking; millora de recomanacions de jocs</td></tr><tr><td>Missatges i xats de grup</td><td>Prestació del servei de missatgeria; moderació de seguretat</td></tr><tr><td>Dades del dispositiu i ús</td><td>Rendiment del servei, analítica, detecció de frau i personalització d'anuncis (usuaris no Premium)</td></tr></tbody></table>` },
+      { title: "Publicitat", body: `<p>Skeep és compatible en part amb publicitat. En fer servir el nivell gratuït, acceptes la visualització d'anuncis, que poden aparèixer com a anuncis de vídeo, banners o intersticials entre sessions de joc.</p><h3>Publicitat personalitzada</h3><p>Pots desactivar la publicitat basada en interessos a la configuració del dispositiu (iOS: Configuració → Privacitat → Seguiment; Android: Configuració → Google → Anuncis) o al menú de preferències d'anuncis de l'app.</p><h3>Menors i publicitat</h3><p>No mostrem publicitat conductual a usuaris identificats com a menors de 13 anys. Per a usuaris d'entre 13 i 17 anys, la publicitat complirà amb les lleis aplicables sobre publicitat a menors.</p><div class="callout callout-neutral"><p>Els <strong>usuaris Premium</strong> gaudeixen d'una experiència sense anuncis. Veure Secció 9.</p></div>` },
+      { title: "Subscripcions Premium", body: `<p>Skeep ofereix una subscripció Premium opcional que proporciona una experiència millorada sense anuncis i accés a funcions exclusives.</p><h3>Plans i facturació</h3><p>Els preus es mostren a l'app i a <strong>skeep.app/premium</strong>. Les subscripcions es facturen de manera recurrent i es renoven automàticament tret que es cancel·lin.</p><h3>Períodes de prova</h3><p>Si no cancel·les abans que acabi el període de prova, se't cobrarà la tarifa estàndard. Només hi ha una prova gratuïta disponible per Apple ID o compte de Google.</p><h3>Cancel·lació</h3><p>Pots cancel·lar en qualsevol moment des de la configuració de subscripcions del dispositiu. La cancel·lació té efecte al final del període de facturació actual.</p><h3>Reemborsaments</h3><p>Totes les compres es processen per Apple o Google. Les sol·licituds de reemborsament s'han d'enviar a través dels seus respectius processos. No podem emetre reemborsaments directament per transaccions processades per plataformes.</p><h3>Articles virtuals</h3><p>Els articles virtuals es llicencien, no es venen. No tenen valor monetari i no es poden transferir ni reemborsar excepte quan ho exigeixi la llei.</p>` },
+      { title: "Propietat intel·lectual", body: `<p>Tot el contingut i la tecnologia que formen el Servei — inclòs programari, codi de joc, gràfics, dissenys, logotips, text, àudio, vídeo i la marca Skeep — és propietat de o té llicència de SocialJam S.L. i està protegit per les lleis de propietat intel·lectual.</p><h3>Llicència per a tu</h3><p>Et concedim una llicència limitada, no exclusiva, intransferible i revocable per accedir al Servei i fer-lo servir amb finalitats personals i no comercials. Aquesta llicència no inclou el dret a:</p><ul><li>Copiar, modificar, distribuir, vendre o arrendar cap part del Servei</li><li>Fer enginyeria inversa o intentar extreure el codi font</li><li>Crear obres derivades basades en el Servei</li><li>Eliminar o alterar cap avís de propietat</li></ul>` },
+      { title: "Exempció de garanties", body: `<div class="callout callout-warn"><div class="callout-label">Important</div><p>El Servei es proporciona "tal com és" i "tal com està disponible" sense garanties de cap tipus, expresses ni implícites, incloent garanties implícites de comerciabilitat, adequació per a un propòsit particular, títol i no infracció.</p></div><p>No garantim que el Servei sigui ininterromput, lliure d'errors o segur, ni que els defectes es corregeixin. Algunes jurisdiccions no permeten l'exclusió de certes garanties; en aquests casos, les exclusions s'apliquen en la màxima mesura permesa per la llei aplicable.</p>` },
+      { title: "Limitació de responsabilitat", body: `<p>En la màxima mesura permesa per la llei aplicable, SocialJam S.L. i els seus directors, empleats, agents, socis i llicenciants no seran responsables de danys indirectes, incidentals, especials, conseqüents, punitius ni exemplars, incloent pèrdues de beneficis, fons de comerç, dades o altres pèrdues intangibles, derivats de:</p><ul><li>L'ús o la impossibilitat d'ús del Servei</li><li>L'accés no autoritzat o l'alteració de les teves transmissions o dades</li><li>La conducta o el contingut de qualsevol tercer al Servei</li><li>Qualsevol error, virus o codi nociu transmès a través del Servei</li></ul><p>En cap cas la nostra responsabilitat total acumulada cap a tu superarà el major entre <strong>(a) l'import que ens hagis pagat en els dotze mesos anteriors a la reclamació</strong> o <strong>(b) USD $100</strong>.</p>` },
+      { title: "Terminació", body: `<p>Qualsevol de les parts pot rescindir l'acord format per aquests Termes en qualsevol moment.</p><h3>Terminació per la teva part</h3><p>Pots eliminar el teu compte en qualsevol moment des de la configuració del compte. Les teves dades personals es tractaran d'acord amb la nostra Política de Privacitat. Cancel·lar una subscripció no elimina automàticament el teu compte.</p><h3>Terminació per la nostra part</h3><p>Podem suspendre o rescindir permanentment el teu accés, amb o sense avís, si creiem raonablement que has infringit aquests Termes, realitzat activitat fraudulenta o il·legal, o representat un risc per a la seguretat d'altres usuaris.</p><h3>Efectes de la terminació</h3><p>En la terminació, el teu dret a fer servir el Servei cessa immediatament. No som responsables de cap conseqüència de la terminació, incloent la pèrdua d'articles virtuals o del valor de la subscripció.</p>` },
+      { title: "Llei aplicable i disputes", body: `<p>Aquests Termes es regeixen per les lleis del <strong>Regne d'Espanya</strong>, sense tenir en compte les disposicions sobre conflictes de lleis.</p><h3>Resolució informal</h3><p>Abans d'iniciar procediments formals, contacta'ns a <strong>legal@skeep.app</strong>. Farem esforços de bona fe per resoldre qualsevol disputa en 30 dies.</p><h3>Arbitratge</h3><p>Si la resolució informal no té èxit, les disputes se sotmetran a arbitratge vinculant administrat per la Corte Española de Arbitraje. La decisió de l'àrbitre serà definitiva i vinculant.</p><h3>Renúncia a accions col·lectives</h3><p>Acceptes resoldre les disputes individualment i renúncies a participar en cap acció col·lectiva o procediment representatiu, tret que estigui prohibit per la llei aplicable.</p><div class="callout callout-info"><div class="callout-label">Usuaris de la UE / Regne Unit</div><p>Si estàs a la UE o el Regne Unit, pots presentar una reclamació davant els tribunals del teu país de residència i accedir a la plataforma de resolució de disputes en línia de la UE a <strong>ec.europa.eu/consumers/odr</strong>.</p></div>` },
+      { title: "Canvis en aquests Termes", body: `<p>Podem actualitzar aquests Termes periòdicament per reflectir canvis en el nostre Servei, requisits legals o pràctiques empresarials. Quan fem canvis materials, t'ho notificarem:</p><ul><li>Mostrant un avís destacat a l'app</li><li>Enviant una notificació a la teva adreça electrònica registrada, i/o</li><li>Actualitzant la "Data de vigència" al capdamunt d'aquest document</li></ul><p>L'ús continuat del Servei després de la data de vigència implica l'acceptació dels canvis. Si no estàs d'acord, has de deixar de fer servir el Servei i pots eliminar el teu compte.</p>` },
+      { title: "Contacte", body: `<p>Si tens preguntes, preocupacions o sol·licituds relacionades amb aquests Termes o el Servei, contacta'ns:</p><table class="data-table"><thead><tr><th>Finalitat</th><th>Contacte</th></tr></thead><tbody><tr><td>Suport general</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Sol·licituds de privacitat i dades</td><td><a href="mailto:privacy@skeep.app">privacy@skeep.app</a></td></tr><tr><td>Avisos legals i drets d'autor</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Adreça postal</td><td>SocialJam S.L., Carrer de la Diputació 123, 08011 Barcelona, Espanya</td></tr></tbody></table><div class="callout callout-neutral" style="margin-top:2rem;"><p>En fer servir Skeep, confirmes que has llegit aquests Termes en la seva totalitat, n'entens el contingut i acceptes quedar vinculat per totes les disposicions que conté.</p></div>` }
+    ],
+    footerCopy: "Termes i Condicions · Vigent des del 28 de maig de 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "Aquest document té finalitats informatives. Per a assessorament legal, consulteu un advocat."
+  },
+  es: {
+    pageTitle: "Términos y Condiciones — Skeep",
+    eyebrow: "Documento Legal",
+    h1: "Términos y <span>Condiciones</span>",
+    metaDate: "Vigente desde el 28 de mayo de 2026",
+    metaVersion: "Versión 1.0",
+    introText: `Estos Términos y Condiciones ("Términos") constituyen un acuerdo legalmente vinculante entre tú y SocialJam S.L. Al descargar, instalar o usar la aplicación Skeep, confirmas que has leído, entendido y aceptas quedar vinculado por estos Términos. Si no estás de acuerdo, no uses la app.`,
+    tocTitle: "Contenidos",
+    toc: ["Aceptación de los Términos","Elegibilidad","Registro de cuenta","Contenido y conducta del usuario","Juego y retos 1v1","Mensajería y amigos","Privacidad y recopilación de datos","Publicidad","Suscripciones Premium","Propiedad intelectual","Exención de garantías","Limitación de responsabilidad","Terminación","Ley aplicable y disputas","Cambios en estos Términos","Contacto"],
+    sections: [
+      { title: "Aceptación de los Términos", body: `<p>Estos Términos rigen tu acceso y uso de Skeep, incluyendo su aplicación móvil, sitio web y todos los servicios relacionados (colectivamente, el "Servicio"), operados por SocialJam S.L. ("nosotros").</p><p>Al crear una cuenta, pulsar "Acepto" o acceder al Servicio, aceptas estos Términos y nuestra Política de Privacidad, incorporada aquí por referencia.</p><p>Nuestro Servicio se distribuye a través de la App Store de Apple y Google Play. Los términos adicionales impuestos por Apple Inc. o Google LLC también pueden aplicarse a tu uso de la app.</p>` },
+      { title: "Elegibilidad", body: `<p>Debes tener al menos <strong>13 años</strong> para usar Skeep. Si tienes entre 13 y 17 años, declaras que tu padre, madre o tutor/a legal ha revisado y aceptado estos Términos en tu nombre.</p><p>No recopilamos conscientemente datos personales de menores de 13 años. Si tenemos conocimiento de ello, eliminaremos la cuenta y los datos asociados de inmediato. Contáctanos en <strong>privacy@skeep.app</strong> si crees que un menor de 13 años ha creado una cuenta.</p><div class="callout callout-info"><div class="callout-label">Consentimiento parental</div><p>Ciertas funciones — incluidas las compras en la app y la mensajería — pueden requerir el consentimiento verificado de los padres para usuarios menores de 18 años.</p></div>` },
+      { title: "Registro de cuenta", body: `<p>Para acceder a las funciones de Skeep, debes crear una cuenta proporcionando:</p><ul><li>Un <strong>nombre de usuario</strong> único</li><li>Un <strong>nombre de visualización</strong> visible para otros usuarios</li><li>Una <strong>dirección de correo electrónico</strong> válida</li><li>Una <strong>foto de perfil</strong> (opcional, pero debe cumplir nuestra Política de contenido)</li></ul><h3>Seguridad de la cuenta</h3><p>Eres responsable de mantener la confidencialidad de tus credenciales y de toda la actividad que ocurra en tu cuenta. Notifícanos inmediatamente en <strong>support@skeep.app</strong> si sospechas de acceso no autorizado.</p><h3>Una cuenta por persona</h3><p>Solo puedes mantener una cuenta activa. Crear múltiples cuentas para evadir prohibiciones o abusar del Servicio puede resultar en la terminación permanente de todas las cuentas asociadas.</p><h3>Política de nombres de usuario</h3><p>Los nombres de usuario no deben suplantar a ninguna persona, entidad o marca, ni contener lenguaje ofensivo, obsceno o discriminatorio. Nos reservamos el derecho de reclamar o cambiar cualquier nombre de usuario.</p>` },
+      { title: "Contenido y conducta del usuario", body: `<p>Skeep te permite crear, subir y compartir contenido. Conservas la propiedad del contenido que creas, pero al subirlo al Servicio, concedes a SocialJam S.L. una licencia mundial y libre de regalías para usarlo exclusivamente para operar y mejorar el Servicio.</p><h3>Conductas prohibidas</h3><p>Aceptas no usar el Servicio para:</p><ul><li>Publicar contenido ilegal, difamatorio, acosador, amenazante, obsceno u objetable</li><li>Subir contenido que infrinja derechos de terceros</li><li>Suplantar a cualquier persona o entidad</li><li>Hacer trampa, explotar errores, usar bots o software no autorizado</li><li>Intentar acceder sin autorización a cualquier parte del Servicio</li><li>Realizar spam, phishing o comunicación engañosa</li><li>Acosar o discriminar a cualquier usuario por cualquier característica protegida</li></ul><div class="callout callout-warn"><div class="callout-label">Aplicación</div><p>Las infracciones pueden resultar en eliminación de contenido, suspensión temporal o terminación permanente de la cuenta sin aviso ni reembolso.</p></div>` },
+      { title: "Juego y retos 1v1", body: `<p>Skeep te permite descubrir juegos a través de un feed desplazable y participar en retos 1v1 por turnos contra amigos y oponentes aleatorios.</p><h3>Juego limpio</h3><p>Todos los jugadores deben competir de manera justa. Cualquier método para obtener una ventaja injusta — incluyendo la explotación de errores, la manipulación del tiempo o la colusión — está estrictamente prohibido.</p><h3>Retos y emparejamiento</h3><p>Cuando aceptas o emites un reto, aceptas completar el juego de buena fe. Abandonar deliberadamente partidas para manipular resultados puede resultar en restricciones de matchmaking.</p><h3>Registros de juego</h3><p>Mantenemos registros de las partidas jugadas asociadas a tu cuenta, usados para clasificaciones, estadísticas de perfil y mejora de los algoritmos de emparejamiento.</p><h3>Sin premios monetarios</h3><p>Los retos de Skeep no implican apuestas, juegos de azar ni premios en dinero. Las recompensas virtuales no tienen valor en efectivo y no se pueden canjear por dinero o bienes.</p>` },
+      { title: "Mensajería y amigos", body: `<p>Skeep ofrece mensajería directa entre amigos y chats de grupo. Al usar estas funciones, reconoces y aceptas:</p><ul><li>Los mensajes que envías se almacenan en nuestros servidores y pueden ser revisados para investigar abusos</li><li>No debes usar la mensajería para acosar, amenazar, hacer spam o solicitar a otros usuarios</li><li>No debes compartir ni solicitar contenido ilegal en los chats</li><li>No somos responsables del contenido de los mensajes de otros usuarios</li><li>Puedes denunciar mensajes abusivos usando las herramientas de denuncia de la app</li></ul><p>Puedes gestionar tu lista de amigos, bloquear usuarios y salir de chats de grupo en cualquier momento desde la configuración de la cuenta.</p>` },
+      { title: "Privacidad y recopilación de datos", body: `<p>Tu privacidad es importante para nosotros. Nuestra Política de Privacidad completa está disponible en <strong>skeep.app/privacy</strong>. A continuación, un resumen de los datos clave que recopilamos:</p><table class="data-table"><thead><tr><th>Tipo de dato</th><th>Finalidad</th></tr></thead><tbody><tr><td>Nombre de usuario y nombre de visualización</td><td>Identificación de la cuenta; visible para otros usuarios en el perfil y durante el juego</td></tr><tr><td>Correo electrónico</td><td>Autenticación, notificaciones de seguridad y comunicaciones del servicio</td></tr><tr><td>Foto de perfil</td><td>Personalización; visible en tu perfil público y en los chats</td></tr><tr><td>Lista de amigos</td><td>Funciones sociales; retos y mensajería entre usuarios conectados</td></tr><tr><td>Partidas y estadísticas</td><td>Historial de perfil; matchmaking; mejora de recomendaciones de juegos</td></tr><tr><td>Mensajes y chats de grupo</td><td>Prestación del servicio de mensajería; moderación de seguridad</td></tr><tr><td>Datos del dispositivo y uso</td><td>Rendimiento del servicio, analítica, detección de fraude y personalización de anuncios (usuarios no Premium)</td></tr></tbody></table>` },
+      { title: "Publicidad", body: `<p>Skeep está respaldado en parte por publicidad. Al usar el nivel gratuito, aceptas la visualización de anuncios, que pueden aparecer como anuncios de vídeo, banners o intersticiales entre sesiones de juego.</p><h3>Publicidad personalizada</h3><p>Puedes desactivar la publicidad basada en intereses en la configuración del dispositivo (iOS: Ajustes → Privacidad → Rastreo; Android: Ajustes → Google → Anuncios) o en el menú de preferencias de anuncios de la app.</p><h3>Menores y publicidad</h3><p>No mostramos publicidad conductual a usuarios identificados como menores de 13 años. Para usuarios de entre 13 y 17 años, la publicidad cumplirá con las leyes aplicables sobre publicidad a menores.</p><div class="callout callout-neutral"><p>Los <strong>usuarios Premium</strong> disfrutan de una experiencia sin anuncios. Ver Sección 9.</p></div>` },
+      { title: "Suscripciones Premium", body: `<p>Skeep ofrece una suscripción Premium opcional que proporciona una experiencia mejorada sin anuncios y acceso a funciones exclusivas.</p><h3>Planes y facturación</h3><p>Los precios se muestran en la app y en <strong>skeep.app/premium</strong>. Las suscripciones se facturan de forma recurrente y se renuevan automáticamente salvo que se cancelen.</p><h3>Períodos de prueba</h3><p>Si no cancelas antes de que acabe el período de prueba, se te cobrará la tarifa estándar. Solo hay una prueba gratuita disponible por Apple ID o cuenta de Google.</p><h3>Cancelación</h3><p>Puedes cancelar en cualquier momento desde la configuración de suscripciones del dispositivo. La cancelación tiene efecto al final del período de facturación actual.</p><h3>Reembolsos</h3><p>Todas las compras son procesadas por Apple o Google. Las solicitudes de reembolso deben enviarse a través de sus respectivos procesos. No podemos emitir reembolsos directamente por transacciones procesadas por plataformas.</p><h3>Artículos virtuales</h3><p>Los artículos virtuales se licencian, no se venden. No tienen valor monetario y no se pueden transferir ni reembolsar excepto cuando lo exija la ley.</p>` },
+      { title: "Propiedad intelectual", body: `<p>Todo el contenido y la tecnología que forman el Servicio — incluyendo software, código de juego, gráficos, diseños, logotipos, texto, audio, vídeo y la marca Skeep — es propiedad de o tiene licencia de SocialJam S.L. y está protegido por las leyes de propiedad intelectual.</p><h3>Licencia para ti</h3><p>Te concedemos una licencia limitada, no exclusiva, intransferible y revocable para acceder al Servicio y usarlo con fines personales y no comerciales. Esta licencia no incluye el derecho a:</p><ul><li>Copiar, modificar, distribuir, vender o arrendar cualquier parte del Servicio</li><li>Realizar ingeniería inversa o intentar extraer el código fuente</li><li>Crear obras derivadas basadas en el Servicio</li><li>Eliminar o alterar cualquier aviso de propiedad</li></ul>` },
+      { title: "Exención de garantías", body: `<div class="callout callout-warn"><div class="callout-label">Importante</div><p>El Servicio se proporciona "tal como es" y "según disponibilidad" sin garantías de ningún tipo, expresas ni implícitas, incluyendo garantías implícitas de comerciabilidad, adecuación para un propósito particular, título y no infracción.</p></div><p>No garantizamos que el Servicio sea ininterrumpido, libre de errores o seguro, ni que los defectos se corrijan. Algunas jurisdicciones no permiten la exclusión de ciertas garantías; en esos casos, las exclusiones se aplican en la máxima medida permitida por la ley aplicable.</p>` },
+      { title: "Limitación de responsabilidad", body: `<p>En la máxima medida permitida por la ley aplicable, SocialJam S.L. y sus directivos, empleados, agentes, socios y licenciantes no serán responsables de daños indirectos, incidentales, especiales, consecuentes, punitivos ni ejemplares, incluyendo pérdidas de beneficios, fondo de comercio, datos u otras pérdidas intangibles, derivados de:</p><ul><li>Tu uso o imposibilidad de uso del Servicio</li><li>El acceso no autorizado o la alteración de tus transmisiones o datos</li><li>La conducta o el contenido de cualquier tercero en el Servicio</li><li>Cualquier error, virus o código dañino transmitido a través del Servicio</li></ul><p>En ningún caso nuestra responsabilidad total acumulada hacia ti superará el mayor entre <strong>(a) el importe que nos hayas pagado en los doce meses anteriores a la reclamación</strong> o <strong>(b) USD $100</strong>.</p>` },
+      { title: "Terminación", body: `<p>Cualquiera de las partes puede rescindir el acuerdo formado por estos Términos en cualquier momento.</p><h3>Terminación por tu parte</h3><p>Puedes eliminar tu cuenta en cualquier momento desde la configuración de la cuenta. Tus datos personales se tratarán conforme a nuestra Política de Privacidad. Cancelar una suscripción no elimina automáticamente tu cuenta.</p><h3>Terminación por nuestra parte</h3><p>Podemos suspender o rescindir permanentemente tu acceso, con o sin previo aviso, si creemos razonablemente que has infringido estos Términos, realizado actividad fraudulenta o ilegal, o representado un riesgo para la seguridad de otros usuarios.</p><h3>Efectos de la terminación</h3><p>Tras la terminación, tu derecho a usar el Servicio cesa inmediatamente. No somos responsables de ninguna consecuencia de la terminación, incluyendo la pérdida de artículos virtuales o del valor de la suscripción.</p>` },
+      { title: "Ley aplicable y disputas", body: `<p>Estos Términos se rigen por las leyes del <strong>Reino de España</strong>, sin tener en cuenta las disposiciones sobre conflictos de leyes.</p><h3>Resolución informal</h3><p>Antes de iniciar procedimientos formales, contáctanos en <strong>legal@skeep.app</strong>. Haremos esfuerzos de buena fe para resolver cualquier disputa en 30 días.</p><h3>Arbitraje</h3><p>Si la resolución informal no tiene éxito, las disputas se someterán a arbitraje vinculante administrado por la Corte Española de Arbitraje. La decisión del árbitro será definitiva y vinculante.</p><h3>Renuncia a acciones colectivas</h3><p>Aceptas resolver las disputas individualmente y renuncias a participar en cualquier acción colectiva o procedimiento representativo, salvo que esté prohibido por la ley aplicable.</p><div class="callout callout-info"><div class="callout-label">Usuarios de la UE / Reino Unido</div><p>Si estás en la UE o el Reino Unido, puedes presentar una reclamación ante los tribunales de tu país de residencia y acceder a la plataforma de resolución de disputas en línea de la UE en <strong>ec.europa.eu/consumers/odr</strong>.</p></div>` },
+      { title: "Cambios en estos Términos", body: `<p>Podemos actualizar estos Términos periódicamente para reflejar cambios en nuestro Servicio, requisitos legales o prácticas empresariales. Cuando hagamos cambios materiales, te lo notificaremos:</p><ul><li>Mostrando un aviso destacado en la app</li><li>Enviando una notificación a tu dirección de correo registrada, y/o</li><li>Actualizando la "Fecha de vigencia" en la parte superior de este documento</li></ul><p>El uso continuado del Servicio tras la fecha de vigencia implica la aceptación de los cambios. Si no estás de acuerdo, debes dejar de usar el Servicio y puedes eliminar tu cuenta.</p>` },
+      { title: "Contacto", body: `<p>Si tienes preguntas, preocupaciones o solicitudes relacionadas con estos Términos o el Servicio, contáctanos:</p><table class="data-table"><thead><tr><th>Finalidad</th><th>Contacto</th></tr></thead><tbody><tr><td>Soporte general</td><td><a href="mailto:support@skeep.app">support@skeep.app</a></td></tr><tr><td>Solicitudes de privacidad y datos</td><td><a href="mailto:privacy@skeep.app">privacy@skeep.app</a></td></tr><tr><td>Avisos legales y derechos de autor</td><td><a href="mailto:legal@skeep.app">legal@skeep.app</a></td></tr><tr><td>Dirección postal</td><td>SocialJam S.L., Carrer de la Diputació 123, 08011 Barcelona, España</td></tr></tbody></table><div class="callout callout-neutral" style="margin-top:2rem;"><p>Al usar Skeep, reconoces que has leído estos Términos en su totalidad, entiendes su contenido y aceptas quedar vinculado por todas las disposiciones contenidas en ellos.</p></div>` }
+    ],
+    footerCopy: "Términos y Condiciones · Vigente desde el 28 de mayo de 2026 · Copyright 2026 © Social Jam S.L.",
+    footerNote: "Este documento tiene fines informativos. Para asesoramiento legal, consulte a un abogado."
+  }
+};
+
+function setLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  document.title = t.pageTitle;
+  document.querySelector('.header-eyebrow').textContent = t.eyebrow;
+  document.querySelector('header h1').innerHTML = t.h1;
+  document.querySelector('.header-meta-item:nth-child(2)').textContent = t.metaDate;
+  document.querySelector('.header-meta-item:nth-child(3)').textContent = t.metaVersion;
+  document.querySelector('.intro-callout p').textContent = t.introText;
+  document.querySelector('.toc-title').textContent = t.tocTitle;
+
+  // TOC links
+  const tocLinks = document.querySelectorAll('.toc a');
+  t.toc.forEach((label, i) => {
+    if (tocLinks[i]) {
+      const num = tocLinks[i].querySelector('.num').outerHTML;
+      tocLinks[i].innerHTML = `${num}${label}`;
+    }
+  });
+
+  // Sections
+  const sections = document.querySelectorAll('section[id]');
+  t.sections.forEach((s, i) => {
+    if (!sections[i]) return;
+    const numEl = sections[i].querySelector('.section-num').outerHTML;
+    sections[i].innerHTML = `<div class="section-header">${numEl}<h2>${s.title}</h2></div>${s.body}`;
+  });
+
+  // Footer
+  document.querySelector('.footer-logo').textContent = 'Skeep · SocialJam S.L.';
+  document.querySelector('.footer-copy').innerHTML = t.footerCopy;
+  document.querySelector('footer div:last-child').textContent = t.footerNote;
+
+  // Active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.documentElement.lang = lang;
+}
+</script>
 </body>
 </html>
