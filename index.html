@@ -5,23 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SKEEP · One Move To Play</title>
-    <!-- <link rel="icon" href="/favicon.ico" /> -->
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
-        rel="stylesheet" />
-    <!-- Include your custom styles after Tailwind CSS -->
     <link rel="stylesheet" href="./src/output.css" />
-    <!-- Include Tailwind CSS via CDN for quick prototyping -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="./src/theme.css" />
   <link rel="shortcut icon" type="image/x-icon" href="src/img/skeep-isotip-v1.2@512.png" />
 
 </head>
 
 <body>
-    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-    <div class="bg-stone-950 h-screen overflow-hidden">
+    <div class="relative isolate bg-stone-950 h-screen overflow-hidden">
+        <div aria-hidden="true" class="absolute inset-0 -z-10">
+            <div style="
+              position: absolute;
+              inset: 0;
+              background-image: linear-gradient(135deg, #466EC3 0%, #8C44D4 75%, #D42A44 100%);
+            "></div>
+            <div style="
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0);
+            "></div>
+        </div>
         <header class="absolute inset-x-0 top-0 z-50">
             <!-- Navigation bar -->
             <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
@@ -41,64 +44,16 @@
         </header>
 
         <div class="relative isolate px-6 pt-14 lg:px-8">
-            <div aria-hidden="true"
-                class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-                <div style="
-              clip-path: polygon(
-                74.1% 44.1%,
-                100% 61.6%,
-                97.5% 26.9%,
-                85.5% 0.1%,
-                80.7% 2%,
-                72.5% 32.5%,
-                60.2% 62.4%,
-                52.4% 68.1%,
-                47.5% 58.3%,
-                45.2% 34.5%,
-                27.5% 76.7%,
-                0.1% 64.9%,
-                17.9% 100%,
-                27.6% 76.8%,
-                76.1% 97.7%,
-                74.1% 44.1%
-              );
-            " class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#6A0DAD] to-[#2C0547] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75">
-                </div>
-            </div>
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                 <div class="text-center">
                     <img class="mx-auto my-10" src="./src/img/skeep-layerlogo-white.png" width="40%">
-                    <p class="text-5xl font-mono font-semibold tracking-tight text-balance text-white sm:text-3xl">
-                        One Move To Play
+                    <p class="text-5xl font-body tracking-tight text-balance text-white sm:text-3xl">
+                        a universe of games
                     </p>
                     <p style="margin-top: 10%;"
-                        class="text-2xl font-mono font-light tracking-tight text-balance text-white">
-                        Coming soon
+                        class="text-2xl tracking-tight text-balance text-white">
+                        coming soon
                     </p>
-                </div>
-            </div>
-            <div aria-hidden="true"
-                class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-                <div style="
-              clip-path: polygon(
-                74.1% 44.1%,
-                100% 61.6%,
-                97.5% 26.9%,
-                85.5% 0.1%,
-                80.7% 2%,
-                72.5% 32.5%,
-                60.2% 62.4%,
-                52.4% 68.1%,
-                47.5% 58.3%,
-                45.2% 34.5%,
-                27.5% 76.7%,
-                0.1% 64.9%,
-                17.9% 100%,
-                27.6% 76.8%,
-                76.1% 97.7%,
-                74.1% 44.1%
-              );
-            " class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#739900] to-[#BFFF00] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75">
                 </div>
             </div>
         </div>
