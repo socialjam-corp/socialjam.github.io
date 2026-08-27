@@ -1,10 +1,4 @@
-/* =========================================================
-   SKEEP — Shared Theme
-   Fonts, brand colors and base typography rules shared by
-   every page (index, privacy policy, terms & conditions).
-   ========================================================= */
 
-/* ---- Sora font family (self-hosted) ---- */
 @font-face {
   font-family: 'Sora';
   src: url('./fonts/Sora-Thin.ttf') format('truetype');
