@@ -7,6 +7,7 @@
     <title>skeep · a universe of games</title>
     <link rel="stylesheet" href="./src/output.css" />
     <link rel="stylesheet" href="./src/theme.css" />
+    <link rel="stylesheet" href="./src/sections.css" />
     <link rel="icon" type="image/png" href="src/img/skeep-isotip-v1.2@512.png" />
 </head>
 
@@ -46,32 +47,145 @@
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                 <div class="text-center">
                     <img class="mx-auto my-10" src="./src/img/skeep-layerlogo-white.png" width="40%">
-                    <p class="text-5xl font-bold tracking-tight text-balance text-white sm:text-3xl">
+                    <p class="text-5xl font-body tracking-tight text-balance text-white sm:text-3xl">
                         a universe of games
                     </p>
-                    <p style="margin-top: 10%;"
-                        class="text-2xl font-bold tracking-tight text-balance text-white">
-                        coming soon
-                    </p>
+
                 </div>
             </div>
         </div>
 
-        <div class="absolute inset-x-0 bottom-0">
-            <hr class="border-gray-200 dark:border-gray-700" />
-            <footer class="flex items-center justify-between p-6 lg:px-8">
-                <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-8">
-                    <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
+    </div>
+    <!-- /hero -->
+
+    <main>
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title">A universe of games</h2>
+                    <div class="content-eyebrow">Fun at your own pace, with or without friends, anywhere in the world</div>
                 </div>
-                <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-8">
-                    <ul class="list-reset flex justify-end flex-wrap text-xs md:text-sm gap-3">
-                        <li><a href="mailto:hi@skeep.me" class="text-gray-400 hover:text-white">Contact</a></li>
-                        <li class="mx-4"><a href="privacypolicy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li> 
-                        <li><a href="termsconditions.html" class="text-gray-400 hover:text-white">Terms and Conditions</a></li>
-                    </ul>
+                <!-- Row 1: text / text -->
+                <div class="content-columns">
+                    <div class="content-col">
+                        <h3>Unlimited, endless fun all in one app</h3>
+                        <p>skeep brings all your favourite single player minigames and multplayer turn-based games to your pocket!<br>
+                            Play what you like, and skeep what you don't! Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> <br>
+                        </p>
+                        <h3>What is skeep?</h3>
+                        <p>
+                            <li><strong>Play</strong> logic, reflexes or dexterity-based games curated for quick play.</li>
+                            <li><strong>Challenge</strong> friends directly in turn-based games to see who is the very best.</li>
+                            <li><strong>Compete</strong> against all your friends to see who holds the highest score in an endless, free-for-all mode.</li>
+                        </p>
+                    </div>
+                    <div class="content-col">
+                        <img src="./src/img/summary-img.png" alt="skeep" />
+                    </div>
                 </div>
-            </footer>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title">PLAY</h2>
+                </div>
+                <div class="content-columns content-columns--wide-right content-columns--center">
+                    
+                    <div class="content-col">
+                        <img src="./src/img/play-img.png" alt="skeep" />
+                    </div>
+                    
+                    <div class="content-col">
+                        <p>Scroll and play through all your favourite minigames in a single app! Our 
+                           propietary algorythm will curate the selection so you always play the ones you like the most
+                           at an adequate difficulty!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title">CHALLENGE</h2>
+                </div>
+                <div class="content-columns content-columns--wide-right content-columns--center">
+                    <div class="content-col">
+                        <p>Challenge your friends to play turn-based minigames and find out who the better player! <br>
+                           Your historic score is kept in the app, so you will never have no doubts on who the very best is!</p>
+                    </div>
+                    <div class="content-col">
+                        <img src="./src/img/challenge-img.png" alt="skeep" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title">COMPETE</h2>
+                </div>
+                <div class="content-columns content-columns--wide-right content-columns--center">
+                    <div class="content-col">
+                        <img src="./src/img/compete-img.png" alt="skeep" />
+                    </div>
+                    
+                    <div class="content-col">
+                        <p>Create  group with your friends and compete in daily challenge to see who can get the highest score 
+                           in the free for all games. <br>
+                           Earn points based on your position in the ranking at the end of the day. The player with the most points will be crowned the victor after the season ends.<br></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer — scroll-aware, matching the legal pages -->
+    <footer class="scroll-footer flex items-center justify-between p-6 lg:px-8">
+        <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-8">
+            <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
         </div>
+        <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-8">
+            <ul class="list-reset flex justify-end flex-wrap text-xs md:text-sm gap-3">
+                <li><a href="mailto:hi@skeep.me" class="text-gray-400 hover:text-white">Contact</a></li>
+                <li class="mx-4"><a href="privacypolicy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                <li><a href="termsconditions.html" class="text-gray-400 hover:text-white">Terms and Conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        var footer = document.querySelector('.scroll-footer');
+        var lastY = window.scrollY;
+        var ticking = false;
+
+        function onScroll() {
+            var y = window.scrollY;
+            var goingDown = y > lastY;
+            var pastThreshold = y > 80;
+
+            if (goingDown && pastThreshold) {
+                footer.classList.add('footer-hidden');
+            } else {
+                footer.classList.remove('footer-hidden');
+            }
+
+            lastY = y;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(onScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+    })();
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-
 :root {
   --bg:        #0a0a0f;
   --surface:   #111118;
@@ -10,15 +9,15 @@
   --text-mid:   rgba(var(--brand-text-rgb), 0.7);
   --text-muted: rgba(var(--brand-text-rgb), 0.45);
 
-  --accent:       var(--brand-purple);
-  --accent-tint:  #c9a3ea; /* light purple, for text on dark surfaces */
-  --accent-glow:  rgba(var(--brand-purple-rgb), 0.18);
+  --accent:       var(--brand-blue);
+  --accent-tint:  #a8c4ec; 
+  --accent-glow:  rgba(var(--brand-blue-rgb), 0.18);
 
   --accent-2:      var(--brand-red);
-  --accent-2-tint: #e8a3af; /* light red, for text on dark surfaces */
+  --accent-2-tint: #e8a3af; 
 
   --accent-success:      var(--brand-blue);
-  --accent-success-tint: #a8c4ec; /* light blue, for text on dark surfaces */
+  --accent-success-tint: #a8c4ec; 
 }
 
 html { scroll-behavior: smooth; }
@@ -117,7 +116,7 @@ nav.topnav.nav-hidden {
 }
 
 .lang-btn.active {
-  border-color: rgba(var(--brand-purple-rgb), 0.5);
+  border-color: rgba(var(--brand-blue-rgb), 0.5);
   background: var(--accent-glow);
   color: var(--accent);
 }
@@ -128,18 +127,6 @@ header {
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse at center, rgba(var(--brand-purple-rgb),0.15) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .header-eyebrow {
@@ -153,9 +140,9 @@ header::before {
   color: var(--accent);
   margin-bottom: 1.5rem;
   padding: 6px 14px;
-  border: 1px solid rgba(var(--brand-purple-rgb),0.3);
+  border: 1px solid rgba(var(--brand-blue-rgb),0.3);
   border-radius: 100px;
-  background: rgba(var(--brand-purple-rgb),0.08);
+  background: rgba(var(--brand-blue-rgb),0.08);
 }
 
 header h1 {
@@ -193,8 +180,8 @@ header h1 span { color: var(--accent); }
 
 /* ── Intro callout ── */
 .intro-callout {
-  border: 1px solid rgba(var(--brand-purple-rgb),0.25);
-  background: rgba(var(--brand-purple-rgb),0.05);
+  border: 1px solid rgba(var(--brand-blue-rgb),0.25);
+  background: rgba(var(--brand-blue-rgb),0.05);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   margin-bottom: 3rem;
@@ -214,6 +201,8 @@ header h1 span { color: var(--accent); }
   color: var(--accent-tint);
   margin: 0;
   line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* ── Table of Contents ── */
@@ -287,7 +276,7 @@ section { margin-bottom: 3.5rem; }
   letter-spacing: 0.1em;
   color: var(--accent);
   background: var(--accent-glow);
-  border: 1px solid rgba(var(--brand-purple-rgb),0.25);
+  border: 1px solid rgba(var(--brand-blue-rgb),0.25);
   border-radius: 6px;
   padding: 3px 7px;
   flex-shrink: 0;
@@ -311,6 +300,8 @@ section { margin-bottom: 3.5rem; }
 .wrapper p {
   margin-bottom: 1rem;
   color: var(--text-mid);
+  text-align: justify;
+  text-justify: inter-word;
 }
 .wrapper p:last-child { margin-bottom: 0; }
 
@@ -405,16 +396,12 @@ section { margin-bottom: 3.5rem; }
 .data-table td:first-child { font-weight: 500; color: var(--text); width: 32%; }
 .data-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-/* ── Divider (used between the last section and the footer) ── */
 .section-divider {
   border: none;
   border-top: 1px solid var(--border);
   margin: 0 0 3.5rem;
 }
 
-/* ── Scroll-aware footer ──
-   Fixed to the bottom, same idea as the sticky top nav:
-   present while scrolling down, hidden while scrolling up. */
 .scroll-footer {
   position: fixed;
   left: 0;

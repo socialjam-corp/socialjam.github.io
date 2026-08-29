@@ -1,0 +1,195 @@
+
+
+.content-section {
+  background: #0a0a0f;
+  padding: 3rem 1.5rem;
+}
+
+.content-section__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.content-header {
+  max-width: 640px;
+  margin-bottom: 3.5rem;
+}
+
+.content-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 0.85rem;
+}
+
+.content-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  background-image: linear-gradient(135deg, #466EC3 0%, #8C44D4 75%, #D42A44 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.content-subtitle {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(var(--brand-text-rgb), 0.65);
+  max-width: 46ch;
+}
+
+.content-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.content-columns--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.content-columns--wide-left {
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.content-columns--wide-right {
+  grid-template-columns: 1fr 1.4fr;
+}
+
+.content-columns--center {
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .content-columns,
+  .content-columns--3,
+  .content-columns--wide-left,
+  .content-columns--wide-right {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ── Column content ── */
+.content-col h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-text);
+  margin: 0 0 0.85rem;
+}
+
+.content-col p {
+  color: rgba(var(--brand-text-rgb), 0.7);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.content-col p:last-child {
+  margin-bottom: 0;
+}
+
+.content-col ul,
+.content-col ol {
+  margin: 0 0 1rem 1.1rem;
+  color: rgba(var(--brand-text-rgb), 0.7);
+}
+
+.content-col li {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+.content-col li:last-child {
+  margin-bottom: 0;
+}
+
+.content-col strong {
+  color: var(--brand-text);
+}
+
+.content-col a {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.content-col a:hover {
+  text-decoration: underline;
+}
+
+.content-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Optional: wrap non-<img> media (video, canvas, an inline SVG) in
+   .content-media to get the same treatment as .content-col img. */
+.content-media {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+/* Optional: a dashed placeholder frame for blocking out an image
+   column before real art exists. Swap for a real <img> later. */
+.content-media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(var(--brand-text-rgb), 0.4);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .content-section {
+    padding: 4rem 1.25rem;
+  }
+}
+
+.scroll-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.30);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.scroll-footer.footer-hidden {
+  transform: translateY(100%);
+}
+
+main {
+  padding-bottom: 5.5rem;
+}
