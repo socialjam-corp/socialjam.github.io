@@ -218,7 +218,7 @@
 .scroll-cue__label {
   font-family: 'Sora', sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--brand-text);
   white-space: nowrap;
@@ -227,7 +227,6 @@
 .scroll-cue__arrow {
   width: 18px;
   height: auto;
-  /* source arrow points right — rotate to point down */
   filter: brightness(0) invert(1);
   animation: scroll-cue-bounce 1.8s ease-in-out infinite;
 }
@@ -240,9 +239,9 @@
 .hero-badges-label {
   margin-top: 2.5rem;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--brand-text-regular);
 }
 
@@ -286,7 +285,7 @@
 
 .store-badge__eyebrow {
   font-size: 9px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--brand-text-regular);
