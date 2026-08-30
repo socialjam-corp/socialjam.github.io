@@ -1,6 +1,5 @@
-
 .content-section {
-  background: #0a0a0f;
+  background: #2D2A2B;
   padding: 6rem 1.5rem;
 }
 
@@ -42,7 +41,7 @@
   margin-top: 1rem;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(var(--brand-text-rgb), 0.65);
+  color: #9E9E9E;
   max-width: 46ch;
 }
 
@@ -92,7 +91,7 @@
 }
 
 .content-col p {
-  color: rgba(var(--brand-text-rgb), 0.7);
+  color: #9E9E9E;
   line-height: 1.75;
   margin-bottom: 1rem;
 }
@@ -104,7 +103,7 @@
 .content-col ul,
 .content-col ol {
   margin: 0 0 1rem 1.1rem;
-  color: rgba(var(--brand-text-rgb), 0.7);
+  color: #9E9E9E;
 }
 
 .content-col li {
@@ -153,7 +152,7 @@
   border-radius: 16px;
   border: 1px dashed rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.02);
-  color: rgba(var(--brand-text-rgb), 0.4);
+  color: #9E9E9E;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -174,7 +173,7 @@
   right: 0;
   bottom: 0;
   z-index: 100;
-  background: rgba(10, 10, 15, 0.25);
+  background: rgba(45, 42, 43, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -191,7 +190,7 @@
 }
 
 .site-nav {
-  background: rgba(10, 10, 15, 0.25);
+  background: rgba(45, 42, 43, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -211,23 +210,9 @@
   transition: opacity 0.2s ease;
 }
 
-.scroll-cue:hover {
-  opacity: 1;
-}
-
-.scroll-cue__label {
-  font-family: 'Sora', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #fff;
-  white-space: nowrap;
-}
-
 .scroll-cue__arrow {
   width: 18px;
   height: auto;
-  /* source arrow points right — rotate to point down */
   filter: brightness(0) invert(1);
   animation: scroll-cue-bounce 1.8s ease-in-out infinite;
 }

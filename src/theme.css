@@ -35,12 +35,15 @@
   font-display: swap;
 }
 
+/* ---- Brand palette (single source of truth) ---- */
 :root {
-  --brand-text:   #E2E3E4; 
+  --brand-text:         #E2E3E4; /* highlighted/prominent text */
+  --brand-text-regular: #9E9E9E; /* regular body text */
   --brand-purple: #8C44D4;
   --brand-red:    #D42A44;
-  --brand-blue:   #466EC3; 
+  --brand-blue:   #466EC3; /* replaces the old "green" accent */
 
+  /* rgb triplets, for use inside rgba() */
   --brand-purple-rgb: 140, 68, 212;
   --brand-red-rgb:    212, 42, 68;
   --brand-blue-rgb:   70, 110, 195;
@@ -50,9 +53,9 @@
 /* ---- Base typography ---- */
 html, body {
   font-family: 'Sora', sans-serif;
-  font-weight: 400; 
+  font-weight: 400; /* Sora Regular */
   color: var(--brand-text);
-  background-color: #0a0a0f;
+  background-color: #2D2A2B;
 }
 
 strong, b,
@@ -62,8 +65,13 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 700; /* Sora Bold */
 }
 
+/* Utility text-color classes: text-white/text-brand are the
+   "highlighted" tier, text-gray-400 is the "regular" tier */
 .text-white,
-.text-gray-400,
 .text-brand {
   color: var(--brand-text) !important;
+}
+
+.text-gray-400 {
+  color: var(--brand-text-regular) !important;
 }
