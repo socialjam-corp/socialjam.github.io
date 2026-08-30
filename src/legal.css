@@ -7,8 +7,8 @@
   --border-hi: rgba(255,255,255,0.15);
 
   --text:       var(--brand-text);
-  --text-mid:   #9E9E9E;
-  --text-muted: #9E9E9E;
+  --text-mid:   var(--brand-text);
+  --text-muted: var(--brand-text);
 
   --accent:       var(--brand-blue);
   --accent-tint:  #a8c4ec; /* light blue, for text on dark surfaces */
@@ -31,7 +31,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Nav — fixed, translucent blurred background (matches footer), permanently visible regardless of scroll ── */
 nav.topnav {
   position: fixed;
   top: 0;
@@ -92,7 +91,7 @@ nav.topnav {
   padding: 5px 10px;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
-  color: var(--text-muted);
+  color: var(--text);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -118,7 +117,6 @@ nav.topnav {
   color: var(--accent);
 }
 
-/* ── Header ── */
 header {
   padding: 6rem 2rem 5rem;
   text-align: center;
@@ -168,14 +166,12 @@ header h1 span { color: var(--accent); }
 }
 .header-meta-item:last-child { border-right: none; }
 
-/* ── Layout ── */
 .wrapper {
   max-width: 820px;
   margin: 0 auto;
   padding: 3rem 2rem 7rem;
 }
 
-/* ── Intro callout ── */
 .intro-callout {
   border: 1px solid rgba(var(--brand-blue-rgb),0.25);
   background: rgba(var(--brand-blue-rgb),0.05);
@@ -202,7 +198,6 @@ header h1 span { color: var(--accent); }
   text-justify: inter-word;
 }
 
-/* ── Table of Contents ── */
 .toc {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -314,7 +309,6 @@ section { margin-bottom: 3.5rem; }
 .wrapper a { color: var(--accent); text-decoration: none; }
 .wrapper a:hover { text-decoration: underline; }
 
-/* ── Callout boxes ── */
 .callout {
   border-left: 2px solid;
   padding: 1rem 1.25rem;

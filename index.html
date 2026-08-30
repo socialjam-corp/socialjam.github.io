@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!-- Nav — fixed, transparent, always visible regardless of scroll -->
     <header class="site-nav fixed inset-x-0 top-0 z-50">
         <!-- Navigation bar -->
         <nav aria-label="Global" class="flex items-center justify-between px-6 lg:px-8" style="height: 60px;">
@@ -51,12 +52,38 @@
                         a universe of games
                     </p>
 
+                    <p class="hero-badges-label">Coming soon to</p>
+                    <div class="hero-badges">
+                        <div class="store-badge">
+                            <svg class="store-badge__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path fill="currentColor" d="M17.05 12.536c-.03-2.36 1.93-3.49 2.02-3.548-1.1-1.606-2.81-1.827-3.42-1.853-1.454-.148-2.84.856-3.578.856-.74 0-1.882-.836-3.096-.812-1.594.024-3.064.928-3.884 2.353-1.657 2.87-.424 7.12 1.19 9.45.79 1.14 1.73 2.418 2.965 2.372 1.19-.047 1.64-.77 3.078-.77s1.842.77 3.1.746c1.284-.024 2.096-1.163 2.882-2.31.907-1.325 1.28-2.61 1.298-2.676-.028-.013-2.492-.957-2.555-3.808Zm-2.393-7.01c.657-.797 1.1-1.9.98-3.002-.947.038-2.093.63-2.774 1.427-.61.706-1.144 1.83-1.002 2.91 1.055.082 2.14-.536 2.796-1.335Z"/>
+                            </svg>
+                            <div class="store-badge__text">
+                                <!--<span class="store-badge__eyebrow">Download on the</span>-->
+                                <span class="store-badge__name">App Store</span>
+                            </div>
+                        </div>
+
+                        <div class="store-badge">
+                            <svg class="store-badge__icon store-badge__icon--play" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M3.6 2.6c-.35.36-.55.9-.55 1.6v15.6c0 .7.2 1.24.55 1.6l.1.09L12.6 12v-.2L3.7 2.5l-.1.1Z" fill="#4285F4"/>
+                                <path d="M15.6 15 12.6 12v-.2l3-3.02 3.5 2c.83.47 1.32.87 1.32 1.44.53.57-.36.97-1.32 1.44l-3.5 1.99Z" fill="#EA4335"/>
+                                <path d="M15.6 9 12.6 12l-9-9.3c.3-.32.86-.36 1.5 0L15.6 9Z" fill="#FBBC04"/>
+                                <path d="M15.6 15l-11.5 6.3c-.63.36-1.2.32-1.5 0l9-9.3 4 3Z" fill="#34A853"/>
+                            </svg>
+                            <div class="store-badge__text">
+                                <!--<span class="store-badge__eyebrow">GET IT ON</span>-->
+                                <span class="store-badge__name">Google Play</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="scroll-cue">
-            <span class="text-center">Discover more!</span>
+            <span class="h3">Discover more!</span>
             <img src="./src/img/arrow.png" alt="" class="scroll-cue__arrow" />
         </div>
 
@@ -70,19 +97,17 @@
                     <h2 class="content-title">A universe of games</h2>
                     <div class="content-eyebrow">Fun at your own pace, with or without friends, anywhere in the world</div>
                 </div>
-                <!-- Row 1: text / image -->
                 <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
                         <h3>Unlimited, endless fun all in one app</h3>
                         <p>skeep brings all your favourite single player minigames and multplayer turn-based games to your pocket!<br>
-                            Play what you like, and skeep what you don't! <br> 
-                            Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> 
+                            Play what you like, and skeep what you don't! Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> <br>
                         </p>
                         <h3>What is skeep?</h3>
                         <p>
                             <li><strong>Play</strong> logic, reflexes or dexterity-based games curated for quick play.</li>
                             <li><strong>Challenge</strong> friends directly in turn-based games to see who is the very best.</li>
-                            <li><strong>Compete</strong> against all your friends daily to see who holds the highest score in an endless, free-for-all game-mode.</li>
+                            <li><strong>Compete</strong> against all your friends to see who holds the highest score in an endless, free-for-all mode.</li>
                         </p>
                     </div>
                     <div class="content-col">
@@ -119,7 +144,7 @@
                 <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
                         <p>Challenge your friends to play turn-based minigames and find out who the better player! <br>
-                           Your historic score is kept in the app, so you will never have doubts on who the very best is!</p>
+                           Your historic score is kept in the app, so you will never have no doubts on who the very best is!</p>
                     </div>
                     <div class="content-col">
                         <img src="./src/img/challenge-img.png" alt="skeep" />
@@ -148,11 +173,12 @@
         </section>
     </main>
 
+    <!-- Footer — scroll-aware, matching the legal pages -->
     <footer class="scroll-footer flex items-center justify-between p-6 lg:px-8">
-        <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-8">
+        <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-2">
             <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
         </div>
-        <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-8">
+        <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-2">
             <ul class="list-reset flex justify-end flex-wrap text-xs md:text-sm gap-3">
                 <li><a href="mailto:hi@skeep.me" class="text-gray-400 hover:text-white">Contact</a></li>
                 <li class="mx-4"><a href="privacypolicy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
@@ -160,6 +186,54 @@
             </ul>
         </div>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+    </div>
+
+    <script>
+    (function () {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightbox-img');
+        var zoomableImgs = document.querySelectorAll('.content-col img');
+
+        function openLightbox(img) {
+            lightboxImg.src = img.currentSrc || img.src;
+            lightboxImg.alt = img.alt || '';
+            lightboxImg.classList.remove('is-zoomed');
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            lightboxImg.classList.remove('is-zoomed');
+            document.body.style.overflow = '';
+        }
+
+        zoomableImgs.forEach(function (img) {
+            img.classList.add('is-zoomable');
+            img.addEventListener('click', function () {
+                openLightbox(img);
+            });
+        });
+
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        lightboxImg.addEventListener('click', function (e) {
+            e.stopPropagation();
+            lightboxImg.classList.toggle('is-zoomed');
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
+    </script>
 
     <script>
     (function () {
