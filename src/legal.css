@@ -1,3 +1,4 @@
+
 :root {
   --bg:        #0a0a0f;
   --surface:   #111118;
@@ -10,14 +11,14 @@
   --text-muted: rgba(var(--brand-text-rgb), 0.45);
 
   --accent:       var(--brand-blue);
-  --accent-tint:  #a8c4ec; 
+  --accent-tint:  #a8c4ec; /* light blue, for text on dark surfaces */
   --accent-glow:  rgba(var(--brand-blue-rgb), 0.18);
 
   --accent-2:      var(--brand-red);
-  --accent-2-tint: #e8a3af; 
+  --accent-2-tint: #e8a3af; /* light red, for text on dark surfaces */
 
   --accent-success:      var(--brand-blue);
-  --accent-success-tint: #a8c4ec; 
+  --accent-success-tint: #a8c4ec; /* light blue, for text on dark surfaces */
 }
 
 html { scroll-behavior: smooth; }
@@ -30,10 +31,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Nav ── */
+/* ── Nav — fixed, translucent blurred background (matches footer), permanently visible regardless of scroll ── */
 nav.topnav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: rgba(10,10,15,0.85);
   backdrop-filter: blur(16px);
@@ -44,12 +47,6 @@ nav.topnav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transform: translateY(0);
-  transition: transform 0.3s ease;
-}
-
-nav.topnav.nav-hidden {
-  transform: translateY(-100%);
 }
 
 .nav-logo {
@@ -396,12 +393,16 @@ section { margin-bottom: 3.5rem; }
 .data-table td:first-child { font-weight: 500; color: var(--text); width: 32%; }
 .data-table tr:hover td { background: rgba(255,255,255,0.02); }
 
+/* ── Divider (used between the last section and the footer) ── */
 .section-divider {
   border: none;
   border-top: 1px solid var(--border);
   margin: 0 0 3.5rem;
 }
 
+/* ── Scroll-aware footer ──
+   Fixed to the bottom, same idea as the sticky top nav:
+   present while scrolling down, hidden while scrolling up. */
 .scroll-footer {
   position: fixed;
   left: 0;

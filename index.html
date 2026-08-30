@@ -12,6 +12,23 @@
 </head>
 
 <body>
+    <header class="site-nav fixed inset-x-0 top-0 z-50">
+        <!-- Navigation bar -->
+        <nav aria-label="Global" class="flex items-center justify-between px-6 lg:px-8" style="height: 60px;">
+            <div class="flex lg:flex-1">
+                <a href="/" class="-m-1.5 p-1.5">
+                    <span class="sr-only">skeep</span>
+                    <img src="./src/img/skeep-isotip-v1.2@512.png" alt="" class="h-8 w-auto" />
+                </a>
+            </div>
+            <!-- Desktop menu -->
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <p class="text-xs text-gray-400 md:text-sm">Copyright 2026 &copy; Social Jam S.L</p>
+            </div>
+        </nav>
+        <hr class="border-gray-200 dark:border-gray-700" />
+    </header>
+
     <div class="relative isolate bg-stone-950 h-screen overflow-hidden">
         <div aria-hidden="true" class="absolute inset-0 -z-10">
             <div style="
@@ -25,23 +42,6 @@
               background: rgba(0, 0, 0, 0);
             "></div>
         </div>
-        <header class="absolute inset-x-0 top-0 z-50">
-            <!-- Navigation bar -->
-            <nav aria-label="Global" class="flex items-center justify-between px-6 lg:px-8" style="height: 60px;">
-                <div class="flex lg:flex-1">
-                    <a href="/" class="-m-1.5 p-1.5">
-                        <span class="sr-only">skeep</span>
-                        <img src="./src/img/skeep-isotip-v1.2@512.png" alt="" class="h-8 w-auto" />
-                    </a>
-                </div>
-                <!-- Desktop menu -->
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <p class="text-xs text-gray-400 md:text-sm">Copyright 2026 &copy; Social Jam S.L</p>
-                </div>
-            </nav>
-            <hr class="border-gray-200 dark:border-gray-700" />
-
-        </header>
 
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
@@ -55,6 +55,11 @@
             </div>
         </div>
 
+        <div class="scroll-cue">
+            <span class="text-center">Discover more!</span>
+            <img src="./src/img/arrow.png" alt="" class="scroll-cue__arrow" />
+        </div>
+
     </div>
     <!-- /hero -->
 
@@ -65,18 +70,19 @@
                     <h2 class="content-title">A universe of games</h2>
                     <div class="content-eyebrow">Fun at your own pace, with or without friends, anywhere in the world</div>
                 </div>
-                <!-- Row 1: text / text -->
-                <div class="content-columns">
+                <!-- Row 1: text / image -->
+                <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
                         <h3>Unlimited, endless fun all in one app</h3>
                         <p>skeep brings all your favourite single player minigames and multplayer turn-based games to your pocket!<br>
-                            Play what you like, and skeep what you don't! Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> <br>
+                            Play what you like, and skeep what you don't! <br> 
+                            Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> 
                         </p>
                         <h3>What is skeep?</h3>
                         <p>
                             <li><strong>Play</strong> logic, reflexes or dexterity-based games curated for quick play.</li>
                             <li><strong>Challenge</strong> friends directly in turn-based games to see who is the very best.</li>
-                            <li><strong>Compete</strong> against all your friends to see who holds the highest score in an endless, free-for-all mode.</li>
+                            <li><strong>Compete</strong> against all your friends daily to see who holds the highest score in an endless, free-for-all game-mode.</li>
                         </p>
                     </div>
                     <div class="content-col">
@@ -91,8 +97,7 @@
                 <div class="content-header">
                     <h2 class="content-title">PLAY</h2>
                 </div>
-                <div class="content-columns content-columns--wide-right content-columns--center">
-                    
+                <div class="content-columns content-columns--wide-left content-columns--center">
                     <div class="content-col">
                         <img src="./src/img/play-img.png" alt="skeep" />
                     </div>
@@ -114,7 +119,7 @@
                 <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
                         <p>Challenge your friends to play turn-based minigames and find out who the better player! <br>
-                           Your historic score is kept in the app, so you will never have no doubts on who the very best is!</p>
+                           Your historic score is kept in the app, so you will never have doubts on who the very best is!</p>
                     </div>
                     <div class="content-col">
                         <img src="./src/img/challenge-img.png" alt="skeep" />
@@ -128,7 +133,7 @@
                 <div class="content-header">
                     <h2 class="content-title">COMPETE</h2>
                 </div>
-                <div class="content-columns content-columns--wide-right content-columns--center">
+                <div class="content-columns content-columns--wide-left content-columns--center">
                     <div class="content-col">
                         <img src="./src/img/compete-img.png" alt="skeep" />
                     </div>
@@ -143,7 +148,6 @@
         </section>
     </main>
 
-    <!-- Footer — scroll-aware, matching the legal pages -->
     <footer class="scroll-footer flex items-center justify-between p-6 lg:px-8">
         <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-8">
             <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
@@ -165,10 +169,10 @@
 
         function onScroll() {
             var y = window.scrollY;
-            var goingDown = y > lastY;
+            var goingUp = y < lastY;
             var pastThreshold = y > 80;
 
-            if (goingDown && pastThreshold) {
+            if (goingUp && pastThreshold) {
                 footer.classList.add('footer-hidden');
             } else {
                 footer.classList.remove('footer-hidden');

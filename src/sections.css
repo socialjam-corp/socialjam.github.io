@@ -1,8 +1,7 @@
 
-
 .content-section {
   background: #0a0a0f;
-  padding: 3rem 1.5rem;
+  padding: 6rem 1.5rem;
 }
 
 .content-section__inner {
@@ -47,6 +46,7 @@
   max-width: 46ch;
 }
 
+/* ── Columns ── */
 .content-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -137,8 +137,6 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Optional: wrap non-<img> media (video, canvas, an inline SVG) in
-   .content-media to get the same treatment as .content-col img. */
 .content-media {
   display: block;
   width: 100%;
@@ -147,8 +145,6 @@
   overflow: hidden;
 }
 
-/* Optional: a dashed placeholder frame for blocking out an image
-   column before real art exists. Swap for a real <img> later. */
 .content-media-placeholder {
   display: flex;
   align-items: center;
@@ -178,7 +174,7 @@
   right: 0;
   bottom: 0;
   z-index: 100;
-  background: rgba(10, 10, 15, 0.30);
+  background: rgba(10, 10, 15, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -190,6 +186,53 @@
   transform: translateY(100%);
 }
 
-main {
-  padding-bottom: 5.5rem;
+.content-section:last-of-type {
+  padding-bottom: 11.5rem;
+}
+
+.site-nav {
+  background: rgba(10, 10, 15, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 6rem;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.scroll-cue:hover {
+  opacity: 1;
+}
+
+.scroll-cue__label {
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.scroll-cue__arrow {
+  width: 18px;
+  height: auto;
+  /* source arrow points right — rotate to point down */
+  filter: brightness(0) invert(1);
+  animation: scroll-cue-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-bounce {
+  0%, 100% { transform: translateY(0) rotate(90deg); }
+  50% { transform: translateY(8px) rotate(90deg); }
 }
