@@ -1,5 +1,5 @@
 .content-section {
-  background: #2D2A2B;
+  background: #252525;
   padding: 6rem 1.5rem;
 }
 
@@ -173,7 +173,7 @@
   right: 0;
   bottom: 0;
   z-index: 100;
-  background: rgba(45, 42, 43, 0.25);
+  background: rgba(37, 37, 37, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -190,7 +190,7 @@
 }
 
 .site-nav {
-  background: rgba(45, 42, 43, 0.25);
+  background: rgba(37, 37, 37, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -210,9 +210,23 @@
   transition: opacity 0.2s ease;
 }
 
+.scroll-cue:hover {
+  opacity: 1;
+}
+
+.scroll-cue__label {
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--brand-text);
+  white-space: nowrap;
+}
+
 .scroll-cue__arrow {
   width: 18px;
   height: auto;
+  /* source arrow points right — rotate to point down */
   filter: brightness(0) invert(1);
   animation: scroll-cue-bounce 1.8s ease-in-out infinite;
 }

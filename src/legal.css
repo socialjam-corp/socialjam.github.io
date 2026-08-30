@@ -1,8 +1,8 @@
 
 :root {
-  --bg:        #2D2A2B;
-  --surface:   #2D2A2B;
-  --surface-2: #2D2A2B;
+  --bg:        #252525;
+  --surface:   #252525;
+  --surface-2: #252525;
   --border:    rgba(255,255,255,0.08);
   --border-hi: rgba(255,255,255,0.15);
 
@@ -38,7 +38,7 @@ nav.topnav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(45,42,43,0.85);
+  background: rgba(37,37,37,0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -409,7 +409,7 @@ section { margin-bottom: 3.5rem; }
   right: 0;
   bottom: 0;
   z-index: 100;
-  background: rgba(45,42,43,0.85);
+  background: rgba(37,37,37,0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--border);
