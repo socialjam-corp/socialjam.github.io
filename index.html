@@ -17,20 +17,41 @@
         <!-- Navigation bar -->
         <nav aria-label="Global" class="flex items-center justify-between px-6 lg:px-8" style="height: 60px;">
             <div class="flex lg:flex-1">
-                <a href="/" class="-m-1.5 p-1.5">
+                <a href="https://www.skeep.me" class="-m-1.5 p-1.5">
                     <span class="sr-only">skeep</span>
                     <img src="./src/img/skeep-isotip-v1.2@512.png" alt="" class="h-8 w-auto" />
                 </a>
             </div>
-            <!-- Desktop menu -->
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <p class="text-xs text-gray-400 md:text-sm">Copyright 2026 &copy; Social Jam S.L</p>
+            <!-- Menu button — replaces the footer, visible at all sizes -->
+            <div class="flex flex-1 justify-end">
+                <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </nav>
         <hr class="border-gray-200 dark:border-gray-700" />
     </header>
 
-    <div class="relative isolate bg-stone-950 h-screen overflow-hidden">
+    <!-- Mobile menu — slide-in panel with the footer's links, only
+         reachable below the lg breakpoint -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+            </svg>
+        </button>
+        <nav class="mobile-menu-links" aria-label="Mobile">
+            <a href="mailto:hi@skeep.me">Contact</a>
+            <a href="privacypolicy.html">Privacy Policy</a>
+            <a href="termsconditions.html">Terms and Conditions</a>
+        </nav>
+        <p class="mobile-menu-footnote">All Rights Reserved</p>
+    </div>
+
+    <div class="relative isolate bg-stone-950 hero-fixed overflow-hidden">
         <div aria-hidden="true" class="absolute inset-0 -z-10">
             <div style="
               position: absolute;
@@ -44,11 +65,11 @@
             "></div>
         </div>
 
-        <div class="relative isolate px-6 pt-14 lg:px-8">
-            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div class="relative isolate px-6 pt-14 lg:px-8 hero-content-block">
+            <div class="mx-auto max-w-2xl">
                 <div class="text-center">
                     <img class="mx-auto my-10" src="./src/img/skeep-layerlogo-white.png" width="40%">
-                    <p class="text-5xl font-body tracking-tight text-balance text-white sm:text-3xl">
+                    <p class="hero-tagline font-body tracking-tight text-balance text-white">
                         a universe of games
                     </p>
 
@@ -83,7 +104,7 @@
         </div>
 
         <div class="scroll-cue">
-            <span class="h3">Discover more!</span>
+            <span class="scroll-cue__label">Discover more!</span>
             <img src="./src/img/arrow.png" alt="" class="scroll-cue__arrow" />
         </div>
 
@@ -173,20 +194,6 @@
         </section>
     </main>
 
-    <!-- Footer — scroll-aware, matching the legal pages -->
-    <footer class="scroll-footer flex items-center justify-between p-6 lg:px-8">
-        <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-2">
-            <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
-        </div>
-        <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-2">
-            <ul class="list-reset flex justify-end flex-wrap text-xs md:text-sm gap-3">
-                <li><a href="mailto:hi@skeep.me" class="text-gray-400 hover:text-white">Contact</a></li>
-                <li class="mx-4"><a href="privacypolicy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                <li><a href="termsconditions.html" class="text-gray-400 hover:text-white">Terms and Conditions</a></li>
-            </ul>
-        </div>
-    </footer>
-
     <div class="lightbox" id="lightbox">
         <img src="" alt="" class="lightbox__img" id="lightbox-img" />
     </div>
@@ -237,31 +244,34 @@
 
     <script>
     (function () {
-        var footer = document.querySelector('.scroll-footer');
-        var lastY = window.scrollY;
-        var ticking = false;
+        var toggle = document.getElementById('mobile-menu-toggle');
+        var closeBtn = document.getElementById('mobile-menu-close');
+        var overlay = document.getElementById('mobile-menu-overlay');
+        var menu = document.getElementById('mobile-menu');
 
-        function onScroll() {
-            var y = window.scrollY;
-            var goingUp = y < lastY;
-            var pastThreshold = y > 80;
-
-            if (goingUp && pastThreshold) {
-                footer.classList.add('footer-hidden');
-            } else {
-                footer.classList.remove('footer-hidden');
-            }
-
-            lastY = y;
-            ticking = false;
+        function openMenu() {
+            menu.classList.add('is-open');
+            overlay.classList.add('is-open');
+            toggle.setAttribute('aria-expanded', 'true');
+            menu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
         }
 
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                window.requestAnimationFrame(onScroll);
-                ticking = true;
-            }
-        }, { passive: true });
+        function closeMenu() {
+            menu.classList.remove('is-open');
+            overlay.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
     })();
     </script>
 </body>

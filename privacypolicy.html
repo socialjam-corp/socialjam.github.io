@@ -13,24 +13,45 @@
 
 <!-- Nav -->
 <nav class="topnav">
-  <a class="nav-logo" href="/">
+  <a class="nav-logo" href="https://www.skeep.me">
     <img src="./src/img/skeep-isotip-v1.2@512.png" alt="skeep logo" onerror="this.style.display='none'"/>
   </a>
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')" title="English">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-      <span>EN</span>
-    </button>
-    <button class="lang-btn" onclick="setLang('ca')" title="Català">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
-      <span>CA</span>
-    </button>
-    <button class="lang-btn" onclick="setLang('es')" title="Español">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
-      <span>ES</span>
-    </button>
-  </div>
+  <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
 </nav>
+
+<!-- Menu — replaces the footer; language selector lives at the bottom -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+    </button>
+    <nav class="mobile-menu-links" aria-label="Mobile">
+        <a href="mailto:hi@skeep.me">Contact</a>
+        <a href="privacypolicy.html">Privacy Policy</a>
+        <a href="termsconditions.html">Terms and Conditions</a>
+    </nav>
+    <p class="mobile-menu-footnote">All Rights Reserved</p>
+    <div class="mobile-menu-langs">
+        <button class="lang-btn active" onclick="setLang('en')" title="English">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" onclick="setLang('ca')" title="Català">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+          <span>CA</span>
+        </button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+          <span>ES</span>
+        </button>
+    </div>
+</div>
 
 <!-- Header -->
 <header>
@@ -390,19 +411,38 @@
 
 </div>
 
-<footer class="flex items-center justify-between p-6 lg:px-8 bg-stone-950">
-    <div class="w-full md:w-1/2 md:text-start md:mb-0 mb-8">
-        <p class="text-xs text-gray-400 md:text-sm">All Rights Reserved</p>
-    </div>
-    <div class="w-full md:w-1/2 md:text-end md:mb-0 mb-8">
-        <ul class="list-reset flex justify-end flex-wrap text-xs md:text-sm gap-3">
-            <li><a href="mailto:hi@skeep.me" class="text-gray-400 hover:text-white">Contact</a></li>
-            <li class="mx-4"><a href="privacypolicy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-            <li><a href="termsconditions.html" class="text-gray-400 hover:text-white">Terms and Conditions</a></li>
-        </ul>
-    </div>
-</footer>
-<script src="src/scroll-footer.js"></script>
+<script>
+(function () {
+    var toggle = document.getElementById('mobile-menu-toggle');
+    var closeBtn = document.getElementById('mobile-menu-close');
+    var overlay = document.getElementById('mobile-menu-overlay');
+    var menu = document.getElementById('mobile-menu');
+
+    function openMenu() {
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+    });
+})();
+</script>
 
 <script>
 const translations = {
