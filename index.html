@@ -49,6 +49,20 @@
             <a href="termsconditions.html">Terms and Conditions</a>
         </nav>
         <p class="mobile-menu-footnote">All Rights Reserved</p>
+        <div class="mobile-menu-langs">
+            <button class="lang-btn active" onclick="setLang('en')" title="English">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+              <span>EN</span>
+            </button>
+            <button class="lang-btn" onclick="setLang('ca')" title="Català">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+              <span>CA</span>
+            </button>
+            <button class="lang-btn" onclick="setLang('es')" title="Español">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+              <span>ES</span>
+            </button>
+        </div>
     </div>
 
     <div class="relative isolate bg-stone-950 hero-fixed overflow-hidden">
@@ -69,11 +83,11 @@
             <div class="mx-auto max-w-2xl">
                 <div class="text-center">
                     <img class="mx-auto my-10" src="./src/img/skeep-layerlogo-white.png" width="40%">
-                    <p class="hero-tagline font-body tracking-tight text-balance text-white">
+                    <p class="hero-tagline font-body tracking-tight text-balance text-white" id="t-tagline">
                         a universe of games
                     </p>
 
-                    <p class="hero-badges-label">Coming soon to</p>
+                    <p class="hero-badges-label" id="t-badges-label">Coming soon to</p>
                     <div class="hero-badges">
                         <div class="store-badge">
                             <svg class="store-badge__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -104,7 +118,7 @@
         </div>
 
         <div class="scroll-cue">
-            <span class="scroll-cue__label">Discover more!</span>
+            <span class="scroll-cue__label" id="t-discover">Discover more!</span>
             <img src="./src/img/arrow.png" alt="" class="scroll-cue__arrow" />
         </div>
 
@@ -115,21 +129,21 @@
         <section class="content-section">
             <div class="content-section__inner">
                 <div class="content-header">
-                    <h2 class="content-title">A universe of games</h2>
-                    <div class="content-eyebrow">Fun at your own pace, with or without friends, anywhere in the world</div>
+                    <h2 class="content-title" id="t-s1-title">A universe of games</h2>
+                    <div class="content-eyebrow" id="t-s1-eyebrow">Fun at your own pace, with or without friends, anywhere in the world</div>
                 </div>
                 <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
-                        <h3>Unlimited, endless fun all in one app</h3>
-                        <p>skeep is a mobile app that brings all your favourite single-player and turn-based multplayer minigames to your pocket!<br>
+                        <h3 id="t-s1-h3-1">Unlimited, endless fun all in one app</h3>
+                        <p id="t-s1-p-1">skeep is a mobile app that brings all your favourite single-player and turn-based multplayer minigames to your pocket!<br>
                             Play what you like, and <strong>skeep</strong> what you don't! Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> <br>
                         </p>
-                        <h3>What can you do in skeep?</h3>
-                        <p>
+                        <h3 id="t-s1-h3-2">What can you do in skeep?</h3>
+                        <ul id="t-s1-p-2">
                             <li><strong>Play</strong> curated logic, reflexes or dexterity-based games for quick play.</li>
                             <li><strong>Challenge</strong> friends directly in turn-based games to see who is the very best.</li>
                             <li><strong>Compete</strong> against all your friends to see who holds the highest score in an endless, free-for-all mode.</li>
-                        </p>
+                        </ul>
                     </div>
                     <div class="content-col">
                         <img src="./src/img/summary-img.png" alt="skeep" />
@@ -141,7 +155,7 @@
         <section class="content-section">
             <div class="content-section__inner">
                 <div class="content-header">
-                    <h2 class="content-title">PLAY</h2>
+                    <h2 class="content-title" id="t-s2-title">PLAY</h2>
                 </div>
                 <div class="content-columns content-columns--wide-left content-columns--center">
                     <div class="content-col">
@@ -149,7 +163,7 @@
                     </div>
                     
                     <div class="content-col">
-                        <p>Scroll and play through all your favourite minigames in a single app! Our 
+                        <p id="t-s2-p">Scroll and play through all your favourite minigames in a single app! Our 
                            propietary algorythm will curate the selection so you always play the ones you like the most
                            at an adequate difficulty!</p>
                     </div>
@@ -160,11 +174,11 @@
         <section class="content-section">
             <div class="content-section__inner">
                 <div class="content-header">
-                    <h2 class="content-title">CHALLENGE</h2>
+                    <h2 class="content-title" id="t-s3-title">CHALLENGE</h2>
                 </div>
                 <div class="content-columns content-columns--wide-right content-columns--center">
                     <div class="content-col">
-                        <p>Challenge your friends to play turn-based minigames and find out who the better player! <br>
+                        <p id="t-s3-p">Challenge your friends to play turn-based minigames and find out who the better player! <br>
                            Your historic score is kept in the app, so you will never have no doubts on who the very best is!</p>
                     </div>
                     <div class="content-col">
@@ -177,7 +191,7 @@
         <section class="content-section">
             <div class="content-section__inner">
                 <div class="content-header">
-                    <h2 class="content-title">COMPETE</h2>
+                    <h2 class="content-title" id="t-s4-title">COMPETE</h2>
                 </div>
                 <div class="content-columns content-columns--wide-left content-columns--center">
                     <div class="content-col">
@@ -185,7 +199,7 @@
                     </div>
                     
                     <div class="content-col">
-                        <p>Create  group with your friends and compete in daily challenge to see who can get the highest score 
+                        <p id="t-s4-p">Create  group with your friends and compete in daily challenge to see who can get the highest score 
                            in the free for all games. <br>
                            Earn points based on your position in the ranking at the end of the day. The player with the most points will be crowned the victor after the season ends.<br></p>
                     </div>
@@ -273,6 +287,118 @@
             if (e.key === 'Escape') closeMenu();
         });
     })();
+    </script>
+
+    <script>
+    const translations = {
+      en: {
+        tagline: "a universe of games",
+        badgesLabel: "Coming soon to",
+        discover: "Discover more!",
+        s1Title: "A universe of games",
+        s1Eyebrow: "Fun at your own pace, with or without friends, anywhere in the world",
+        s1H3_1: "Unlimited, endless fun all in one app",
+        s1P1: `skeep is a mobile app that brings all your favourite single-player and turn-based multplayer minigames to your pocket!<br>
+                            Play what you like, and <strong>skeep</strong> what you don't! Scroll, play or start a match with friends in seconds, no downloads per game, no waiting around.<br> <br>
+                        `,
+        s1H3_2: "What can you do in skeep?",
+        s1P2: `
+                            <li><strong>Play</strong> curated logic, reflexes or dexterity-based games for quick play.</li>
+                            <li><strong>Challenge</strong> friends directly in turn-based games to see who is the very best.</li>
+                            <li><strong>Compete</strong> against all your friends to see who holds the highest score in an endless, free-for-all mode.</li>
+                        `,
+        s2Title: "PLAY",
+        s2P: "Scroll and play through all your favourite minigames in a single app! Our propietary algorythm will curate the selection so you always play the ones you like the most at an adequate difficulty!",
+        s3Title: "CHALLENGE",
+        s3P: `Challenge your friends to play turn-based minigames and find out who the better player! <br>
+                           Your historic score is kept in the app, so you will never have no doubts on who the very best is!`,
+        s4Title: "COMPETE",
+        s4P: `Create group with your friends and compete in daily challenge to see who can get the highest score 
+                           in the free for all games. <br>
+                           Earn points based on your position in the ranking at the end of the day. The player with the most points will be crowned the victor after the season ends.<br>`
+      },
+      ca: {
+        tagline: "un univers de jocs",
+        badgesLabel: "Properament a",
+        discover: "Descobreix més!",
+        s1Title: "Un univers de jocs",
+        s1Eyebrow: "Diverteix-te al teu ritme, amb o sense amics, a qualsevol part del món",
+        s1H3_1: "Diversió il·limitada i infinita en una sola app",
+        s1P1: `skeep és una app mòbil que reuneix tots els teus minijocs preferits, per a un jugador i multijugador per torns, a la teva butxaca.<br>
+                            Juga al que més t'agradi i deixa de banda el que no. Desliza, juga o comença una partida amb amics en segons, sense baixades per joc i sense esperes.<br> <br>
+                        `,
+        s1H3_2: "Què pots fer a skeep?",
+        s1P2: `
+                            <li><strong>Juga</strong> a jocs de lògica, reflexos o destresa curats per a partides ràpides.</li>
+                            <li><strong>Reta</strong> els teus amics directament en jocs per torns per veure qui és el millor.</li>
+                            <li><strong>Competeix</strong> contra tots els teus amics per veure qui aconsegueix la puntuació més alta en un mode lliure i infinit.</li>
+                        `,
+        s2Title: "JUGA",
+        s2P: "Desliza i juga a tots els teus minijocs preferits en una sola app! El nostre algorisme propi seleccionarà els jocs perquè sempre juguis als que més t'agraden, amb la dificultat adequada!",
+        s3Title: "RETA",
+        s3P: `Reta els teus amics a jugar minijocs per torns i descobreix qui és el millor jugador! <br>
+                           La teva puntuació històrica es guarda a l'app, així que mai tindràs dubtes sobre qui és el millor!`,
+        s4Title: "COMPETEIX",
+        s4P: `Crea un grup amb els teus amics i competeix en el repte diari per veure qui aconsegueix la puntuació més alta 
+                           en els jocs lliures. <br>
+                           Guanya punts segons la teva posició a la classificació al final del dia. El jugador amb més punts serà coronat vencedor en acabar la temporada.<br>`
+      },
+      es: {
+        tagline: "un universo de juegos",
+        badgesLabel: "Próximamente en",
+        discover: "¡Descubre más!",
+        s1Title: "Un universo de juegos",
+        s1Eyebrow: "Diviértete a tu ritmo, con o sin amigos, en cualquier parte del mundo",
+        s1H3_1: "Diversión ilimitada e infinita en una sola app",
+        s1P1: `skeep es una app móvil que reúne todos tus minijuegos favoritos, para un jugador y multijugador por turnos, en tu bolsillo.<br>
+                            Juega a lo que más te guste y deja de lado lo que no. Desliza, juega o empieza una partida con amigos en segundos, sin descargas por juego y sin esperas.<br> <br>
+                        `,
+        s1H3_2: "¿Qué puedes hacer en skeep?",
+        s1P2: `
+                            <li><strong>Juega</strong> a juegos de lógica, reflejos o destreza cuidadosamente seleccionados para partidas rápidas.</li>
+                            <li><strong>Reta</strong> a tus amigos directamente en juegos por turnos para ver quién es el mejor.</li>
+                            <li><strong>Compite</strong> contra todos tus amigos para ver quién consigue la puntuación más alta en un modo libre e infinito.</li>
+                        `,
+        s2Title: "JUEGA",
+        s2P: "¡Desliza y juega a todos tus minijuegos favoritos en una sola app! Nuestro algoritmo propio seleccionará los juegos para que siempre juegues a los que más te gustan, con la dificultad adecuada!",
+        s3Title: "RETA",
+        s3P: `¡Reta a tus amigos a jugar minijuegos por turnos y descubre quién es el mejor jugador! <br>
+                           Tu puntuación histórica se guarda en la app, así que nunca tendrás dudas sobre quién es el mejor!`,
+        s4Title: "COMPITE",
+        s4P: `Crea un grupo con tus amigos y compite en el reto diario para ver quién consigue la puntuación más alta 
+                           en los juegos libres. <br>
+                           Gana puntos según tu posición en la clasificación al final del día. El jugador con más puntos será coronado vencedor al finalizar la temporada.<br>`
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      document.getElementById('t-tagline').textContent = t.tagline;
+      document.getElementById('t-badges-label').textContent = t.badgesLabel;
+      document.getElementById('t-discover').textContent = t.discover;
+      document.getElementById('t-s1-title').textContent = t.s1Title;
+      document.getElementById('t-s1-eyebrow').textContent = t.s1Eyebrow;
+      document.getElementById('t-s1-h3-1').textContent = t.s1H3_1;
+      document.getElementById('t-s1-p-1').innerHTML = t.s1P1;
+      document.getElementById('t-s1-h3-2').textContent = t.s1H3_2;
+      document.getElementById('t-s1-p-2').innerHTML = t.s1P2;
+      document.getElementById('t-s2-title').textContent = t.s2Title;
+      document.getElementById('t-s2-p').textContent = t.s2P;
+      document.getElementById('t-s3-title').textContent = t.s3Title;
+      document.getElementById('t-s3-p').innerHTML = t.s3P;
+      document.getElementById('t-s4-title').textContent = t.s4Title;
+      document.getElementById('t-s4-p').innerHTML = t.s4P;
+
+      document.querySelectorAll('.mobile-menu-langs .lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.mobile-menu-langs .lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+      document.documentElement.lang = lang;
+      localStorage.setItem('skeep_lang', lang);
+    }
+
+    setLang(localStorage.getItem('skeep_lang') || 'en');
     </script>
 </body>
 

@@ -102,7 +102,9 @@
 .content-col ul,
 .content-col ol {
   margin: 0 0 1rem 1.1rem;
+  padding-left: 1.1rem;
   color: var(--brand-text);
+  list-style: disc;
 }
 
 .content-col li {
@@ -438,4 +440,51 @@
   font-weight: 700;
   color: var(--brand-text);
   opacity: 0.7;
+}
+
+.mobile-menu-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.mobile-menu-langs .lang-btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  color: var(--brand-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.lang-btn svg {
+  width: 20px;
+  height: 10px;
+  border-radius: 2px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.lang-btn:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-btn.active {
+  border-color: rgba(var(--brand-blue-rgb), 0.5);
+  background: rgba(var(--brand-blue-rgb), 0.18);
+  color: var(--brand-blue);
 }

@@ -574,7 +574,10 @@ function setLang(lang) {
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 
   document.documentElement.lang = lang;
+  localStorage.setItem('skeep_lang', lang);
 }
+
+setLang(localStorage.getItem('skeep_lang') || 'en');
 </script>
 </body>
 </html>
