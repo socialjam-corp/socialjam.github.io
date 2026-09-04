@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,11 +38,11 @@
     </nav>
     <p class="mobile-menu-footnote">All Rights Reserved</p>
     <div class="mobile-menu-langs">
-        <button class="lang-btn active" onclick="setLang('en')" title="English">
+        <button class="lang-btn" onclick="setLang('en')" title="English">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
           <span>EN</span>
         </button>
-        <button class="lang-btn" onclick="setLang('ca')" title="Català">
+        <button class="lang-btn active" onclick="setLang('ca')" title="Català">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
           <span>CA</span>
         </button>
@@ -55,9 +55,9 @@
 
 <!-- Header -->
 <header>
-  <div class="header-eyebrow">Legal Document</div>
   <h1>Terms and Conditions</h1>
   <div class="header-meta">
+    <span class="header-meta-item">Legal Document</span>
     <span class="header-meta-item">SocialJam S.L.</span>
     <span class="header-meta-item">Effective May 28, 2026</span>
     <span class="header-meta-item">Version 1.0</span>
@@ -528,10 +528,10 @@ function setLang(lang) {
   if (!t) return;
 
   document.title = t.pageTitle;
-  document.querySelector('.header-eyebrow').textContent = t.eyebrow;
   document.querySelector('header h1').innerHTML = t.h1;
-  document.querySelector('.header-meta-item:nth-child(2)').textContent = t.metaDate;
-  document.querySelector('.header-meta-item:nth-child(3)').textContent = t.metaVersion;
+  document.querySelector('.header-meta-item:nth-child(1)').textContent = t.eyebrow;
+  document.querySelector('.header-meta-item:nth-child(3)').textContent = t.metaDate;
+  document.querySelector('.header-meta-item:nth-child(4)').textContent = t.metaVersion;
   document.querySelector('.intro-callout p').textContent = t.introText;
   document.querySelector('.toc-title').textContent = t.tocTitle;
 
@@ -559,7 +559,19 @@ function setLang(lang) {
   localStorage.setItem('skeep_lang', lang);
 }
 
-setLang(localStorage.getItem('skeep_lang') || 'en');
+function detectBrowserLang() {
+  var supported = ['en', 'ca', 'es'];
+  var prefs = navigator.languages && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || navigator.userLanguage || 'ca'];
+  for (var i = 0; i < prefs.length; i++) {
+    var code = String(prefs[i]).toLowerCase().slice(0, 2);
+    if (supported.indexOf(code) !== -1) return code;
+  }
+  return 'ca';
+}
+
+setLang(localStorage.getItem('skeep_lang') || detectBrowserLang());
 </script>
 </body>
 </html>

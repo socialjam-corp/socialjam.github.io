@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ca">
 
 <head>
     <meta charset="UTF-8" />
@@ -50,11 +50,11 @@
         </nav>
         <p class="mobile-menu-footnote">All Rights Reserved</p>
         <div class="mobile-menu-langs">
-            <button class="lang-btn active" onclick="setLang('en')" title="English">
+            <button class="lang-btn" onclick="setLang('en')" title="English">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
               <span>EN</span>
             </button>
-            <button class="lang-btn" onclick="setLang('ca')" title="Català">
+            <button class="lang-btn active" onclick="setLang('ca')" title="Català">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
               <span>CA</span>
             </button>
@@ -292,6 +292,7 @@
     <script>
     const translations = {
       en: {
+        pageTitle: "skeep · a universe of games",
         tagline: "a universe of games",
         badgesLabel: "Coming soon to",
         discover: "Discover more!",
@@ -318,6 +319,7 @@
                            Earn points based on your position in the ranking at the end of the day. The player with the most points will be crowned the victor after the season ends.<br>`
       },
       ca: {
+        pageTitle: "skeep · un univers de jocs",
         tagline: "un univers de jocs",
         badgesLabel: "Properament a",
         discover: "Descobreix més!",
@@ -344,6 +346,7 @@
                            Guanya punts segons la teva posició a la classificació al final del dia. El jugador amb més punts serà coronat vencedor en acabar la temporada.<br>`
       },
       es: {
+        pageTitle: "skeep · un universo de juegos",
         tagline: "un universo de juegos",
         badgesLabel: "Próximamente en",
         discover: "¡Descubre más!",
@@ -375,6 +378,7 @@
       const t = translations[lang];
       if (!t) return;
 
+      document.title = t.pageTitle;
       document.getElementById('t-tagline').textContent = t.tagline;
       document.getElementById('t-badges-label').textContent = t.badgesLabel;
       document.getElementById('t-discover').textContent = t.discover;
@@ -398,7 +402,19 @@
       localStorage.setItem('skeep_lang', lang);
     }
 
-    setLang(localStorage.getItem('skeep_lang') || 'en');
+    function detectBrowserLang() {
+      var supported = ['en', 'ca', 'es'];
+      var prefs = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || 'ca'];
+      for (var i = 0; i < prefs.length; i++) {
+        var code = String(prefs[i]).toLowerCase().slice(0, 2);
+        if (supported.indexOf(code) !== -1) return code;
+      }
+      return 'ca';
+    }
+
+    setLang(localStorage.getItem('skeep_lang') || detectBrowserLang());
     </script>
 </body>
 
