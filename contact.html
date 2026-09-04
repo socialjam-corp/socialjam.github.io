@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — skeep</title>
+  <link rel="stylesheet" href="src/theme.css"/>
+  <link rel="stylesheet" href="src/legal.css"/>
+  <link rel="stylesheet" href="src/output.css"/>
+  <link rel="icon" type="image/png" href="src/img/skeep-isotip-v1.2@512.png" />
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topnav">
+  <a class="nav-logo" href="https://www.skeep.me">
+    <img src="./src/img/skeep-isotip-v1.2@512.png" alt="skeep logo" onerror="this.style.display='none'"/>
+  </a>
+  <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</nav>
+
+<!-- Menu — replaces the footer; language selector lives at the bottom -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+    </button>
+    <nav class="mobile-menu-links" aria-label="Mobile">
+        <a href="contact.html">Contact</a>
+        <a href="privacypolicy.html">Privacy Policy</a>
+        <a href="termsconditions.html">Terms and Conditions</a>
+    </nav>
+    <p class="mobile-menu-footnote">All Rights Reserved</p>
+    <div class="mobile-menu-langs">
+        <button class="lang-btn active" onclick="setLang('en')" title="English">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" onclick="setLang('ca')" title="Català">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+          <span>CA</span>
+        </button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+          <span>ES</span>
+        </button>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-eyebrow" id="t-eyebrow">Get In Touch</div>
+  <h1 id="t-title">Contact</h1>
+</header>
+
+<div class="wrapper">
+
+  <div class="contact-card">
+    <form id="contact-form" novalidate>
+      <!-- FormSubmit.co configuration (no backend needed) -->
+      <input type="hidden" name="_subject" value="New message from skeep.me contact form">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-field">
+        <label for="cf-name" id="t-label-name">Name</label>
+        <input type="text" id="cf-name" name="name" autocomplete="name" required />
+      </div>
+
+      <div class="form-field">
+        <label for="cf-email" id="t-label-email">Email</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="form-field">
+        <label for="cf-query" id="t-label-query">Query type</label>
+        <select id="cf-query" name="query" required>
+          <option value="bug" id="t-opt-bug">Report a Bug</option>
+          <option value="delete" id="t-opt-delete">Request data to be deleted</option>
+          <option value="early-access" id="t-opt-early">Sign up for early access</option>
+          <option value="other" id="t-opt-other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="cf-message" id="t-label-message">Message</label>
+        <textarea id="cf-message" name="message" rows="6" required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit" id="t-submit">Send</button>
+    </form>
+  </div>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span id="t-toast">Message sent</span>
+</div>
+
+<script>
+(function () {
+    var toggle = document.getElementById('mobile-menu-toggle');
+    var closeBtn = document.getElementById('mobile-menu-close');
+    var overlay = document.getElementById('mobile-menu-overlay');
+    var menu = document.getElementById('mobile-menu');
+
+    function openMenu() {
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+    });
+})();
+</script>
+
+<script>
+const translations = {
+  en: {
+    pageTitle: "Contact — skeep",
+    eyebrow: "Get In Touch",
+    title: "Contact",
+    labelName: "Name",
+    labelEmail: "Email",
+    labelQuery: "Query type",
+    labelMessage: "Message",
+    optBug: "Report a Bug",
+    optDelete: "Request data to be deleted",
+    optEarly: "Sign up for early access",
+    optOther: "Other",
+    submit: "Send",
+    toast: "Message sent",
+    toastError: "Something went wrong. Please try again or email us directly."
+  },
+  ca: {
+    pageTitle: "Contacte — skeep",
+    eyebrow: "Posa't En Contacte",
+    title: "Contacte",
+    labelName: "Nom",
+    labelEmail: "Correu electrònic",
+    labelQuery: "Tipus de consulta",
+    labelMessage: "Missatge",
+    optBug: "Informar d'un error",
+    optDelete: "Sol·licitar l'eliminació de dades",
+    optEarly: "Inscriu-te a l'accés anticipat",
+    optOther: "Altres",
+    submit: "Enviar",
+    toast: "Missatge enviat",
+    toastError: "Alguna cosa ha fallat. Torna-ho a provar o escriu-nos directament."
+  },
+  es: {
+    pageTitle: "Contacto — skeep",
+    eyebrow: "Ponte En Contacto",
+    title: "Contacto",
+    labelName: "Nombre",
+    labelEmail: "Correo electrónico",
+    labelQuery: "Tipo de consulta",
+    labelMessage: "Mensaje",
+    optBug: "Informar de un error",
+    optDelete: "Solicitar la eliminación de datos",
+    optEarly: "Apuntarme al acceso anticipado",
+    optOther: "Otro",
+    submit: "Enviar",
+    toast: "Mensaje enviado",
+    toastError: "Algo salió mal. Inténtalo de nuevo o escríbenos directamente."
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  currentLang = lang;
+
+  document.title = t.pageTitle;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-title').textContent = t.title;
+  document.getElementById('t-label-name').textContent = t.labelName;
+  document.getElementById('t-label-email').textContent = t.labelEmail;
+  document.getElementById('t-label-query').textContent = t.labelQuery;
+  document.getElementById('t-label-message').textContent = t.labelMessage;
+  document.getElementById('t-opt-bug').textContent = t.optBug;
+  document.getElementById('t-opt-delete').textContent = t.optDelete;
+  document.getElementById('t-opt-early').textContent = t.optEarly;
+  document.getElementById('t-opt-other').textContent = t.optOther;
+  document.getElementById('t-submit').textContent = t.submit;
+  document.getElementById('t-toast').textContent = t.toast;
+
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  document.documentElement.lang = lang;
+  localStorage.setItem('skeep_lang', lang);
+}
+
+setLang(localStorage.getItem('skeep_lang') || 'en');
+
+// Form submission
+const form = document.getElementById('contact-form');
+const toast = document.getElementById('toast');
+let toastTimer;
+
+const CONTACT_EMAIL = 'socialjam.skeep@gmail.com';
+const submitBtn = document.getElementById('t-submit');
+
+function showToast(text) {
+  toast.querySelector('span').textContent = text;
+  toast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () {
+    toast.classList.remove('is-visible');
+  }, 3000);
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const originalLabel = submitBtn.textContent;
+  submitBtn.disabled = true;
+
+  fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Request failed');
+      return response.json();
+    })
+    .then(function () {
+      form.reset();
+      showToast(translations[currentLang].toast);
+    })
+    .catch(function () {
+      showToast(translations[currentLang].toastError);
+    })
+    .finally(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    });
+});
+</script>
+
+</body>
+</html>
