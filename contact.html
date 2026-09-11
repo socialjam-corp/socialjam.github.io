@@ -32,11 +32,11 @@
         </svg>
     </button>
     <nav class="mobile-menu-links" aria-label="Mobile">
-        <a href="contact.html">Contact</a>
-        <a href="privacypolicy.html">Privacy Policy</a>
-        <a href="termsconditions.html">Terms and Conditions</a>
+        <a href="contact.html" id="t-menu-contact">Contact</a>
+        <a href="privacypolicy.html" id="t-menu-privacy">Privacy Policy</a>
+        <a href="termsconditions.html" id="t-menu-terms">Terms and Conditions</a>
     </nav>
-    <p class="mobile-menu-footnote">All Rights Reserved</p>
+    <p class="mobile-menu-footnote" id="t-menu-rights">All Rights Reserved</p>
     <div class="mobile-menu-langs">
         <button class="lang-btn" onclick="setLang('en')" title="English">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
@@ -143,6 +143,10 @@
 const translations = {
   en: {
     pageTitle: "Contact — skeep",
+    menuContact: "Contact",
+    menuPrivacy: "Privacy Policy",
+    menuTerms: "Terms and Conditions",
+    menuRights: "All Rights Reserved",
     eyebrow: "Get In Touch",
     title: "Contact",
     labelName: "Name",
@@ -159,6 +163,10 @@ const translations = {
   },
   ca: {
     pageTitle: "Contacte — skeep",
+    menuContact: "Contacte",
+    menuPrivacy: "Política de Privacitat",
+    menuTerms: "Termes i Condicions",
+    menuRights: "Tots els drets reservats",
     eyebrow: "Posa't En Contacte",
     title: "Contacte",
     labelName: "Nom",
@@ -175,6 +183,10 @@ const translations = {
   },
   es: {
     pageTitle: "Contacto — skeep",
+    menuContact: "Contacto",
+    menuPrivacy: "Política de Privacidad",
+    menuTerms: "Términos y Condiciones",
+    menuRights: "Todos los derechos reservados",
     eyebrow: "Ponte En Contacto",
     title: "Contacto",
     labelName: "Nombre",
@@ -199,6 +211,10 @@ function setLang(lang) {
   currentLang = lang;
 
   document.title = t.pageTitle;
+  document.getElementById('t-menu-contact').textContent = t.menuContact;
+  document.getElementById('t-menu-privacy').textContent = t.menuPrivacy;
+  document.getElementById('t-menu-terms').textContent = t.menuTerms;
+  document.getElementById('t-menu-rights').textContent = t.menuRights;
   document.getElementById('t-eyebrow').textContent = t.eyebrow;
   document.getElementById('t-title').textContent = t.title;
   document.getElementById('t-label-name').textContent = t.labelName;
