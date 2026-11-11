@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="{{lang}}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Campaign test page reached only through shared links; not meant for search results. -->
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#252525" />
+    <!-- Already dark: dark-mode extensions would only distort the game colours. -->
+    <meta name="darkreader-lock" />
+    <title>{{pageTitle}}</title>
+    <!-- No output.css here: the play page must stay small, so it only takes the theme, the menu
+         styles and its own sheet. -->
+    <link rel="stylesheet" href="{{root}}src/theme.css" />
+    <link rel="stylesheet" href="{{root}}src/sections.css" />
+    <link rel="stylesheet" href="{{root}}src/play/play.css" />
+    <link rel="preload" href="{{root}}src/Sora-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="{{root}}src/play/img/logo.png" as="image" />
+    <!-- Everything the first panel needs, fetched in parallel instead of import by import. -->
+    <link rel="modulepreload" href="{{root}}src/play/main.js" />
+    <link rel="modulepreload" href="{{root}}src/play/theme.js" />
+    <link rel="modulepreload" href="{{root}}src/play/storage.js" />
+    <link rel="modulepreload" href="{{root}}src/play/feed/feed.js" />
+    <link rel="modulepreload" href="{{root}}src/play/feed/levels.js" />
+    <link rel="modulepreload" href="{{root}}src/play/feed/navigator.js" />
+    <link rel="modulepreload" href="{{root}}src/play/shell/panel.js" />
+    <link rel="modulepreload" href="{{root}}src/play/shell/chrome.js" />
+    <link rel="modulepreload" href="{{root}}src/play/shell/result.js" />
+    <link rel="modulepreload" href="{{root}}src/play/features/background.js" />
+    <link rel="modulepreload" href="{{root}}src/play/games/registry.js" />
+    <link rel="modulepreload" href="{{root}}src/play/games/test/index.js" />
+    <link rel="icon" type="image/jpeg" href="{{root}}src/img/skeep-isotip-v1.2@192.jpg" />
+    <link rel="canonical" href="https://www.skeep.me/{{lang}}/{{pageUrl}}" />
+    {{{hreflang}}}
+</head>
+
+<body class="play-page">
+    <!-- Desktop only: on a phone the game takes the whole screen (play.css). -->
+    <header class="site-nav play-nav">
+        <a href="./" class="play-nav__logo">
+            <span class="sr-only">skeep</span>
+            <img src="{{root}}src/img/skeep-isotip-v1.2@512.png" alt="" width="32" height="32" loading="lazy" />
+        </a>
+        <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="{{menuOpen}}" aria-expanded="false" aria-controls="mobile-menu">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </header>
+
+    {{> menu}}
+
+    <main class="play-stage">
+        <div class="play-app" id="play-app">
+            <div class="feed-track" id="feed-track"></div>
+
+            <p class="feed-loading" id="feed-loading">{{loading}}</p>
+
+            <!-- How to play: the button grows into the card, as in SkeepGameUI. The veil and the
+                 "Pause" label sit over the game, under the header and the navigation band. -->
+            <div class="howto-veil" id="howto-veil"></div>
+            <p class="howto-pause" id="howto-pause">{{pause}}</p>
+            <!-- Header band: the app's brand line (peeks and profile are not part of the lite feed). -->
+            <div class="app-top">
+                <span class="app-brand">skeep</span>
+            </div>
+
+            <div class="howto" id="howto">
+                <button type="button" class="howto__open" id="howto-btn" aria-label="{{howToLabel}}" aria-controls="howto" aria-expanded="false">
+                    <span class="icon icon--howto"></span>
+                </button>
+                <div class="howto__inner" id="howto-inner">
+                    <h2 class="howto__title" id="howto-title"></h2>
+                    <div class="howto__body" id="howto-body"></div>
+                </div>
+                <button type="button" class="howto__close" id="howto-close" aria-label="{{close}}">
+                    <span class="icon icon--cross"></span>
+                </button>
+            </div>
+
+            <!-- The navigation band: a vertical swipe that starts here always moves the feed. -->
+            <div class="app-nav" id="app-nav">
+                <div class="feed-divider"><div class="feed-divider__fill" id="feed-divider-fill"></div></div>
+                <!-- Not a button: in the app a tap here opens the radial menu, which the lite feed does not have.
+                     A swipe that starts on it still skeeps, like anywhere else in this band. -->
+                <div class="skeep-btn" id="skeep-btn" aria-hidden="true">
+                    <span class="icon icon--logo skeep-btn__icon"></span>
+                </div>
+            </div>
+
+            <noscript><p class="feed-noscript">{{noscript}}</p></noscript>
+        </div>
+    </main>
+
+    <script type="application/json" id="play-strings">{{{json:resultVictory,resultDefeat,loading}}}</script>
+    <script type="module" src="{{root}}src/play/main.js"></script>
+
+    {{> menu-script}}
+</body>
+
+</html>

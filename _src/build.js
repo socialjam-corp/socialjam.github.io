@@ -21,9 +21,9 @@ var SITE = 'https://www.skeep.me/';
 var LANGS = ['ca', 'en', 'es'];
 // Fallback when neither a saved choice nor the browser's languages match a supported one.
 var DEFAULT_LANG = 'ca';
-var PAGES = ['index.html', 'contact.html', 'privacypolicy.html', 'termsconditions.html', 'beta.html'];
+var PAGES = ['index.html', 'contact.html', 'privacypolicy.html', 'termsconditions.html', 'beta.html', 'play.html'];
 // Pages kept out of search results; their root redirect page gets noindex too.
-var NOINDEX = ['beta.html'];
+var NOINDEX = ['beta.html', 'play.html'];
 
 var SRC = __dirname;
 var OUT = path.resolve(SRC, '..');
@@ -41,8 +41,12 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-// The index page is linked as the folder ("/ca/"), the others by file name.
-function pageUrl(page) { return page === 'index.html' ? '' : page; }
+// The index page is linked as the folder ("/ca/"), the others without ".html" ("/ca/contact").
+// GitHub Pages serves contact.html for that URL, so the files keep their names and old links
+// ending in .html keep working.
+function pageUrl(page) {
+  return page === 'index.html' ? '' : page.replace(/\.html$/, '');
+}
 
 function hreflangTags(page) {
   return LANGS.map(function (l) {
@@ -142,6 +146,8 @@ function redirectPage(page) {
     '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
     NOINDEX.indexOf(page) !== -1 ? '<meta name="robots" content="noindex" />' : null,
     '<title>skeep</title>',
+    // Google reads the site icon from the home page, which is this redirect.
+    '<link rel="icon" type="image/jpeg" href="src/img/skeep-isotip-v1.2@192.jpg" />',
     hreflangTags(page),
     '<script>',
     '// Send the visitor to their language: an explicit flag choice first, then the',

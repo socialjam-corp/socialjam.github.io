@@ -1,0 +1,518 @@
+/* The lite skeep feed (play.html). Colours are the app's dark theme (SkeepTheme.asset in the Unity
+   project); theme.js reads them from here, so this file is their only copy on the site.
+
+   Sizes are in the app's canvas units: the Unity UI is laid out on a 1080×1920 reference with
+   match 0.5, so one unit is --u = sqrt(width/1080 · height/1920) CSS pixels of the app. main.js
+   sets --u, --header-h and --nav-h from the app's size; the values here are only the first paint
+   of a 390×844 phone. */
+
+:root {
+  --surface-high: #252525;
+  --surface-main: #2d2a2b;
+  --surface-low: #343434;
+  --surface-lowest: #444444;
+  --surface-sunken: #565656;
+  --content-primary: #e2e3e4;
+  --content-secondary: #9e9e9e;
+  --contrast-primary: #e2e3e4;
+
+  /* Accent palettes, tone 0 (brightest) to 5. */
+  --red-0: #ff3352; --red-1: #f6314f; --red-2: #d42a44; --red-3: #b32439; --red-4: #911d2e; --red-5: #6f1623;
+  --purple-0: #a951ff; --purple-1: #a34ff6; --purple-2: #8c44d4; --purple-3: #7639b3; --purple-4: #5f2e91; --purple-5: #49236f;
+  --blue-0: #5586ec; --blue-1: #5281e5; --blue-2: #466ec3; --blue-3: #3a5aa1; --blue-4: #2e477f; --blue-5: #21345d;
+
+  /* The user's accent: the app's default palette (selectedAccentIndex 0 = red). */
+  --accent-0: var(--red-0);
+
+  /* OverlayVeil: surface-main at 0.95 in dark mode, shared by the result and How to play. */
+  --veil: rgba(45, 42, 43, 0.95);
+}
+
+.play-app {
+  --u: 0.398px;
+  /* UISafeAreaScaffoldArgs.Standard: header 10% of the height up to 144 units, navigation 16% up to 300. */
+  --header-h: 57px;
+  --nav-h: 120px;
+  --nav-total: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html,
+body.play-page {
+  height: 100%;
+  margin: 0;
+}
+
+body.play-page {
+  overflow: hidden;
+  /* A swipe must move the feed, never the page: no pull-to-refresh, no bounce. */
+  overscroll-behavior: none;
+}
+
+/* White sprites from the app, painted in a theme colour through a mask. */
+.icon {
+  display: block;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.icon--logo { --icon: url('img/logo.png'); }
+.icon--howto { --icon: url('img/howto.png'); }
+.icon--cross { --icon: url('img/cross.png'); }
+
+/* ── Page nav (desktop) ── */
+
+.play-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.play-nav__logo img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+/* ── Stage and phone frame ── */
+
+.play-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 84px 24px 24px;
+  background-image: linear-gradient(135deg, #466EC3 0%, #8C44D4 75%, #D42A44 100%);
+}
+
+.play-app {
+  position: relative;
+  height: min(820px, 100%);
+  aspect-ratio: 9 / 19.5;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 44px;
+  background: var(--surface-main);
+  color: var(--content-primary);
+  font-family: 'Sora', sans-serif;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  /* Its own stacking context, so the frame's rounded corners clip the panels on Safari too. */
+  isolation: isolate;
+}
+
+/* Phones (and short touch screens): no frame, no page nav. A phone drawn inside a phone only
+   shrinks the game. Landscape keeps a portrait column. */
+@media (max-width: 600px), (pointer: coarse) and (max-height: 600px) {
+  .play-nav {
+    display: none;
+  }
+
+  .play-stage {
+    padding: 0;
+    background: var(--surface-main);
+  }
+
+  .play-app {
+    height: 100%;
+    width: 100%;
+    max-width: 75vh;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* ── Feed ── */
+
+.feed-track {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.feed-track.is-animating {
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* GameSceneGradientBackground: surface-main at the top to surface-lowest at the bottom. Games
+   paint their own background on the canvas; this is what shows before they do. */
+.panel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(var(--surface-main), var(--surface-lowest));
+}
+
+/* The Next panel waits right below the Active one. */
+.panel--next {
+  transform: translateY(100%);
+}
+
+.panel__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.panel__hud {
+  position: absolute;
+  inset: var(--header-h) 0 var(--nav-total) 0;
+  pointer-events: none;
+}
+
+.panel__hud > * {
+  pointer-events: auto;
+}
+
+.feed-loading,
+.feed-noscript {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  text-align: center;
+  font-size: calc(32 * var(--u));
+  color: var(--content-secondary);
+}
+
+.feed-loading[hidden] {
+  display: none;
+}
+
+/* ── Result (SkeepGameResultOverlay / SkeepGameResultContentBuilder) ── */
+
+.result {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--header-h) calc(48 * var(--u)) var(--nav-total);
+  background: var(--veil);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.result.is-shown {
+  opacity: 1;
+}
+
+.result__space-top { flex: 0.85 1 0; }
+.result__space-bottom { flex: 1.15 1 0; }
+
+/* The slot is always the victory size, so the title sits at the same height for both outcomes. */
+.result__slot {
+  position: relative;
+  flex: none;
+  width: calc(600 * var(--u));
+  height: calc(600 * var(--u));
+  color: var(--content-primary);
+}
+
+.result__outcome {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(300 * var(--u));
+  height: calc(300 * var(--u));
+  transform: translate(-50%, -50%);
+}
+
+.result--won .result__outcome {
+  width: 100%;
+  height: 100%;
+}
+
+.icon--victory { --icon: url('img/victory.webp'); }
+.icon--defeat { --icon: url('img/defeat.webp'); }
+
+/* The logo inside the laurel, in the accent. Sizes are the builder's, on the 512 px reference
+   sprite scaled to the 600-unit slot. */
+.result__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(170.9 * var(--u));
+  height: calc(209.8 * var(--u));
+  transform: translate(-50%, calc(-50% - 58 * var(--u)));
+  color: var(--accent-0);
+  --icon: url('img/logo-big.png');
+}
+
+/* H1 with auto-size up to 148 units. */
+.result__title {
+  margin: 0;
+  max-width: 100%;
+  font-size: calc(148 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--accent-0);
+}
+
+/* ── App chrome (stays put while the panels move) ── */
+
+.app-top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* FeedShellHeaderChrome's brand line: L1 (Sora Regular, 32 units), content-primary. */
+.app-brand {
+  font-size: calc(32 * var(--u));
+  font-weight: 400;
+  line-height: calc(52 * var(--u));
+  color: var(--content-primary);
+}
+
+.app-nav {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: var(--nav-total);
+}
+
+/* GameFeedNavigationDividerSpecs: 16 units high, 64 from each side, content-secondary pill. */
+.feed-divider {
+  position: absolute;
+  left: calc(64 * var(--u));
+  right: calc(64 * var(--u));
+  top: 0;
+  height: calc(16 * var(--u));
+  overflow: hidden;
+  border-radius: calc(8 * var(--u));
+  background: var(--content-secondary);
+}
+
+/* The AutoScroll bar (N8) lives in the divider, always in the user's accent. */
+.feed-divider__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-0);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* The centre FAB: a third of the band, centred in it, icon at 60/160 of its side. */
+.skeep-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--nav-total) / 3);
+  height: calc(var(--nav-total) / 3);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--content-primary);
+}
+
+.skeep-btn__icon {
+  width: 37.5%;
+  height: 37.5%;
+  color: var(--surface-main);
+  transition: color 0.18s ease;
+}
+
+/* N7 "ready": the icon turns 0→180°; the mark is symmetric, so it lands looking the same. */
+.skeep-btn.is-spinning .skeep-btn__icon {
+  animation: skeep-spin 0.22s ease-in-out;
+}
+
+/* N7 "not yet": the icon fades to the accent and back; the feed does not move. */
+.skeep-btn.is-waiting .skeep-btn__icon {
+  color: var(--accent-0);
+}
+
+@keyframes skeep-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(180deg); }
+}
+
+/* ── How to play (SkeepGameUI) ── */
+
+.howto-veil {
+  position: absolute;
+  inset: 0;
+  background: var(--veil);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+.howto-pause {
+  position: absolute;
+  left: calc(64 * var(--u));
+  right: calc(64 * var(--u));
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  /* H1 at twice its size. */
+  font-size: calc(128 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--content-primary);
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s;
+  pointer-events: none;
+}
+
+.play-app.is-howto-open .howto-veil,
+.play-app.is-howto-open .howto-pause {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* One surface that grows from the round button into the card, anchored bottom-left of the
+   content area: 64 units from the left, 16 above the navigation band. */
+.howto {
+  position: absolute;
+  left: calc(64 * var(--u));
+  bottom: calc(var(--nav-total) + 16 * var(--u));
+  width: calc(64 * var(--u));
+  height: calc(64 * var(--u));
+  overflow: hidden;
+  border-radius: calc(32 * var(--u));
+  background: var(--contrast-primary);
+  color: var(--surface-main);
+  transition: width 0.35s cubic-bezier(0.33, 1, 0.68, 1), height 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.howto__open {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.howto__open .icon,
+.howto__close .icon {
+  width: calc(32 * var(--u));
+  height: calc(32 * var(--u));
+}
+
+.howto__inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: calc(128 * var(--u));
+  overflow-y: auto;
+  padding-top: calc(32 * var(--u));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  scrollbar-width: none;
+}
+
+.howto__title {
+  margin: 0 calc(64 * var(--u)) calc(32 * var(--u));
+  text-align: center;
+  font-size: calc(64 * var(--u));
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: underline;
+}
+
+.howto__body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(32 * var(--u));
+  padding: 0 calc(64 * var(--u));
+}
+
+/* Each "/"-separated part of the text is its own capsule: L2 (Sora Medium, 32 units). */
+.howto__section {
+  margin: 0;
+  padding: calc(24 * var(--u));
+  border-radius: calc(32 * var(--u));
+  background: var(--content-secondary);
+  text-align: center;
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.howto__close {
+  position: absolute;
+  left: 50%;
+  bottom: calc(32 * var(--u));
+  width: calc(64 * var(--u));
+  height: calc(64 * var(--u));
+  margin-left: calc(-32 * var(--u));
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.howto.is-open .howto__open {
+  display: none;
+}
+
+.howto.is-open .howto__close {
+  display: flex;
+}
+
+.howto.is-open .howto__inner {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feed-track.is-animating,
+  .howto {
+    transition-duration: 0.01s;
+  }
+
+  .skeep-btn.is-spinning .skeep-btn__icon {
+    animation: none;
+  }
+}
