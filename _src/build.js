@@ -15,12 +15,15 @@
 
 var fs = require('fs');
 var path = require('path');
+var os = require('os');
 
 var SITE = 'https://www.skeep.me/';
 var LANGS = ['ca', 'en', 'es'];
 // Fallback when neither a saved choice nor the browser's languages match a supported one.
 var DEFAULT_LANG = 'ca';
-var PAGES = ['index.html', 'contact.html', 'privacypolicy.html', 'termsconditions.html'];
+var PAGES = ['index.html', 'contact.html', 'privacypolicy.html', 'termsconditions.html', 'beta.html'];
+// Pages kept out of search results; their root redirect page gets noindex too.
+var NOINDEX = ['beta.html'];
 
 var SRC = __dirname;
 var OUT = path.resolve(SRC, '..');
@@ -29,6 +32,10 @@ var common = require('./strings/common.js');
 function read(p) { return fs.readFileSync(p, 'utf8').replace(/\r\n/g, '\n'); }
 
 function fail(msg) { throw new Error(msg); }
+
+// Use the OS line ending, as a git checkout with core.autocrlf does; otherwise every rebuild
+// shows all generated files as modified even when their content is unchanged.
+function write(file, text) { fs.writeFileSync(file, text.replace(/\n/g, os.EOL)); }
 
 function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -133,6 +140,7 @@ function redirectPage(page) {
     '<head>',
     '<meta charset="UTF-8" />',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+    NOINDEX.indexOf(page) !== -1 ? '<meta name="robots" content="noindex" />' : null,
     '<title>skeep</title>',
     hreflangTags(page),
     '<script>',
@@ -163,7 +171,7 @@ function redirectPage(page) {
     '</body>',
     '</html>',
     ''
-  ].join('\n');
+  ].filter(function (line) { return line !== null; }).join('\n');
 }
 
 var written = [];
@@ -182,7 +190,7 @@ PAGES.forEach(function (page) {
       .replace(/^(<!doctype html>)\n/i, '$1\n' + banner('_src/pages/' + page) + '\n');
     var dir = path.join(OUT, lang);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-    fs.writeFileSync(path.join(dir, page), html);
+    write(path.join(dir, page), html);
     written.push(lang + '/' + page);
   });
 
@@ -193,7 +201,7 @@ PAGES.forEach(function (page) {
     });
   });
 
-  fs.writeFileSync(path.join(OUT, page), redirectPage(page));
+  write(path.join(OUT, page), redirectPage(page));
   written.push(page + ' (redirect)');
 });
 
