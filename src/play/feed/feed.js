@@ -138,7 +138,8 @@ export class Feed {
     const leaving = this.active;
     const arriving = this.next;
     // N18: a match left halfway is lost; only a finished one counts as played to the end.
-    const finished = leaving.state === 'result';
+    // A skeep during the short wait before the result still counts the decided result.
+    const finished = leaving.state === 'result' || leaving.state === 'decided';
     this._emit({ gameId: leaving.gameId, difficulty: leaving.difficulty, finished, won: finished && leaving.won });
     leaving.setPaused(true);
 
@@ -234,6 +235,8 @@ export class Feed {
       level,
       difficulty,
       lang: this.lang,
+      strings: this.strings,
+      onDecided: (p, won) => this._onDecided(p, won),
       onFinish: (p, won) => this._onFinish(p, won),
     });
     this.track.append(panel.el);
@@ -256,9 +259,12 @@ export class Feed {
     return this._modules.get(entry.id);
   }
 
-  _onFinish(panel, won) {
-    panel.won = won;
+  /** The match is decided; the result screen follows after the panel's short delay. */
+  _onDecided(panel, won) {
     this.picker.recordResult(panel.gameId, panel.difficulty, won);
+  }
+
+  _onFinish(panel, won) {
     panel.showResult(won, won ? this.strings.resultVictory : this.strings.resultDefeat);
     // N8: the post-match bar. It only drains with no finger on the screen, and always advances.
     this._barRemaining = RESULT_BAR_SECONDS;
@@ -286,7 +292,7 @@ export class Feed {
   }
 
   _size() {
-    return { width: this.app.clientWidth, height: this.app.clientHeight, insets: this.chrome.insets };
+    return { width: this.app.clientWidth, height: this.app.clientHeight, insets: this.chrome.insets, u: this.chrome.u };
   }
 
   _resize() {

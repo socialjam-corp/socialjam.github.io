@@ -19,6 +19,7 @@
     <link rel="preload" href="{{root}}src/play/img/logo.png" as="image" />
     <!-- Everything the first panel needs, fetched in parallel instead of import by import. -->
     <link rel="modulepreload" href="{{root}}src/play/main.js" />
+    <link rel="modulepreload" href="{{root}}src/play/gate.js" />
     <link rel="modulepreload" href="{{root}}src/play/theme.js" />
     <link rel="modulepreload" href="{{root}}src/play/storage.js" />
     <link rel="modulepreload" href="{{root}}src/play/feed/feed.js" />
@@ -29,7 +30,10 @@
     <link rel="modulepreload" href="{{root}}src/play/shell/result.js" />
     <link rel="modulepreload" href="{{root}}src/play/features/background.js" />
     <link rel="modulepreload" href="{{root}}src/play/games/registry.js" />
-    <link rel="modulepreload" href="{{root}}src/play/games/test/index.js" />
+    <link rel="modulepreload" href="{{root}}src/play/shell/feedback.js" />
+    <!-- The first game (FIRST_GAME in registry.js) and its levels. -->
+    <link rel="modulepreload" href="{{root}}src/play/games/amunt/index.js" />
+    <link rel="preload" href="{{root}}src/play/games/amunt/levels.json" as="fetch" crossorigin />
     <link rel="icon" type="image/jpeg" href="{{root}}src/img/skeep-isotip-v1.2@192.jpg" />
     <link rel="canonical" href="https://www.skeep.me/{{lang}}/{{pageUrl}}" />
     {{{hreflang}}}
@@ -89,11 +93,22 @@
                 </div>
             </div>
 
+            <!-- Temporary password screen (src/play/gate.js). Remove with the gate when the test is over. -->
+            <div class="gate" id="gate" hidden>
+                <form class="gate__form" autocomplete="off">
+                    <img class="gate__logo" src="{{root}}src/play/img/logo.png" alt="" width="56" height="56" />
+                    <label class="gate__label" for="gate-input">{{gateLabel}}</label>
+                    <input class="gate__input" id="gate-input" type="password" required autocapitalize="off" spellcheck="false" />
+                    <p class="gate__error" hidden>{{gateWrong}}</p>
+                    <button class="gate__button" type="submit">{{gateEnter}}</button>
+                </form>
+            </div>
+
             <noscript><p class="feed-noscript">{{noscript}}</p></noscript>
         </div>
     </main>
 
-    <script type="application/json" id="play-strings">{{{json:resultVictory,resultDefeat,loading}}}</script>
+    <script type="application/json" id="play-strings">{{{json:resultVictory,resultDefeat,loading,feedbackPerfect,feedbackGood1,feedbackGood2,feedbackGood3,feedbackAlert1,feedbackAlert2,feedbackAlert3,feedbackMiss}}}</script>
     <script type="module" src="{{root}}src/play/main.js"></script>
 
     {{> menu-script}}

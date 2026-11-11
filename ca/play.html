@@ -20,6 +20,7 @@
     <link rel="preload" href="../src/play/img/logo.png" as="image" />
     <!-- Everything the first panel needs, fetched in parallel instead of import by import. -->
     <link rel="modulepreload" href="../src/play/main.js" />
+    <link rel="modulepreload" href="../src/play/gate.js" />
     <link rel="modulepreload" href="../src/play/theme.js" />
     <link rel="modulepreload" href="../src/play/storage.js" />
     <link rel="modulepreload" href="../src/play/feed/feed.js" />
@@ -30,7 +31,10 @@
     <link rel="modulepreload" href="../src/play/shell/result.js" />
     <link rel="modulepreload" href="../src/play/features/background.js" />
     <link rel="modulepreload" href="../src/play/games/registry.js" />
-    <link rel="modulepreload" href="../src/play/games/test/index.js" />
+    <link rel="modulepreload" href="../src/play/shell/feedback.js" />
+    <!-- The first game (FIRST_GAME in registry.js) and its levels. -->
+    <link rel="modulepreload" href="../src/play/games/amunt/index.js" />
+    <link rel="preload" href="../src/play/games/amunt/levels.json" as="fetch" crossorigin />
     <link rel="icon" type="image/jpeg" href="../src/img/skeep-isotip-v1.2@192.jpg" />
     <link rel="canonical" href="https://www.skeep.me/ca/play" />
     <link rel="alternate" hreflang="ca" href="https://www.skeep.me/ca/play" />
@@ -120,11 +124,22 @@
                 </div>
             </div>
 
+            <!-- Temporary password screen (src/play/gate.js). Remove with the gate when the test is over. -->
+            <div class="gate" id="gate" hidden>
+                <form class="gate__form" autocomplete="off">
+                    <img class="gate__logo" src="../src/play/img/logo.png" alt="" width="56" height="56" />
+                    <label class="gate__label" for="gate-input">Introdueix la contrasenya per jugar</label>
+                    <input class="gate__input" id="gate-input" type="password" required autocapitalize="off" spellcheck="false" />
+                    <p class="gate__error" hidden>Contrasenya incorrecta</p>
+                    <button class="gate__button" type="submit">Juga</button>
+                </form>
+            </div>
+
             <noscript><p class="feed-noscript">Per jugar a skeep cal JavaScript.</p></noscript>
         </div>
     </main>
 
-    <script type="application/json" id="play-strings">{"resultVictory":"Victòria","resultDefeat":"Derrota","loading":"Carregant..."}</script>
+    <script type="application/json" id="play-strings">{"resultVictory":"Victòria","resultDefeat":"Derrota","loading":"Carregant...","feedbackPerfect":"Perfecte!","feedbackGood1":"Bo!","feedbackGood2":"Genial!","feedbackGood3":"Molt bé!","feedbackAlert1":"Ui, just!","feedbackAlert2":"Compte!","feedbackAlert3":"Aguanta!","feedbackMiss":"Quasi!"}</script>
     <script type="module" src="../src/play/main.js"></script>
 
     <script>

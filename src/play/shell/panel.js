@@ -1,16 +1,21 @@
 import { theme, categoryPalette } from '../theme.js';
 import { buildResult } from './result.js';
+import { FeedbackLayer } from './feedback.js';
 
 // Canvas resolution is capped at 2x: sharper is invisible on a phone and costs fill rate.
 const MAX_DPR = 2;
-
+/** GameSceneManager.SinglePlayerPreResultPresentationDelaySeconds: the game plays on this long. */
+const PRE_RESULT_S = 0.5;
 
 /**
  * One feed panel: a canvas for the game, an HTML layer for its HUD and the result veil on top.
  *
  * The game gets a `host` with: gameId, lang, difficulty, canvas, ctx (already scaled to CSS
  * pixels), hud (element over the play area), width, height, insets {top, bottom} (the app chrome
- * over the canvas), dpr, theme, palette (its category's six tones) and finish(won).
+ * over the canvas), dpr, u (one canvas unit in CSS pixels), theme, palette (its category's six
+ * tones), text (its own strings in the page's language), strings (the shell's, e.g. the shared
+ * feedback words), finish(won), feedback(text, x, y, color, motion), showStartHint(text) and
+ * dismissStartHint().
  *
  * The game implements the lifecycle of Docs/Games/05-cicle-de-vida.md, minus what the lite feed
  * does not have: load(level) builds the whole world (the Next panel is painted from the render
@@ -20,15 +25,19 @@ const MAX_DPR = 2;
  * central tick rule); a standby panel never runs.
  */
 export class Panel {
-  constructor({ entry, module, level, difficulty, lang, onFinish }) {
+  constructor({ entry, module, level, difficulty, lang, strings, onDecided, onFinish }) {
     this.entry = entry;
     this.gameId = entry.id;
     this.module = module;
     this.level = level;
     this.difficulty = difficulty;
-    this.state = 'loading'; // loading → ready → active → result → gone
+    // loading → ready → active → decided (the short wait before the result) → result → gone
+    this.state = 'loading';
     this.paused = false;
+    this._onDecided = onDecided;
     this._onFinish = onFinish;
+    this._resultIn = 0;
+    this.won = false;
     this.finishedAt = 0;
 
     this.el = document.createElement('section');
@@ -38,11 +47,17 @@ export class Panel {
     this.hud = document.createElement('div');
     this.hud.className = 'panel__hud';
     this.el.append(this.canvas, this.hud);
+    this.feedbackLayer = new FeedbackLayer(this.el);
 
+    const allText = module.text || {};
+    const palette = categoryPalette(entry.category);
     this.host = {
       gameId: entry.id,
       lang,
       difficulty,
+      text: allText[lang] || allText.en || {},
+      strings,
+      u: 1,
       canvas: this.canvas,
       ctx: this.canvas.getContext('2d'),
       hud: this.hud,
@@ -51,8 +66,16 @@ export class Panel {
       insets: { top: 0, bottom: 0 },
       dpr: 1,
       theme,
-      palette: categoryPalette(entry.category),
+      palette,
       finish: (won) => this._finish(won),
+      feedback: (text, x, y, color, motion) => {
+        if (this.state === 'active' && text) this.feedbackLayer.show(text, x, y, color, this.host.u, motion);
+      },
+      // The hint is in the game's brightest tone (the theme's contrast tone in dark mode).
+      showStartHint: (text, place) => {
+        if (text) this.feedbackLayer.showHint(text, palette[0], this.host.u, place);
+      },
+      dismissStartHint: () => this.feedbackLayer.dismissHint(),
     };
   }
 
@@ -72,15 +95,16 @@ export class Panel {
 
   /** Only a match being played holds the feed to the navigation band. */
   get isAwaitingInput() {
-    return this.state === 'active';
+    return this.state === 'active' || this.state === 'decided';
   }
 
-  resize({ width, height, insets }, render = true) {
+  resize({ width, height, insets, u }, render = true) {
     const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
     const h = this.host;
     h.width = width;
     h.height = height;
     h.insets = insets;
+    h.u = u;
     h.dpr = dpr;
     this.canvas.width = Math.round(width * dpr);
     this.canvas.height = Math.round(height * dpr);
@@ -110,19 +134,31 @@ export class Panel {
 
   /** The feed's single tick. The game keeps rendering under the result veil but stops updating. */
   tick(dt) {
-    if (this.state === 'active' && !this.paused) this.game.update(dt);
-    if (this.state === 'active' || this.state === 'result') this.game.render();
+    const running = this.state === 'active' && !this.paused;
+    // The game keeps playing out its ending (a car driving off, a block falling) until the
+    // result covers it.
+    if ((running || this.state === 'decided') && !this.paused) this.game.update(dt);
+    if (this.state === 'decided' && !this.paused) {
+      this._resultIn -= dt;
+      if (this._resultIn <= 0) this._presentResult();
+    }
+    if (this.state !== 'loading' && this.state !== 'gone' && this.state !== 'ready') this.game.render();
+    this.feedbackLayer.tick(dt, running);
   }
 
   pointer(type, event, rect) {
     if (this.state !== 'active' || this.paused) return;
     const p = { x: event.clientX - rect.left, y: event.clientY - rect.top, id: event.pointerId };
-    if (type === 'down') this.game.pointerDown(p);
+    if (type === 'down') {
+      this.feedbackLayer.touched();
+      this.game.pointerDown(p);
+    }
     else if (type === 'move') this.game.pointerMove(p);
     else this.game.pointerUp(p);
   }
 
   showResult(won, title) {
+    this.feedbackLayer.clearHint();
     const veil = buildResult(won, title);
     this.el.append(veil);
     // Next frame, so the veil fades in instead of popping.
@@ -136,10 +172,19 @@ export class Panel {
     this.el.remove();
   }
 
+  /** The game has decided the match; the input stops here, the result comes a moment later. */
   _finish(won) {
     if (this.state !== 'active') return;
+    this.state = 'decided';
+    this.won = won;
+    this._resultIn = PRE_RESULT_S;
+    this.feedbackLayer.clearHint();
+    this._onDecided(this, won);
+  }
+
+  _presentResult() {
     this.state = 'result';
     this.finishedAt = performance.now();
-    this._onFinish(this, won);
+    this._onFinish(this, this.won);
   }
 }

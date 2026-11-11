@@ -20,6 +20,7 @@
     <link rel="preload" href="../src/play/img/logo.png" as="image" />
     <!-- Everything the first panel needs, fetched in parallel instead of import by import. -->
     <link rel="modulepreload" href="../src/play/main.js" />
+    <link rel="modulepreload" href="../src/play/gate.js" />
     <link rel="modulepreload" href="../src/play/theme.js" />
     <link rel="modulepreload" href="../src/play/storage.js" />
     <link rel="modulepreload" href="../src/play/feed/feed.js" />
@@ -30,7 +31,10 @@
     <link rel="modulepreload" href="../src/play/shell/result.js" />
     <link rel="modulepreload" href="../src/play/features/background.js" />
     <link rel="modulepreload" href="../src/play/games/registry.js" />
-    <link rel="modulepreload" href="../src/play/games/test/index.js" />
+    <link rel="modulepreload" href="../src/play/shell/feedback.js" />
+    <!-- The first game (FIRST_GAME in registry.js) and its levels. -->
+    <link rel="modulepreload" href="../src/play/games/amunt/index.js" />
+    <link rel="preload" href="../src/play/games/amunt/levels.json" as="fetch" crossorigin />
     <link rel="icon" type="image/jpeg" href="../src/img/skeep-isotip-v1.2@192.jpg" />
     <link rel="canonical" href="https://www.skeep.me/en/play" />
     <link rel="alternate" hreflang="ca" href="https://www.skeep.me/ca/play" />
@@ -120,11 +124,22 @@
                 </div>
             </div>
 
+            <!-- Temporary password screen (src/play/gate.js). Remove with the gate when the test is over. -->
+            <div class="gate" id="gate" hidden>
+                <form class="gate__form" autocomplete="off">
+                    <img class="gate__logo" src="../src/play/img/logo.png" alt="" width="56" height="56" />
+                    <label class="gate__label" for="gate-input">Enter the password to play</label>
+                    <input class="gate__input" id="gate-input" type="password" required autocapitalize="off" spellcheck="false" />
+                    <p class="gate__error" hidden>Wrong password</p>
+                    <button class="gate__button" type="submit">Play</button>
+                </form>
+            </div>
+
             <noscript><p class="feed-noscript">skeep needs JavaScript to play.</p></noscript>
         </div>
     </main>
 
-    <script type="application/json" id="play-strings">{"resultVictory":"Victory","resultDefeat":"Defeat","loading":"Loading..."}</script>
+    <script type="application/json" id="play-strings">{"resultVictory":"Victory","resultDefeat":"Defeat","loading":"Loading...","feedbackPerfect":"Perfect!","feedbackGood1":"Nice!","feedbackGood2":"Great!","feedbackGood3":"Well done!","feedbackAlert1":"Close one!","feedbackAlert2":"Careful!","feedbackAlert3":"Keep going!","feedbackMiss":"So close!"}</script>
     <script type="module" src="../src/play/main.js"></script>
 
     <script>

@@ -46,7 +46,9 @@ src/play/img/              app sprites, white, painted through CSS masks
 | `node _src/tools/loc.js <GameId> "<keyRegex>"` | CA/EN/ES strings of a game (or `SkeepMain`) |
 | `node _src/tools/levels.js <GameId> src/play/games/<id>` | writes `levels.json` from the level packs |
 | `node _src/tools/sprite-slices.js <png path>` | slices of a sprite sheet as top-left rects |
-| `node _src/tools/sprites.js <outDir>` | page on :8736 with `exportSprites([...])` to crop/scale/save sprites |
+| `node _src/tools/sprites.js <outDir> [port]` | page with `exportSprites([...])` to crop/scale/save sprites |
+| `node _src/tools/fbx.js <fbx path>` | vertices and polygons of a binary FBX (Zzznake's snake came from it) |
+| `node _src/tools/skeepkaku.js [seed]` | writes Skeepkaku's 41 puzzles to `src/play/games/skeepkaku/levels.json` |
 
 ## App design spec (from the Unity UI code)
 
@@ -62,14 +64,16 @@ sets `--u`, `--header-h`, `--nav-h` on `#play-app`; CSS sizes are `calc(N * var(
 | Button signals | Next ready: icon spins 0→180° 0.22s; not ready: icon fades to accent 0.18s and back. A tap does nothing (the app's radial menu is out) | `SkeepButton` |
 | How to play | 64u circle contrast-primary, "?" 32u surface-main, at left 64u / 16u over the nav. Opens into a card: radius 32u, title H1 underlined, description split at "/" into capsules (content-secondary, radius 32u, pad 24u, L2), then GAME_DESCRIPTION_SP, ✕ at bottom; veil + "Pausa" (H1 ×2) | `SkeepGameUI` |
 | Result | veil surface-main .95; 600u slot: laurel 600u + logo_big (170.9×209.8u, up 58u, accent, full, no fill animation) or skull 300u; title H1 up to 148u in accent; 3 s bar | `SkeepGameResultContentBuilder`, `SkeepGameResultOverlay` |
-| Game background | vertical gradient surface-main → surface-lowest (`drawSceneBackground`, `invert` for Amunt) | `GameSceneGradientThemeBinding` |
+| Game background | only scenes with a `GameSceneGradientBackground` (Amunt, Zzznake) get the gradient surface-main → surface-lowest (`drawSceneBackground`, `invert` for Amunt); the others are plain surface-main (`drawPlainBackground`) | `GameSceneGradientThemeBinding`, `PaintCameraBackground` |
+| End of a match | `host.finish(won)` decides it; the game keeps updating for 0.5 s, then the result shows. A skeep in between still counts the result | `SinglePlayerPreResultPresentationDelaySeconds` |
 
 **Text roles** (`SkeepTheme.asset`): H1 64u Sora Bold · H2 64u Medium · L1 32u Regular ·
 L2 32u Medium · B1 32u Regular · B2 32u Medium · Feedback 75u Roboto Condensed Italic.
 
 **Colours** are in `play.css` `:root`. User accent = red palette. Game category palettes:
 puzzle → blue, arcade → red, ability → purple (`categoryAccentIndex`). The six games' categories
-are in the production catalog only: **ask the user**; screenshots suggest Amunt purple, Zzznake red.
+are confirmed by their catalog art (`SkeepGames/<Game>/Catalog/banner.webp`): Embus and Skeepkaku
+blue (puzzle), Zzznake and Collapse red (arcade), Knives_Out and Amunt purple (ability).
 
 **Sprites in `src/play/img/`**: `logo.png` (skeep_white_logo), `logo-big.png` (skeep_logo_big),
 `victory.webp` / `defeat.webp` (skeep_result_icons slices 2 and 3), `howto.png` / `cross.png`
@@ -88,6 +92,40 @@ Default export `{ text, levels(), create(host) }` (see `games/registry.js` and `
 `text[lang] = { title, description, descriptionSp }` from GAME_TITLE / GAME_DESCRIPTION /
 GAME_DESCRIPTION_SP. The game builds its whole world in `load(level)`; `update(dt)`/`render()`
 come from the feed's single tick; pointers only reach the Active panel; `host.finish(won)` ends it.
+
+## Shared in-game pieces (learned on Amunt)
+
+- **Feedback texts and start hint** are shell features (`shell/feedback.js`), reached through the
+  host: `host.feedback(text, x, y, color, motion)`, `host.showStartHint(text, place?)` (call in `start()`; `place` = `() => ({ y, align })` keeps it clear of the board: above it for boards, under the score capsule for Amunt),
+  `host.dismissStartHint()` (on the game's first real move). Motions are `GameFeedbackMotion`
+  values in units (default: lift 14, drift 108/s, hold 0.75, dissolve 0.45, tilt 15–45° by screen
+  side). Font: Roboto Condensed Italic 75u with the theme's shadow. The shared words
+  (Perfect, Good 1–3, Alert 1–3, Miss) are in `host.strings`; a game's own words go in its `text`.
+- **HUD capsule** (`GameCounterHud`): `.hud-capsule` in `host.hud`.
+- **3D scenes with an orthographic camera**: `SkeepCameraScaffoldBoundsFit` fits the scene's
+  `CameraBounds` box to the content width, so pixels per world unit = content width / bounds width,
+  and the bounds' centre sits at the centre of the content area. Draw boxes with three faces;
+  measured shading on the app: front-left 1.0, front-right 0.89, top 0.77, faint white edges.
+- **Tone cycling** up a structure: `PingPongColorIndex` (0→5→0).
+- **2D boards** (Embus): the scene's CameraBounds is usually 6 units wide and fitted to the content
+  width, so a board of N world units takes N/6 of the width, centred in the content area. Rounded
+  pieces use the theme's `roundedR16` (≈ 0.24 of a cell at Embus's scale); held pieces get the
+  `frameR16` outline in content-primary. Default feedback colour = category tone 2.
+- **Logic boards** (Skeepkaku, and Skeepdoku/Skeepoodle-style games): `features/celebration.js`
+  (SkeepBoardCelebration: cell flashes and block pops in wave/radial/scatter order) and
+  `features/confetti.js` (the 2D win confetti, palette tones 0–3). Theme sprites at 300 px/unit:
+  roundedR8 radius 27 px, roundedR16 51 px. `theme.logicColors` = logicGameColors.
+  The result timing for these games is SolvedCelebrationSeconds (pop + celebration + extra) from
+  the solving move: call `host.finish` that long minus the shell's 0.5 s.
+- **Skeepkaku puzzles** are pre-generated: `node _src/tools/skeepkaku.js [seed]` (the app's
+  generator, uniqueness solver and logic solver, ported; masks as two 32-bit halves).
+- **Zzznake**: camera fits its 8 × 4 × 4 CameraBounds to the width (1 unit = width/8), aligned to
+  the content's bottom, then follows the head. Shading measured on the app: top 1.0, −z side 0.89,
+  +x side 0.72 (`shade(n)`); the path is `#eaeaea`; shadows drop down and toward +x, clipped to the
+  block tops. Its pickups need the player to take branch detours sometimes (as in the app); a
+  test autopilot that never leaves the main path can stall on the last cube.
+- **Verify a port with a script**: import the module in the page, drive it with a fake host, and
+  for puzzles solve every level (Embus: BFS over all 41 boards) before looking at it.
 
 ## Porting a game (checklist)
 

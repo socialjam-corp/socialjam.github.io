@@ -21,6 +21,10 @@
   --purple-0: #a951ff; --purple-1: #a34ff6; --purple-2: #8c44d4; --purple-3: #7639b3; --purple-4: #5f2e91; --purple-5: #49236f;
   --blue-0: #5586ec; --blue-1: #5281e5; --blue-2: #466ec3; --blue-3: #3a5aa1; --blue-4: #2e477f; --blue-5: #21345d;
 
+  /* logicGameColors: the shared palette of the logic games' numbers and pieces, dark mode. */
+  --logic-0: #5586ec; --logic-1: #ff3352; --logic-2: #a951ff; --logic-3: #3da8b7; --logic-4: #48af75;
+  --logic-5: #6f65d1; --logic-6: #f44691; --logic-7: #9eea2c; --logic-8: #51ce62; --logic-9: #ffc900;
+
   /* The user's accent: the app's default palette (selectedAccentIndex 0 = red). */
   --accent-0: var(--red-0);
 
@@ -58,6 +62,15 @@ body.play-page {
   overflow: hidden;
   /* A swipe must move the feed, never the page: no pull-to-refresh, no bounce. */
   overscroll-behavior: none;
+}
+
+/* The theme's Feedback text role. Only downloaded when a feedback text or start hint appears. */
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('fonts/RobotoCondensed-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* White sprites from the app, painted in a theme colour through a mask. */
@@ -188,6 +201,56 @@ body.play-page {
 
 .panel__hud > * {
   pointer-events: auto;
+}
+
+/* ── In-game texts (shell/feedback.js) ── */
+
+.feedback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.feedback__line,
+.feedback__hint {
+  position: absolute;
+  left: 50%;
+  white-space: nowrap;
+  font-family: 'Roboto Condensed', 'Sora', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* GameUIFeedbackService's hint line is 700 units wide. */
+.feedback__hint {
+  max-width: calc(700 * var(--u));
+  white-space: normal;
+  text-align: center;
+  opacity: 0;
+}
+
+/* GameCounterHud's value capsule: 32 units under the header, 64 high, content-secondary. */
+.hud-capsule {
+  position: absolute;
+  top: calc(32 * var(--u));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: calc(128 * var(--u));
+  height: calc(64 * var(--u));
+  padding: 0 calc(24 * var(--u));
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(32 * var(--u));
+  background: var(--content-secondary);
+  color: var(--surface-main);
+  font-size: calc(48 * var(--u));
+  font-weight: 700;
+  pointer-events: none;
 }
 
 .feed-loading,
@@ -504,6 +567,86 @@ body.play-page {
   opacity: 1;
   visibility: visible;
   transition-delay: 0.15s;
+}
+
+/* ── Temporary password screen (gate.js) ── */
+
+.gate {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 calc(64 * var(--u));
+  background: var(--surface-main);
+  /* The app itself ignores selection and touch gestures; the form needs both. */
+  user-select: text;
+  -webkit-user-select: text;
+  touch-action: auto;
+}
+
+.gate[hidden] {
+  display: none;
+}
+
+.gate__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(32 * var(--u));
+}
+
+.gate__logo {
+  width: calc(128 * var(--u));
+  height: calc(128 * var(--u));
+}
+
+.gate__label {
+  text-align: center;
+  font-size: calc(40 * var(--u));
+  font-weight: 500;
+  color: var(--content-primary);
+}
+
+.gate__input {
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(120 * var(--u));
+  padding: 0 calc(40 * var(--u));
+  border: 2px solid var(--surface-lowest);
+  border-radius: calc(32 * var(--u));
+  background: var(--surface-high);
+  color: var(--content-primary);
+  font: 500 16px 'Sora', sans-serif; /* 16px or more: iOS does not zoom into the field */
+  text-align: center;
+}
+
+.gate__input:focus {
+  outline: none;
+  border-color: var(--accent-0);
+}
+
+.gate__error {
+  margin: 0;
+  font-size: calc(32 * var(--u));
+  color: var(--accent-0);
+}
+
+.gate__error[hidden] {
+  display: none;
+}
+
+.gate__button {
+  width: 100%;
+  height: calc(120 * var(--u));
+  border: 0;
+  border-radius: calc(32 * var(--u));
+  background: var(--content-primary);
+  color: var(--surface-main);
+  font: 700 calc(40 * var(--u)) 'Sora', sans-serif;
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: reduce) {

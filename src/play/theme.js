@@ -18,6 +18,8 @@ export const theme = {
     purple: palette('purple'),
     blue: palette('blue'),
   },
+  /** logicGameColors: blue, red, purple, teal, emerald, violet, orchid, lime, spring green, yellow. */
+  logicColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => read(`--logic-${i}`)),
 };
 
 // SkeepTheme.asset's categoryAccentIndex: each game category paints with its own palette.
