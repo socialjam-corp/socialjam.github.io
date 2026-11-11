@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{root}}src/theme.css"/>
+  <link rel="stylesheet" href="{{root}}src/legal.css"/>
+  <link rel="stylesheet" href="{{root}}src/output.css"/>
+  <link rel="icon" type="image/png" href="{{root}}src/img/skeep-isotip-v1.2@512.png" />
+  <link rel="canonical" href="https://www.skeep.me/{{lang}}/{{pageUrl}}" />
+  {{{hreflang}}}
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topnav">
+  <a class="nav-logo" href="./">
+    <img src="{{root}}src/img/skeep-isotip-v1.2@512.png" alt="skeep logo" onerror="this.style.display='none'"/>
+  </a>
+  <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</nav>
+
+<!-- Menu — replaces the footer; language selector lives at the bottom -->
+{{> menu}}
+
+<!-- Header -->
+<header>
+  <h1>{{{h1}}}</h1>
+  <div class="header-meta">
+    <span class="header-meta-item">{{eyebrow}}</span>
+    <span class="header-meta-item">SocialJam S.L.</span>
+    <span class="header-meta-item">{{metaDate}}</span>
+    <span class="header-meta-item">{{metaVersion}}</span>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <!-- Intro warning -->
+  <div class="intro-callout">
+    <span class="intro-callout-icon">⚠</span>
+    <p>{{introText}}</p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc" role="navigation" aria-label="Table of contents">
+    <div class="toc-title">{{tocTitle}}</div>
+    <ol>
+      {{{toc:s}}}
+    </ol>
+  </div>
+
+  {{{sections:s}}}
+
+</div>
+
+{{> menu-script}}
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{root}}src/theme.css"/>
+  <link rel="stylesheet" href="{{root}}src/legal.css"/>
+  <link rel="stylesheet" href="{{root}}src/output.css"/>
+  <link rel="icon" type="image/png" href="{{root}}src/img/skeep-isotip-v1.2@512.png" />
+  <link rel="canonical" href="https://www.skeep.me/{{lang}}/{{pageUrl}}" />
+  {{{hreflang}}}
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topnav">
+  <a class="nav-logo" href="./">
+    <img src="{{root}}src/img/skeep-isotip-v1.2@512.png" alt="skeep logo" onerror="this.style.display='none'"/>
+  </a>
+  <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</nav>
+
+<!-- Menu — replaces the footer; language selector lives at the bottom -->
+{{> menu}}
+
+<!-- Header -->
+<header>
+  <h1 id="t-title">{{title}}</h1>
+  <div class="header-meta">
+    <span class="header-meta-item" id="t-eyebrow">{{eyebrow}}</span>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <div class="contact-card">
+    <form id="contact-form" novalidate>
+      <!-- FormSubmit.co configuration (no backend needed) -->
+      <input type="hidden" name="_subject" value="New message from skeep.me contact form">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-field">
+        <label for="cf-name" id="t-label-name">{{labelName}}</label>
+        <input type="text" id="cf-name" name="name" autocomplete="name" required />
+      </div>
+
+      <div class="form-field">
+        <label for="cf-email" id="t-label-email">{{labelEmail}}</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="form-field">
+        <label for="cf-query" id="t-label-query">{{labelQuery}}</label>
+        <select id="cf-query" name="query" required>
+          <option value="bug" id="t-opt-bug">{{optBug}}</option>
+          <option value="delete" id="t-opt-delete">{{optDelete}}</option>
+          <option value="early-access" id="t-opt-early">{{optEarly}}</option>
+          <option value="other" id="t-opt-other">{{optOther}}</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="cf-message" id="t-label-message">{{labelMessage}}</label>
+        <textarea id="cf-message" name="message" rows="6" required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit" id="t-submit">{{submit}}</button>
+    </form>
+  </div>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span id="t-toast">{{toast}}</span>
+</div>
+
+{{> menu-script}}
+
+<script>
+// Toast messages in this page's language.
+const STRINGS = {{{json:toast,toastError}}};
+
+// Form submission
+const form = document.getElementById('contact-form');
+const toast = document.getElementById('toast');
+let toastTimer;
+
+const CONTACT_EMAIL = 'socialjam.skeep@gmail.com';
+const submitBtn = document.getElementById('t-submit');
+
+function showToast(text) {
+  toast.querySelector('span').textContent = text;
+  toast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () {
+    toast.classList.remove('is-visible');
+  }, 3000);
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const originalLabel = submitBtn.textContent;
+  submitBtn.disabled = true;
+
+  fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Request failed');
+      return response.json();
+    })
+    .then(function () {
+      form.reset();
+      showToast(STRINGS.toast);
+    })
+    .catch(function () {
+      showToast(STRINGS.toastError);
+    })
+    .finally(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    });
+});
+</script>
+
+</body>
+</html>

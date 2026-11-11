@@ -1,35 +1,35 @@
 
 @font-face {
   font-family: 'Sora';
-  src: url('./fonts/Sora-Thin.ttf') format('truetype');
+  src: url('./Sora-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sora';
-  src: url('./fonts/Sora-Light.ttf') format('truetype');
+  src: url('./Sora-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sora';
-  src: url('./fonts/Sora-Regular.ttf') format('truetype');
+  src: url('./Sora-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sora';
-  src: url('./fonts/Sora-Medium.ttf') format('truetype');
+  src: url('./Sora-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sora';
-  src: url('./fonts/Sora-Bold.ttf') format('truetype');
+  src: url('./Sora-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

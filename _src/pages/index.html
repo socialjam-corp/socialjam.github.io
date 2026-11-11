@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="{{lang}}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="{{root}}src/output.css" />
+    <link rel="stylesheet" href="{{root}}src/theme.css" />
+    <link rel="stylesheet" href="{{root}}src/sections.css" />
+    <link rel="icon" type="image/png" href="{{root}}src/img/skeep-isotip-v1.2@512.png" />
+    <link rel="canonical" href="https://www.skeep.me/{{lang}}/{{pageUrl}}" />
+    {{{hreflang}}}
+</head>
+
+<body>
+    <!-- Nav — fixed, transparent, always visible regardless of scroll -->
+    <header class="site-nav fixed inset-x-0 top-0 z-50">
+        <!-- Navigation bar -->
+        <nav aria-label="Global" class="flex items-center justify-between px-6 lg:px-8" style="height: 60px;">
+            <div class="flex lg:flex-1">
+                <a href="./" class="-m-1.5 p-1.5">
+                    <span class="sr-only">skeep</span>
+                    <img src="{{root}}src/img/skeep-isotip-v1.2@512.png" alt="" class="h-8 w-auto" />
+                </a>
+            </div>
+            <!-- Menu button — replaces the footer, visible at all sizes -->
+            <div class="flex flex-1 justify-end">
+                <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <hr class="border-gray-200 dark:border-gray-700" />
+    </header>
+
+    {{> menu}}
+
+    <div class="relative isolate bg-stone-950 hero-fixed overflow-hidden">
+        <div aria-hidden="true" class="absolute inset-0 -z-10">
+            <div style="
+              position: absolute;
+              inset: 0;
+              background-image: linear-gradient(135deg, #466EC3 0%, #8C44D4 75%, #D42A44 100%);
+            "></div>
+            <div style="
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0);
+            "></div>
+        </div>
+
+        <div class="relative isolate px-6 pt-14 lg:px-8 hero-content-block">
+            <div class="mx-auto max-w-2xl">
+                <div class="text-center">
+                    <img class="mx-auto my-10" src="{{root}}src/img/skeep-layerlogo-white.png" width="40%">
+                    <p class="hero-tagline font-body tracking-tight text-balance text-white" id="t-tagline">{{tagline}}</p>
+
+                    <p class="hero-badges-label" id="t-badges-label">{{badgesLabel}}</p>
+                    <div class="hero-badges">
+                        <div class="store-badge">
+                            <svg class="store-badge__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path fill="currentColor" d="M17.05 12.536c-.03-2.36 1.93-3.49 2.02-3.548-1.1-1.606-2.81-1.827-3.42-1.853-1.454-.148-2.84.856-3.578.856-.74 0-1.882-.836-3.096-.812-1.594.024-3.064.928-3.884 2.353-1.657 2.87-.424 7.12 1.19 9.45.79 1.14 1.73 2.418 2.965 2.372 1.19-.047 1.64-.77 3.078-.77s1.842.77 3.1.746c1.284-.024 2.096-1.163 2.882-2.31.907-1.325 1.28-2.61 1.298-2.676-.028-.013-2.492-.957-2.555-3.808Zm-2.393-7.01c.657-.797 1.1-1.9.98-3.002-.947.038-2.093.63-2.774 1.427-.61.706-1.144 1.83-1.002 2.91 1.055.082 2.14-.536 2.796-1.335Z"/>
+                            </svg>
+                            <div class="store-badge__text">
+                                <!--<span class="store-badge__eyebrow">Download on the</span>-->
+                                <span class="store-badge__name">App Store</span>
+                            </div>
+                        </div>
+
+                        <div class="store-badge">
+                            <svg class="store-badge__icon store-badge__icon--play" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M3.6 2.6c-.35.36-.55.9-.55 1.6v15.6c0 .7.2 1.24.55 1.6l.1.09L12.6 12v-.2L3.7 2.5l-.1.1Z" fill="#4285F4"/>
+                                <path d="M15.6 15 12.6 12v-.2l3-3.02 3.5 2c.83.47 1.32.87 1.32 1.44.53.57-.36.97-1.32 1.44l-3.5 1.99Z" fill="#EA4335"/>
+                                <path d="M15.6 9 12.6 12l-9-9.3c.3-.32.86-.36 1.5 0L15.6 9Z" fill="#FBBC04"/>
+                                <path d="M15.6 15l-11.5 6.3c-.63.36-1.2.32-1.5 0l9-9.3 4 3Z" fill="#34A853"/>
+                            </svg>
+                            <div class="store-badge__text">
+                                <!--<span class="store-badge__eyebrow">GET IT ON</span>-->
+                                <span class="store-badge__name">Google Play</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-cue">
+            <span class="scroll-cue__label" id="t-discover">{{discover}}</span>
+            <img src="{{root}}src/img/arrow.png" alt="" class="scroll-cue__arrow" />
+        </div>
+
+    </div>
+    <!-- /hero -->
+
+    <main>
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title" id="t-s1-title">{{s1Title}}</h2>
+                    <div class="content-eyebrow" id="t-s1-eyebrow">{{s1Eyebrow}}</div>
+                </div>
+                <div class="content-columns content-columns--wide-right content-columns--center">
+                    <div class="content-col">
+                        <h3 id="t-s1-h3-1">{{s1H3_1}}</h3>
+                        <p id="t-s1-p-1">{{{s1P1}}}</p>
+                        <h3 id="t-s1-h3-2">{{s1H3_2}}</h3>
+                        <ul id="t-s1-p-2">{{{s1P2}}}</ul>
+                    </div>
+                    <div class="content-col">
+                        <picture>
+                            <source type="image/webp" srcset="{{root}}src/img/summary-img-640.webp 640w, {{root}}src/img/summary-img.webp 1041w" sizes="(max-width: 860px) calc(100vw - 3rem), 621px" />
+                            <img src="{{root}}src/img/summary-img.png" data-full="{{root}}src/img/summary-img.webp" alt="skeep" width="1041" height="720" loading="lazy" decoding="async" />
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title" id="t-s2-title">{{s2Title}}</h2>
+                </div>
+                <div class="content-columns content-columns--wide-left content-columns--center">
+                    <div class="content-col">
+                        <picture>
+                            <source type="image/webp" srcset="{{root}}src/img/play-img-640.webp 640w, {{root}}src/img/play-img.webp 1280w" sizes="(max-width: 860px) calc(100vw - 3rem), 621px" />
+                            <img src="{{root}}src/img/play-img.png" data-full="{{root}}src/img/play-img.webp" alt="skeep" width="1280" height="720" loading="lazy" decoding="async" />
+                        </picture>
+                    </div>
+                    
+                    <div class="content-col">
+                        <p id="t-s2-p">{{s2P}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title" id="t-s3-title">{{s3Title}}</h2>
+                </div>
+                <div class="content-columns content-columns--wide-right content-columns--center">
+                    <div class="content-col">
+                        <p id="t-s3-p">{{{s3P}}}</p>
+                    </div>
+                    <div class="content-col">
+                        <picture>
+                            <source type="image/webp" srcset="{{root}}src/img/challenge-img-640.webp 640w, {{root}}src/img/challenge-img.webp 1280w" sizes="(max-width: 860px) calc(100vw - 3rem), 621px" />
+                            <img src="{{root}}src/img/challenge-img.png" data-full="{{root}}src/img/challenge-img.webp" alt="skeep" width="1280" height="720" loading="lazy" decoding="async" />
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="content-section__inner">
+                <div class="content-header">
+                    <h2 class="content-title" id="t-s4-title">{{s4Title}}</h2>
+                </div>
+                <div class="content-columns content-columns--wide-left content-columns--center">
+                    <div class="content-col">
+                        <picture>
+                            <source type="image/webp" srcset="{{root}}src/img/compete-img-640.webp 640w, {{root}}src/img/compete-img.webp 1280w" sizes="(max-width: 860px) calc(100vw - 3rem), 621px" />
+                            <img src="{{root}}src/img/compete-img.png" data-full="{{root}}src/img/compete-img.webp" alt="skeep" width="1280" height="720" loading="lazy" decoding="async" />
+                        </picture>
+                    </div>
+                    
+                    <div class="content-col">
+                        <p id="t-s4-p">{{{s4P}}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+    </div>
+
+    <script>
+    (function () {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightbox-img');
+        var zoomableImgs = document.querySelectorAll('.content-col img');
+
+        function openLightbox(img) {
+            // On narrow screens currentSrc is the 640px copy; the lightbox zooms, so it needs the full size.
+            lightboxImg.src = img.dataset.full || img.currentSrc || img.src;
+            lightboxImg.alt = img.alt || '';
+            lightboxImg.classList.remove('is-zoomed');
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            lightboxImg.classList.remove('is-zoomed');
+            document.body.style.overflow = '';
+        }
+
+        zoomableImgs.forEach(function (img) {
+            img.classList.add('is-zoomable');
+            img.addEventListener('click', function () {
+                openLightbox(img);
+            });
+        });
+
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        lightboxImg.addEventListener('click', function (e) {
+            e.stopPropagation();
+            lightboxImg.classList.toggle('is-zoomed');
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
+    </script>
+
+    {{> menu-script}}
+</body>
+
+</html>

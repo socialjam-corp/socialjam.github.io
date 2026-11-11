@@ -1,0 +1,28 @@
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
+  <nav class="mobile-menu-links" aria-label="Mobile">
+    <a href="contact.html">{{menuContact}}</a>
+    <a href="privacypolicy.html">{{menuPrivacy}}</a>
+    <a href="termsconditions.html">{{menuTerms}}</a>
+  </nav>
+  <p class="mobile-menu-footnote">{{menuRights}}</p>
+  <div class="mobile-menu-langs">
+    <a class="lang-btn{{active:en}}" href="{{root}}en/{{pageUrl}}" hreflang="en" lang="en" title="English">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      <span>EN</span>
+    </a>
+    <a class="lang-btn{{active:ca}}" href="{{root}}ca/{{pageUrl}}" hreflang="ca" lang="ca" title="Català">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#FCDD09"/><rect y="3.75" width="60" height="3.75" fill="#DA121A"/><rect y="11.25" width="60" height="3.75" fill="#DA121A"/><rect y="18.75" width="60" height="3.75" fill="#DA121A"/><rect y="26.25" width="60" height="3.75" fill="#DA121A"/></svg>
+      <span>CA</span>
+    </a>
+    <a class="lang-btn{{active:es}}" href="{{root}}es/{{pageUrl}}" hreflang="es" lang="es" title="Español">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#c60b1e"/><rect y="7.5" width="60" height="15" fill="#ffc400"/></svg>
+      <span>ES</span>
+    </a>
+  </div>
+</div>

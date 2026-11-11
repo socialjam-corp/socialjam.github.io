@@ -21,7 +21,14 @@
   text-transform: uppercase;
   color: var(--brand-blue);
   margin-bottom: 0.85rem;
-  white-space: nowrap;
+}
+
+/* One line only where it fits: the longest translation is ~780px wide in Sora,
+   so below this it must wrap or the whole page scrolls sideways. */
+@media (min-width: 900px) {
+  .content-eyebrow {
+    white-space: nowrap;
+  }
 }
 
 .content-title {
@@ -163,10 +170,6 @@
 @media (max-width: 600px) {
   .content-section {
     padding: 4rem 1.25rem;
-  }
-
-  .content-eyebrow {
-    white-space: normal;
   }
 }
 

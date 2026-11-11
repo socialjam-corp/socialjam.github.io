@@ -1,0 +1,40 @@
+<script>
+(function () {
+  var toggle = document.getElementById('mobile-menu-toggle');
+  var closeBtn = document.getElementById('mobile-menu-close');
+  var overlay = document.getElementById('mobile-menu-overlay');
+  var menu = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    overlay.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Only an explicit flag click is remembered; the root URLs redirect to it on later visits.
+  // Visitors who never pick one keep following their browser's language.
+  document.querySelectorAll('.lang-btn').forEach(function (link) {
+    link.addEventListener('click', function () {
+      try { localStorage.setItem('skeep_lang_choice', link.getAttribute('hreflang')); } catch (e) {}
+    });
+  });
+})();
+</script>
