@@ -384,10 +384,12 @@ class Skeepkaku {
       ctx.fillStyle = !done ? content : luminance(this.clueColors[i]) > LIGHT_LUMINANCE ? DARK_NUMBER : '#ffffff';
       const text = String(c.value);
       let size = cellPx * NUMBER;
-      ctx.font = `700 ${size}px Sora, sans-serif`;
+      // Skeepkaku_BoardView: the H1 font asset (Sora-Bold) with FontStyles.Bold, thickened like TMP
+      // does ('Sora H1' in play.css).
+      ctx.font = `700 ${size}px 'Sora H1', Sora, sans-serif`;
       const w = ctx.measureText(text).width;
       if (w > cellPx * 0.8) size *= (cellPx * 0.8) / w;
-      ctx.font = `700 ${size}px Sora, sans-serif`;
+      ctx.font = `700 ${size}px 'Sora H1', Sora, sans-serif`;
       // Sora's figures sit a little high on the middle baseline.
       ctx.fillText(text, g.left + (c.col + 0.5) * cellPx, g.top + (c.row + 0.5) * cellPx + size * 0.04);
     });

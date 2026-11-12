@@ -19,7 +19,11 @@ chrome.layout();
 // fallback font. Never longer than this, a slow font must not hold the first game back.
 const FONT_WAIT_MS = 800;
 const fontsReady = document.fonts
-  ? Promise.race([document.fonts.load('700 16px Sora'), new Promise((r) => setTimeout(r, FONT_WAIT_MS))])
+  ? Promise.race([
+    // The header (L1, Sora Regular) and the H1 role (the score capsule, the result title).
+    Promise.all([document.fonts.load('400 16px Sora'), document.fonts.load("700 16px 'Sora H1'")]),
+    new Promise((r) => setTimeout(r, FONT_WAIT_MS)),
+  ])
   : Promise.resolve();
 
 // Nothing loads or listens for swipes until the temporary password screen lets the visitor in.

@@ -102,6 +102,12 @@ come from the feed's single tick; pointers only reach the Active panel; `host.fi
   side). Font: Roboto Condensed Italic 75u with the theme's shadow. The shared words
   (Perfect, Good 1–3, Alert 1–3, Miss) are in `host.strings`; a game's own words go in its `text`.
 - **HUD capsule** (`GameCounterHud`): `.hud-capsule` in `host.hud`.
+- **Fonts**: the `.ttf` files are byte-identical to `Skeep/Media/Fonts` (Roboto-Bold there is only
+  the Greek/Cyrillic fallback). SkeepTheme roles: H1 Sora-Bold + bold, H2 Sora-Medium, L1 Sora-Regular,
+  L2 Sora-Medium + bold, B1 Sora-Regular, B2 Sora-Medium, Feedback Roboto Condensed Italic + bold.
+  "+ bold" is TMP's faux bold (no font asset has a bold variant): use `var(--font-h1)` /
+  `var(--font-l2)` (or the italic Roboto) at weight 700 with `letter-spacing: var(--tmp-bold-spacing)`,
+  never plain `700 Sora` (that picks real Sora Bold without the thickening).
 - **3D scenes with an orthographic camera**: `SkeepCameraScaffoldBoundsFit` fits the scene's
   `CameraBounds` box to the content width, so pixels per world unit = content width / bounds width,
   and the bounds' centre sits at the centre of the content area. Draw boxes with three faces;
@@ -124,6 +130,17 @@ come from the feed's single tick; pointers only reach the Active panel; `host.fi
   +x side 0.72 (`shade(n)`); the path is `#eaeaea`; shadows drop down and toward +x, clipped to the
   block tops. Its pickups need the player to take branch detours sometimes (as in the app); a
   test autopilot that never leaves the main path can stall on the last cube.
+- **Collapse**: 2D, CameraBounds 12 wide fitted to the width and centred on the content; scenario
+  12 × 16 (separators only span it), player's rear on y = −8. Vehicles are the sprite sheet redrawn
+  as shapes in prefab units (100 px/unit, sprites centred, root on the rear), scaled so the
+  collider is a share of a lane (player and car 0.6, moto 0.2, truck 0.75). Dark mode: player body
+  = category tone 0, traffic = content-primary, outline/windows/side lights = surface-main, beams
+  content-primary at 0.25. Separators are content-secondary at 5 % (barely visible, as in the app).
+  Deviations: traffic culls at the canvas bottom and spawns no lower than the canvas top (the
+  chrome bands are see-through here).
+- **Headless checks under Node 6** (no ES modules): `sed` the module's `import` lines away and
+  `export default` into `module.exports =`, `node --check` it, then drive it with a stub host and
+  canvas context (no-op methods) and an autopilot.
 - **Verify a port with a script**: import the module in the page, drive it with a fake host, and
   for puzzles solve every level (Embus: BFS over all 41 boards) before looking at it.
 

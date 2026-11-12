@@ -30,6 +30,11 @@
 
   /* OverlayVeil: surface-main at 0.95 in dark mode, shared by the result and How to play. */
   --veil: rgba(45, 42, 43, 0.95);
+
+  /* SkeepTheme text roles that set `bold` (see the 'Sora H1' / 'Sora L2' faces below). */
+  --font-h1: 'Sora H1', 'Sora', sans-serif;
+  --font-l2: 'Sora L2', 'Sora', sans-serif;
+  --tmp-bold-spacing: 0.07em;
 }
 
 .play-app {
@@ -62,6 +67,27 @@ body.play-page {
   overflow: hidden;
   /* A swipe must move the feed, never the page: no pull-to-refresh, no bounce. */
   overscroll-behavior: none;
+}
+
+/* TextMesh Pro's bold style. No Skeep font asset has a bold variant, so a role with `bold` (H1 on
+   Sora-Bold, L2 on Sora-Medium, Feedback on Roboto Condensed Italic) is that same file thickened
+   (boldStyle 0.75) and spaced out (boldSpacing 7 = 0.07 em). Here each file gets a family of its
+   own with only a regular face, so asking for 700 makes the browser thicken that file the same way
+   (real Sora Bold under 700 would skip the thickening). Same URLs as theme.css: fetched once. */
+@font-face {
+  font-family: 'Sora H1';
+  src: url('../Sora-Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora L2';
+  src: url('../Sora-Medium.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* The theme's Feedback text role. Only downloaded when a feedback text or start hint appears. */
@@ -219,7 +245,9 @@ body.play-page {
   white-space: nowrap;
   font-family: 'Roboto Condensed', 'Sora', sans-serif;
   font-style: italic;
-  font-weight: 400;
+  /* Feedback role: bold on a regular-only face, thickened like TextMesh Pro does. */
+  font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   line-height: 1;
   transform: translate(-50%, -50%);
 }
@@ -249,7 +277,9 @@ body.play-page {
   background: var(--content-secondary);
   color: var(--surface-main);
   font-size: calc(48 * var(--u));
+  font-family: var(--font-h1);
   font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   pointer-events: none;
 }
 
@@ -336,7 +366,9 @@ body.play-page {
   margin: 0;
   max-width: 100%;
   font-size: calc(148 * var(--u));
+  font-family: var(--font-h1);
   font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   line-height: 1.2;
   white-space: nowrap;
   color: var(--accent-0);
@@ -446,7 +478,9 @@ body.play-page {
   white-space: nowrap;
   /* H1 at twice its size. */
   font-size: calc(128 * var(--u));
+  font-family: var(--font-h1);
   font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   line-height: 1.2;
   color: var(--content-primary);
   transform: translateY(-50%);
@@ -514,7 +548,9 @@ body.play-page {
   margin: 0 calc(64 * var(--u)) calc(32 * var(--u));
   text-align: center;
   font-size: calc(64 * var(--u));
+  font-family: var(--font-h1);
   font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   line-height: 1.25;
   text-decoration: underline;
 }
@@ -534,7 +570,10 @@ body.play-page {
   background: var(--content-secondary);
   text-align: center;
   font-size: calc(32 * var(--u));
-  font-weight: 500;
+  /* L2: Sora-Medium with the bold style. */
+  font-family: var(--font-l2);
+  font-weight: 700;
+  letter-spacing: var(--tmp-bold-spacing);
   line-height: 1.35;
 }
 

@@ -15,6 +15,7 @@ export const GAMES = [
   { id: 'embus', category: 'puzzle', load: () => import('./embus/index.js') },
   { id: 'skeepkaku', category: 'puzzle', load: () => import('./skeepkaku/index.js') },
   { id: 'zzznake', category: 'arcade', load: () => import('./zzznake/index.js') },
+  { id: 'collapse', category: 'arcade', load: () => import('./collapse/index.js') },
 ];
 
 /** N19: the first panel is always this game, so the very first thing a visitor sees is light. */
